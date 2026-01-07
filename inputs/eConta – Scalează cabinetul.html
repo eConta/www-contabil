@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eConta – Scalează cabinetul</title>
+  <style>
+    :root{
+      /* Palette inspired by the provided reference (dark slate + blue + solid pink CTA) */
+      --bg0:#0F1220;
+      --bg1:#151A29;
+      --panel:#1A1F2D;
+      --panel2:#161A26;
+      --stroke:rgba(255,255,255,.08);
+      --stroke2:rgba(255,255,255,.12);
+
+      --text:#F4F6FF;
+      --muted:rgba(244,246,255,.72);
+      --muted2:rgba(244,246,255,.56);
+
+      --accent:#5A86FF;      /* blue */
+      --accent2:#FF4FBF;     /* solid pink CTA */
+      --accent3:#7B5CFF;     /* brand purple */
+
+      --good:#4BE6B1;
+      --bad:#FF6B8A;
+
+      --radius:18px;
+      --radius-lg:22px;
+      --shadow: 0 22px 90px rgba(0,0,0,.60);
+      --shadow-soft: 0 14px 44px rgba(0,0,0,.40);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+      color:var(--text);
+      min-height:100vh;
+      background: var(--bg0);
+      overflow-x:hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      /* more subtle, darker overall */
+      background:
+        radial-gradient(1000px 620px at 70% 22%, rgba(90,134,255,.14), transparent 68%),
+        radial-gradient(920px 560px at 18% 10%, rgba(123,92,255,.07), transparent 70%),
+        radial-gradient(920px 560px at 38% 92%, rgba(255,79,191,.045), transparent 72%),
+        linear-gradient(180deg, #0E1120 0%, #121628 55%, #0E1120 100%);
+      pointer-events:none;
+      z-index: 0;
+    }
+    .page{position:relative; z-index:1;}
+
+    a{color:inherit;text-decoration:none}
+    a:hover{text-decoration:none}
+    a:focus-visible{outline:2px solid rgba(199,125,255,.45); outline-offset:3px; border-radius:12px}
+
+    .wrap{max-width:1200px;margin:0 auto;padding:0 26px}
+
+    /* top context bar */
+    .contextbar{
+      border-bottom:1px solid var(--stroke);
+      background: rgba(21,24,35,.62);
+      backdrop-filter: blur(12px);
+    }
+    .contextbar .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:10px 0;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(26,31,45,.55);
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent3), var(--accent2));
+      box-shadow: 0 0 0 3px rgba(90,134,255,.12);
+    }
+    .link{color: var(--accent); opacity:.95}
+    .link:hover{opacity:1}
+
+    /* header */
+    header{
+      position:sticky; top:0; z-index:10;
+      background: rgba(21,24,35,.55);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px}
+    .brand .mark{width:28px;height:28px;border-radius:10px; background: linear-gradient(135deg, var(--accent3), var(--accent2)); box-shadow: 0 12px 24px rgba(90,134,255,.16)}
+    .menu{display:flex; gap:18px; align-items:center; color:var(--muted)}
+    .menu a{padding:10px 10px; border-radius:12px}
+    .menu a:hover{background: rgba(26,31,45,.55); color: var(--text)}
+    .menu .active{color:var(--text); background: rgba(90,134,255,.14); border: 1px solid rgba(90,134,255,.30)}
+    .menu .cta{color:#FFFFFF; font-weight:750; background: var(--accent2); box-shadow: 0 10px 26px rgba(255,79,191,.18)}
+
+    /* sections */
+    section{padding:96px 0}
+    .hero{padding-top:76px}
+
+    h1{font-size:52px; line-height:1.04; margin:0 0 16px; letter-spacing:-.4px}
+    .lead{font-size:18px; color:var(--muted); margin:0 0 24px; max-width:64ch; line-height:1.65}
+
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 24px}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(26,31,45,.45);
+      color: var(--muted);
+      font-size:13px;
+    }
+
+    .actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:14px}
+
+    /* a bit more creative + airy hero summary */
+    .hero-mini{display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:18px}
+    .mini-card{
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      background: rgba(26,31,45,.30);
+      padding:14px 14px;
+      box-shadow: var(--shadow-soft);
+    }
+    .mini-top{font-size:12px; color: var(--muted2)}
+    .mini-big{font-size:16px; font-weight:850; margin-top:6px; color: var(--text)}
+    .mini-sub{font-size:12px; color: var(--muted); margin-top:6px; line-height:1.55}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:14px 16px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(26,31,45,.55);
+      color: var(--text);
+      font-weight:650;
+      box-shadow: var(--shadow-soft);
+    }
+    .btn.primary{
+      border:none;
+      color:#FFFFFF;
+      background: var(--accent2); /* solid (no gradient) */
+      box-shadow: 0 18px 40px rgba(255,79,191,.16);
+    }
+    .btn.primary:hover{filter: brightness(1.03)}
+    .btn:hover{transform: translateY(-1px)}
+
+    .hero-grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:56px; align-items:center}
+
+    /* visual card with image */
+    .visual{
+      border-radius: var(--radius-lg);
+      border:1px solid var(--stroke);
+      background: rgba(26,31,45,.24);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .visual::after{
+      content:"";
+      position:absolute; inset:-1px;
+      background: linear-gradient(180deg, rgba(7,6,17,.0), rgba(7,6,17,.35));
+      pointer-events:none;
+    }
+    .visual img{width:100%; height:420px; object-fit:cover; display:block; filter:saturate(1.03) contrast(1.05)}
+    .visual .cap{
+      position:absolute; left:14px; right:14px; bottom:14px;
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;
+    }
+    .cap .kpi{
+      border-radius:16px;
+      border:1px solid var(--stroke);
+      background: rgba(21,24,35,.55);
+      padding:12px;
+      backdrop-filter: blur(8px);
+    }
+    .cap .t{font-size:12px; color:var(--muted)}
+    .cap .n{font-size:16px; font-weight:850; margin-top:6px}
+
+    /* section headings */
+    .section-title{font-size:36px; margin:0 0 14px; letter-spacing:-.25px}
+
+    /* SEO-friendly section label */
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:14px;
+      color: var(--accent);
+      margin:0 0 12px;
+    }
+    .eyebrow::before{
+      content:"";
+      width:10px; height:10px; border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(90,134,255,.10);
+    }
+    .section-sub{color:var(--muted); margin:0 0 32px; max-width:84ch; line-height:1.75}
+
+    /* compare columns */
+    .compare{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    .col{
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      background:
+        radial-gradient(520px 260px at 80% 0%, rgba(90,134,255,.10), transparent 60%),
+        linear-gradient(180deg, rgba(26,31,45,.60), rgba(21,24,35,.40));
+      padding:18px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.28);
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      border:1px solid var(--stroke);
+      background: rgba(21,24,35,.38);
+      margin-bottom:12px;
+      color: var(--muted);
+    }
+    .tag.bad{border-color: rgba(255,107,138,.35); background: rgba(255,107,138,.08); color: rgba(255,220,228,.92)}
+    .tag.good{border-color: rgba(75,230,177,.35); background: rgba(75,230,177,.08); color: rgba(199,255,236,.92)}
+
+    .bullets{margin:0; padding-left:18px; color: rgba(242,236,255,.75); font-size:13px; line-height:1.65}
+
+    /* KPI cards */
+    .kpi-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:18px}
+    .kpi-card{
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      background:
+        radial-gradient(520px 220px at 80% 0%, rgba(90,134,255,.14), transparent 62%),
+        radial-gradient(520px 220px at 20% 15%, rgba(255,79,191,.08), transparent 62%),
+        rgba(26,31,45,.38);
+      padding:18px;
+      box-shadow: var(--shadow-soft);
+      overflow:hidden;
+    }
+    .kpi-card .k{font-size:12px; color:var(--muted)}
+    .kpi-card .v{font-size:28px; font-weight:950; margin-top:6px}
+    .kpi-card .v span{color: var(--accent); background:none; -webkit-background-clip: initial; background-clip: initial}
+    .kpi-card p{margin:8px 0 0; color: rgba(242,236,255,.74); font-size:13px}
+
+    /* content blocks */
+    .block{
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      background: rgba(26,31,45,.38);
+      padding:18px;
+      box-shadow: var(--shadow-soft);
+    }
+    .block h3{margin:0 0 10px; font-size:16px}
+    .block p{margin:0; color: rgba(242,236,255,.74); line-height:1.7; font-size:14px}
+
+    .grid2{display:grid; grid-template-columns: 1.15fr .85fr; gap:18px; align-items:start}
+
+    .mini-visual{
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      overflow:hidden;
+      background: rgba(7,6,17,.35);
+      box-shadow: var(--shadow-soft);
+      position:relative;
+    }
+    .mini-visual img{width:100%; height: 320px; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.05)}
+    .mini-visual .overlay{
+      position:absolute; inset:auto 14px 14px 14px;
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(36,28,58,.55);
+      background: rgba(7,6,17,.55);
+      backdrop-filter: blur(10px);
+      color: rgba(242,236,255,.78);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .value-list{display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-top:14px}
+    .vb{
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      background: rgba(21,24,35,.25);
+      padding:16px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .check{
+      width:30px; height:30px; border-radius:12px;
+      background: rgba(90,134,255,.12);
+      border: 1px solid rgba(90,134,255,.24);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+      color: rgba(199,255,236,.95);
+      font-weight:900;
+    }
+    .vb p{margin:0; color: rgba(242,236,255,.74); line-height:1.55; font-size:13px}
+
+    .callout{
+      margin-top:18px;
+      border-radius: 18px;
+      border: 1px solid var(--stroke);
+      background: rgba(21,24,35,.22);
+      padding:16px;
+      color: var(--muted);
+    }
+    .callout strong{color: var(--text)}
+
+    /* final */
+    .final{text-align:center; padding-bottom:110px}
+    .final .box{
+      display:inline-block;
+      padding:26px 22px;
+      border-radius:28px;
+      border:1px solid var(--stroke);
+      background:
+        radial-gradient(520px 220px at 70% 0%, rgba(90,134,255,.16), transparent 62%),
+        radial-gradient(520px 220px at 25% 35%, rgba(255,79,191,.10), transparent 62%),
+        rgba(26,31,45,.35);
+      box-shadow: var(--shadow);
+    }
+
+    /* responsive */
+    @media (max-width: 1000px){
+      .hero-grid{grid-template-columns:1fr; gap:26px}
+      h1{font-size:38px}
+      .compare{grid-template-columns:1fr}
+      .kpi-grid{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+    }
+    @media (max-width: 560px){
+      section{padding:72px 0}
+      .visual img{height:320px}
+      .cap{grid-template-columns:1fr}
+      .value-list{grid-template-columns:1fr}
+      .hero-mini{grid-template-columns:1fr}
+      h1{font-size:40px}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="contextbar">
+      <div class="wrap">
+        <div class="row">
+          <div class="pill"><span class="dot"></span> Zona dedicată contabililor</div>
+          <div>Ești antreprenor? <a class="link" href="#">Intră aici →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <div class="wrap">
+        <div class="nav">
+          <div class="brand"><span class="mark"></span> eConta</div>
+          <nav class="menu">
+            <a href="#" title="Switch context">Sunt Antreprenor</a>
+            <a href="#" class="active">Sunt Contabil</a>
+            <a href="#">Articole</a>
+            <a href="#">Despre</a>
+            <a href="#" class="cta">Programează demo</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!--
+      🔹 HERO
+      Sub:
+      Creștere predictibilă, control operațional și performanță reală – într-un mod de lucru standardizat.
+      CTA:
+      Vezi cum funcționează
+    -->
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Contabil</div>
+            <h1>Scalează-ți cabinetul fără angajări.</h1>
+            <p class="lead">Creștere predictibilă, control operațional și performanță reală – într-un mod de lucru standardizat.</p>
+
+            <div class="badges">
+              <div class="badge">📈 Creștere predictibilă</div>
+              <div class="badge">🧭 Control operațional</div>
+              <div class="badge">⏱️ Mai mult timp liber</div>
+            </div>
+
+            <div class="actions">
+              <a class="btn primary" href="#standardizare-control">Vezi cum funcționează</a>
+              <a class="btn" href="#cta">Programează demo</a>
+            </div>
+
+            <div class="hero-mini" aria-label="Rezumat rapid">
+              <div class="mini-card">
+                <div class="mini-top">🔎 Vizibilitate</div>
+                <div class="mini-big">1 tablou de bord</div>
+                <div class="mini-sub">declarații · documente · restanțe · notificări</div>
+              </div>
+              <div class="mini-card">
+                <div class="mini-top">🚀 Capacitate</div>
+                <div class="mini-big">+20–40%</div>
+                <div class="mini-sub">fără angajări, prin automatizare</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual" aria-label="Vizual: control + creștere">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80" alt="Dashboard contabil" />
+            <div class="cap">
+              <div class="kpi"><div class="t">Cabinet mic</div><div class="n">+20–25%</div></div>
+              <div class="kpi"><div class="t">1–2 angajați</div><div class="n">+30–40%</div></div>
+              <div class="kpi"><div class="t">Cabinet mare</div><div class="n">„junior virtual”</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      🔹 SECȚIUNEA 1 — Crește portofoliul fără să mărești echipa   (ancoră: #crestere-fara-angajari)
+      UX note (important)
+      secțiunea să fie aerisită, nu text dens
+      folosește icon-uri simple
+      include 1 grafic mic (ex: bară „capacitate fără / cu eConta”)
+    -->
+
+    <section id="crestere-fara-angajari">
+      <div class="wrap">
+        <h2 class="section-title">Crește portofoliul fără să mărești echipa</h2>
+        <p class="section-sub">Creșterea unui cabinet contabil înseamnă, de obicei, mai multă muncă, mai mult stres și nevoia de angajări constante.</p>
+        <p class="section-sub" style="margin-top:-10px">eConta schimbă această logică: automatizează activitățile rep...ă să poată gestiona mai multe firme, fără pierderea controlului.</p>
+
+        <!-- „Ce se schimbă” (2 coloane – foarte important) -->
+        <div class="compare" style="margin-top:18px">
+          <div class="col">
+            <div class="tag bad">🔴 Fără eConta</div>
+            <ul class="bullets">
+              <li>mai multă muncă</li>
+              <li>mai mult stres</li>
+              <li>nevoia de angajări constante</li>
+            </ul>
+          </div>
+          <div class="col">
+            <div class="tag good">🟢 Cu eConta</div>
+            <ul class="bullets">
+              <li>identifică automat declarațiile de depus</li>
+              <li>pregătește și arhivează livrabilele</li>
+              <li>generează obligațiile de plată</li>
+              <li>disciplinează clienții prin fluxuri automate</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="k">Rezultate tipice obținute cu eConta</div>
+            <div class="v"><span>+20–25%</span></div>
+            <p>mai multe firme gestionate într-un cabinet mic, fără angajări</p>
+          </div>
+          <div class="kpi-card">
+            <div class="k">Rezultate tipice obținute cu eConta</div>
+            <div class="v"><span>+30–40%</span></div>
+            <p>capacitate suplimentară în cabinete cu 1–2 angajați</p>
+          </div>
+          <div class="kpi-card">
+            <div class="k">Rezultate tipice obținute cu eConta</div>
+            <div class="v"><span>„junior”</span></div>
+            <p>Echivalentul unui contabil junior „virtual” în cabinete mari</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>De ce este posibilă această creștere</strong>
+          <div style="margin-top:8px; color: rgba(242,236,255,.78)">eConta elimină blocajele care limitează creșterea:</div>
+          <div class="value-list">
+            <div class="vb"><div class="check">✓</div><p>identifică automat declarațiile de depus,</p></div>
+            <div class="vb"><div class="check">✓</div><p>pregătește și arhivează livrabilele,</p></div>
+            <div class="vb"><div class="check">✓</div><p>generează obligațiile de plată,</p></div>
+            <div class="vb"><div class="check">✓</div><p>disciplinează clienții prin fluxuri automate.</p></div>
+          </div>
+          <div style="margin-top:12px; color: rgba(242,236,255,.78)">Astfel, creșterea nu mai depinde de oameni în plus, ci de un mod de lucru mai inteligent.</div>
+          <div style="margin-top:12px"><a class="link" href="#">Vezi cum funcționează automatizarea eConta →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      🔹 SECȚIUNEA 2 — Standardizare & control (ancoră: #standardizare-control)
+    -->
+
+    <section id="standardizare-control">
+      <div class="wrap">
+        <h2 class="section-title">Lucrează organizat. Fără improvizații.</h2>
+        <p class="section-sub">Fiecare firmă este diferită: un PFA de servicii, un Uber, o ...nd aceste diferențe sunt gestionate manual, din surse multiple.</p>
+        <p class="section-sub" style="margin-top:-10px">eConta nu forțează aceleași procese pentru toți clienții.<br> ...sunt urmărite, centralizate și controlate toate aceste procese.</p>
+
+        <div class="grid2" style="margin-top:18px">
+          <div>
+            <div class="block">
+              <h3>🧩 Ce înseamnă standardizare, concret</h3>
+              <p><strong style="color:var(--text)">Un mod unitar de a vedea și gestiona lucruri diferite</strong></p>
+            </div>
+
+            <div class="value-list" style="margin-top:14px">
+              <div class="vb"><div class="check">✓</div><p><strong style="color:var(--text)">Identificare automată de taskuri și obligații</strong><br>AI-ul eConta... fi ușor omise (de exemplu depasirea pragului de TVA sau micro)</p></div>
+              <div class="vb"><div class="check">✓</div><p><strong style="color:var(--text)">Imagine de ansamblu asupra portofoliului</strong><br>În orice moment vezi:<br>documente de prelucrat · declarații de depus · clienți cu restanțe · notificări importante de la ANAF</p></div>
+              <div class="vb"><div class="check">✓</div><p><strong style="color:var(--text)">Canale unificate de comunicare și documente</strong><br>Indiferent de tipul clientului: documentele se trimite pe canale diverse (email, whataspp, platforma) dar se regasesc intr-un singur loc · comunicarea este centralizată · nimic nu rămâne în WhatsApp personal sau emailuri pierdute</p></div>
+              <div class="vb"><div class="check">✓</div><p><strong style="color:var(--text)">Arhivare coerentă și trasabilă</strong><br>Fiecare document și livrabil ajunge automat: în structura corectă · asociat firmei și lunii contabile · ușor de găsit, oricând</p></div>
+            </div>
+
+            <div class="callout" style="margin-top:14px">
+              👉 Standardizarea nu este în procesele clientului, ci în controlul lor.
+            </div>
+
+            <div class="callout" style="margin-top:14px">
+              <strong>Beneficiul real (esența secțiunii)</strong>
+              <div style="margin-top:8px; color: rgba(242,236,255,.78)">Standardizarea în eConta înseamnă:</div>
+              <div class="value-list">
+                <div class="vb"><div class="check">✓</div><p>mai puține lucruri scăpate</p></div>
+                <div class="vb"><div class="check">✓</div><p>mai puțină dependență de memorie</p></div>
+                <div class="vb"><div class="check">✓</div><p>decizii luate dintr-un tablou de bord, nu din haos</p></div>
+                <div class="vb"><div class="check">✓</div><p>control real asupra complexității</p></div>
+              </div>
+              <div style="margin-top:12px"><a class="link" href="#">Vezi cum arată tabloul de control al portofoliului →</a></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="mini-visual" aria-label="Vizual: ordine și control">
+              <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80" alt="Workflow" />
+              <div class="overlay">🗂️ Documente, declarații, restanțe și notificări — într-un singur loc, cu status clar.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!--
+      🔹 SECȚIUNEA 3 — Performanță operațională
+      (ancoră: #performanta-operationala)
+    -->
+
+    <section id="performanta-operationala">
+      <div class="wrap">
+        <h2 class="section-title">Mai mult control zilnic. Mai puțin stres pe termene.</h2>
+        <p class="section-sub"><span style="color:rgba(242,236,255,.86)">Mai mult timp liber</span></p>
+        <p class="section-sub" style="margin-top:-10px">Performanța unui cabinet contabil nu se vede în rapoarte fru...tând informații și cât stres apare înainte de termenele limită.</p>
+        <p class="section-sub" style="margin-top:-10px">eConta optimizează munca zilnică prin vizibilitate, prioritizare și automatizare, nu prin promisiuni abstracte.</p>
+
+        <div class="kpi-grid" style="grid-template-columns: 1.2fr .8fr .8fr;">
+          <div class="kpi-card">
+            <div class="k">Ce înseamnă performanță, concret</div>
+            <div class="v"><span>Vedere</span></div>
+            <p><strong style="color:var(--text)">Vedere clară asupra a ceea ce contează</strong><br>Într-un singur tablou de bord, vezi: declarații care trebuie depuse · documente în așteptare · clienți cu restanțe · notificări importante de la ANAF · ce este în lucru și ce urmează</p>
+            <p style="margin-top:10px">👉 Nu mai pierzi timp întrebând „unde suntem?”</p>
+          </div>
+          <div class="kpi-card">
+            <div class="k">Stabilitate</div>
+            <div class="v"><span>Prevenție</span></div>
+            <p><strong style="color:var(--text)">Mai puține erori, mai puține urgențe</strong><br>identificarea automată a obligațiilor reduce riscul de declarații omise · notificările timpurii previn situațiile limită · arhivarea automată elimină pierderile de documente</p>
+            <p style="margin-top:10px">👉 Problemele sunt rezolvate înainte să devină critice.</p>
+          </div>
+          <div class="kpi-card">
+            <div class="k">Ritmul zilei</div>
+            <div class="v"><span>Timp</span></div>
+            <p><strong style="color:var(--text)">Timp câștigat, nu doar muncă mai rapidă</strong><br>Automatizarea înseamnă: mai puțin timp pe sarcini repetitive · mai mult timp pentru verificare și decizie · mai puțină muncă reactivă</p>
+            <p style="margin-top:10px">În practică, asta se traduce prin: ore salvate lunar · capacitate mai mare fără extinderea echipei · zile de lucru mai previzibile</p>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:18px">
+          <strong>Impact măsurabil (mini-metrici)</strong>
+          <div class="value-list" style="margin-top:12px">
+            <div class="vb"><div class="check">✓</div><p>până la 25% reducere a timpului alocat activităților repetitive</p></div>
+            <div class="vb"><div class="check">✓</div><p>zero declarații ratate prin monitorizare continuă</p></div>
+            <div class="vb"><div class="check">✓</div><p>prioritizare automată a muncii zilnice</p></div>
+            <div class="vb"><div class="check">✓</div><p>stres semnificativ redus înainte de termene</p></div>
+          </div>
+          <div style="margin-top:12px"><a class="link" href="#">Vezi cum arată o zi de lucru cu eConta →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      🔹 SECȚIUNEA FINALĂ — CTA
+      Creșterea nu mai trebuie să însemne stres.
+      Buton:
+      Programează demo
+      Vezi cum funcționează eConta
+    -->
+
+    <section class="final" id="cta">
+      <div class="wrap">
+        <div class="box">
+          <h2 class="section-title" style="margin:0 0 10px">Creșterea nu mai trebuie să însemne stres.</h2>
+          <p class="section-sub" style="margin:0 0 18px">Programează demo</p>
+          <div class="actions" style="justify-content:center; margin:0">
+            <a class="btn primary" href="#">Programează demo</a>
+            <a class="btn" href="#">Vezi cum funcționează eConta</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
