@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automatizare operațională pentru cabinete contabile - eConta</title>
+  <meta name="description" content="Automatizarea proceselor critice pentru eficiență, control și creștere. Mai puțin timp operațional, mai mult pentru activități cu valoare mare.">
+  
+  <style>
+    :root {
+      /* Dark theme palette - consistent across site */
+      --bg-primary: #0F1220;
+      --bg-secondary: #151A29;
+      --bg-panel: #1A1F2D;
+      --bg-panel-alt: #161A26;
+      
+      --border-subtle: rgba(255,255,255,.08);
+      --border-medium: rgba(255,255,255,.12);
+      
+      --text-primary: #F4F6FF;
+      --text-secondary: rgba(244,246,255,.72);
+      --text-muted: rgba(244,246,255,.56);
+      
+      --accent-primary: #FF4FBF;
+      --accent-secondary: #5A86FF;
+      --accent-purple: #7B5CFF;
+      
+      --success: #4BE6B1;
+      --warning: #FF6B8A;
+      
+      --radius: 18px;
+      --radius-lg: 22px;
+      --shadow-soft: 0 14px 44px rgba(0,0,0,.40);
+      --shadow-strong: 0 22px 90px rgba(0,0,0,.60);
+      
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 32px;
+      --space-xl: 48px;
+      --space-2xl: 64px;
+      --space-3xl: 96px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* Background gradient overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(1000px 620px at 70% 22%, rgba(90,134,255,.14), transparent 68%),
+        radial-gradient(920px 560px at 18% 10%, rgba(123,92,255,.07), transparent 70%),
+        radial-gradient(920px 560px at 38% 92%, rgba(255,79,191,.045), transparent 72%),
+        linear-gradient(180deg, #0E1120 0%, #121628 55%, #0E1120 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Typography */
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.04;
+      letter-spacing: -0.4px;
+      font-weight: 800;
+      margin-bottom: var(--space-sm);
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.1;
+      letter-spacing: -0.25px;
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+    }
+
+    h3 {
+      font-size: clamp(20px, 3vw, 28px);
+      line-height: 1.2;
+      font-weight: 650;
+      margin-bottom: var(--space-sm);
+    }
+
+    .lead {
+      font-size: clamp(16px, 2vw, 18px);
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 72ch;
+    }
+
+    .body-text {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .section {
+      padding: var(--space-3xl) 0;
+    }
+
+    .section-hero {
+      padding: var(--space-2xl) 0 var(--space-3xl);
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(21,24,35,.55);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-sm) 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-primary));
+      box-shadow: 0 12px 24px rgba(90,134,255,.16);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-primary);
+      background: rgba(26,31,45,.55);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 14px 20px;
+      border: none;
+      border-radius: 999px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: #FFFFFF;
+      box-shadow: 0 18px 40px rgba(255,79,191,.16);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(255,79,191,.20);
+    }
+
+    /* Cards */
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      background: rgba(26,31,45,.38);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-featured {
+      background: 
+        radial-gradient(520px 260px at 80% 0%, rgba(90,134,255,.14), transparent 62%),
+        radial-gradient(520px 260px at 20% 15%, rgba(255,79,191,.08), transparent 62%),
+        rgba(26,31,45,.38);
+    }
+
+    /* Process Steps */
+    .process-steps {
+      display: grid;
+      gap: var(--space-xl);
+      margin: var(--space-xl) 0;
+    }
+
+    .process-step {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      background: rgba(26,31,45,.35);
+      padding: var(--space-lg);
+      position: relative;
+    }
+
+    .process-step::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+
+    .step-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(90,134,255,.12);
+      color: var(--accent-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .step-title {
+      font-size: 20px;
+      font-weight: 650;
+      color: var(--text-primary);
+    }
+
+    .step-content {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Key Points */
+    .key-points {
+      list-style: none;
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .key-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-sm);
+      border-radius: 12px;
+      background: rgba(26,31,45,.25);
+    }
+
+    .key-point-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background: rgba(75,230,177,.12);
+      color: var(--success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Benefits Grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+
+    .benefit-card {
+      text-align: center;
+      padding: var(--space-lg);
+    }
+
+    .benefit-number {
+      font-size: clamp(32px, 4vw, 42px);
+      font-weight: 900;
+      color: var(--accent-secondary);
+      margin-bottom: var(--space-xs);
+    }
+
+    .benefit-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Highlight Callout */
+    .highlight-callout {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-medium);
+      background: 
+        radial-gradient(400px 200px at 50% 0%, rgba(255,79,191,.08), transparent 60%),
+        rgba(26,31,45,.45);
+      padding: var(--space-lg);
+      text-align: center;
+      margin: var(--space-xl) 0;
+    }
+
+    .highlight-callout .emoji {
+      font-size: 24px;
+      margin-bottom: var(--space-sm);
+      display: block;
+    }
+
+    .highlight-callout p {
+      color: var(--text-primary);
+      font-size: 18px;
+      font-weight: 650;
+      margin: 0;
+    }
+
+    /* CTA Link */
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      color: var(--accent-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: var(--space-lg);
+      transition: opacity 0.2s ease;
+    }
+
+    .cta-link:hover {
+      opacity: 0.8;
+    }
+
+    /* Utilities */
+    .text-center { text-align: center; }
+    .text-accent { color: var(--accent-secondary); }
+    .text-success { color: var(--success); }
+    .mb-sm { margin-bottom: var(--space-sm); }
+    .mb-md { margin-bottom: var(--space-md); }
+    .mb-lg { margin-bottom: var(--space-lg); }
+    .mb-xl { margin-bottom: var(--space-xl); }
+    .mt-lg { margin-top: var(--space-lg); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 var(--space-sm);
+      }
+      
+      .section {
+        padding: var(--space-2xl) 0;
+      }
+      
+      .nav-menu {
+        display: none;
+      }
+      
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <a href="index.html" class="brand">
+            <div class="brand-mark"></div>
+            eConta
+          </a>
+          <ul class="nav-menu">
+            <li><a href="scaleaza-cabinetul.html" class="nav-link">Scalează cabinetul</a></li>
+            <li><a href="automatizare-operationala.html" class="nav-link active">Automatizare</a></li>
+            <li><a href="platforma-ecosistem.html" class="nav-link">Platformă</a></li>
+            <li><a href="preturi.html" class="nav-link">Prețuri</a></li>
+            <li><a href="#demo" class="btn btn-primary">Programează demo</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      
+      <!-- Hero Section -->
+      <section class="section-hero">
+        <div class="container">
+          <div class="text-center">
+            <h1>Automatizare operațională pentru eficiență, control și creștere</h1>
+            <p class="lead mb-lg">
+              eConta automatizează pașii critici din activitatea contabilă fără a scoate contabilul din decizie. 
+              Oferă vizibilitate clară atât fiecărui contabil, cât și managementului cabinetului.
+            </p>
+            <p class="lead mb-xl">
+              <strong>Rezultatul:</strong> mai puțin timp consumat operațional și mai mult timp pentru activități care aduc valoare și venituri mai mari.
+            </p>
+            <a href="#nevoia-automatizarii" class="btn btn-primary">
+              Descoperă automatizarea eConta
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 1: Why Automation is Necessary -->
+      <section class="section" id="nevoia-automatizarii">
+        <div class="container">
+          <h2>Automatizarea devine esențială pentru eficiența cabinetului</h2>
+          
+          <div class="card mb-xl">
+            <h3 class="text-accent mb-md">Nevoia de automatizare în cabinet</h3>
+            <p class="body-text mb-md">
+              Pe măsură ce portofoliul de clienți crește, volumul de informații, documente și obligații 
+              crește exponențial. Gestionarea manuală a acestor elemente devine rapid ineficientă și 
+              dificil de controlat, chiar și în cabinete bine organizate.
+            </p>
+          </div>
+          
+          <h3 class="mb-md">Complexitatea volumului și a obligațiilor</h3>
+          <p class="body-text mb-lg">
+            Această complexitate nu provine din lipsa de competență, ci din natura activității contabile:
+          </p>
+          
+          <ul class="key-points mb-xl">
+            <li>
+              <div class="key-point-icon">⚡</div>
+              <div>Obligații diferite pentru clienți diferiți</div>
+            </li>
+            <li>
+              <div class="key-point-icon">📄</div>
+              <div>Documente primite prin mai multe canale</div>
+            </li>
+            <li>
+              <div class="key-point-icon">📅</div>
+              <div>Termene care se suprapun</div>
+            </li>
+            <li>
+              <div class="key-point-icon">💬</div>
+              <div>Informații distribuite între emailuri, aplicații de mesagerie și fișiere separate</div>
+            </li>
+          </ul>
+          
+          <div class="card card-featured">
+            <p class="body-text">
+              <strong>Fără un punct central de operare</strong>, informația se fragmentează, iar imaginea de ansamblu se pierde treptat.
+            </p>
+          </div>
+          
+          <h3 class="mt-lg mb-md">De ce fără automatizare eficiența scade inevitabil</h3>
+          <p class="body-text mb-lg">
+            În lipsa unui punct central de operare, procesele se fragmentează, controlul este mai greu de menținut, 
+            iar riscul de erori crește pe măsură ce volumul se amplifică. Automatizarea nu mai este un avantaj opțional, 
+            ci o condiție necesară pentru menținerea eficienței.
+          </p>
+          
+          <div class="highlight-callout">
+            <span class="emoji">🎯</span>
+            <p>eConta introduce automatizarea exact acolo unde contează, pentru a susține un mod de lucru eficient, previzibil și sigur, indiferent de dimensiunea portofoliului.</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 2: Automation in Practice -->
+      <section class="section">
+        <div class="container">
+          <h2>Automatizarea care susține activitatea zilnică a cabinetului</h2>
+          <p class="lead mb-xl">
+            Automatizarea operațională în eConta nu este un set de funcții izolate, ci un flux unitar 
+            care acoperă întreaga activitate zilnică a cabinetului: de la preluarea documentelor, 
+            până la declarații, obligații de plată, livrabile și facturare.
+          </p>
+          
+          <p class="lead mb-xl">
+            Fiecare etapă este gândită pentru a reduce munca manuală, a preveni erorile și a oferi control continuu, 
+            <strong>fără a scoate contabilul din decizie</strong>. Automatizarea nu înlocuiește procesele contabile, 
+            ci le face mai clare, mai rapide și mai sigure.
+          </p>
+          
+          <!-- Process Steps -->
+          <div class="process-steps">
+            
+            <!-- Document Processing -->
+            <div class="process-step">
+              <div class="step-header">
+                <div class="step-icon">📄</div>
+                <div class="step-title">Preluare documente</div>
+              </div>
+              <div class="step-content">
+                <p class="mb-md">
+                  Documentele sunt punctul de pornire al oricărui flux contabil. eConta automatizează preluarea 
+                  documentelor din toate sursele utilizate în mod real de clienți — eliminând pierderile de informație 
+                  și fragmentarea comunicării.
+                </p>
+                <p>
+                  Platforma unifică documentele primite și le integrează direct în fluxul operațional al cabinetului, 
+                  astfel încât fiecare document ajunge rapid unde trebuie, fără intervenții manuale inutile.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Declaration Management -->
+            <div class="process-step">
+              <div class="step-header">
+                <div class="step-icon">📋</div>
+                <div class="step-title">Identificare și depunere declarații</div>
+              </div>
+              <div class="step-content">
+                <p class="mb-md">
+                  eConta elimină una dintre cele mai mari surse de risc din activitatea contabilă: 
+                  identificarea incompletă sau tardivă a declarațiilor care trebuie depuse.
+                </p>
+                
+                <h4 class="mb-sm text-accent">Identificare inteligentă a obligațiilor declarative</h4>
+                <p class="mb-md">
+                  eConta este singura platformă din România care identifică obligațiile declarative 
+                  folosind o abordare avansată, ce depășește simpla citire a vectorului fiscal.
+                </p>
+                
+                <p class="mb-md"><strong>Platforma corelează automat:</strong></p>
+                <ul class="key-points mb-md">
+                  <li>
+                    <div class="key-point-icon">✓</div>
+                    <div>Vectorul fiscal</div>
+                  </li>
+                  <li>
+                    <div class="key-point-icon">✓</div>
+                    <div>Cifra de afaceri (inclusiv pentru microîntreprinderi și neplătitori de TVA)</div>
+                  </li>
+                  <li>
+                    <div class="key-point-icon">✓</div>
+                    <div>Tipul și istoricul activității firmei</div>
+                  </li>
+                  <li>
+                    <div class="key-point-icon">✓</div>
+                    <div>Documentele recurente și evenimentele punctuale</div>
+                  </li>
+                  <li>
+                    <div class="key-point-icon">✓</div>
+                    <div>Modificările apărute în timp (contracte, plăți, tranzacții, schimbări fiscale)</div>
+                  </li>
+                </ul>
+                
+                <div class="highlight-callout mb-md">
+                  <span class="emoji">👉</span>
+                  <p>Obligațiile sunt identificate înainte să fie tratate.</p>
+                </div>
+                
+                <h4 class="mb-sm text-accent">Depunere simplificată și controlată</h4>
+                <p class="mb-md">Odată identificate, declarațiile pot fi depuse rapid și sigur:</p>
+                <ul class="key-points">
+                  <li>
+                    <div class="key-point-icon">⬆️</div>
+                    <div>Preluare prin drag & drop</div>
+                  </li>
+                  <li>
+                    <div class="key-point-icon">📤</div>
+                    <div>Trimitere directă din sistemul de operare</div>
+                  </li>
+                  <li>
+                    <div class="key-point-icon">☁️</div>
+                    <div>Încărcare controlată din platformă</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Payment Obligations -->
+            <div class="process-step">
+              <div class="step-header">
+                <div class="step-icon">💰</div>
+                <div class="step-title">Obligații de plată</div>
+              </div>
+              <div class="step-content">
+                <p class="mb-md">
+                  După depunerea declarațiilor, activitatea contabilă continuă cu una dintre cele mai sensibile zone 
+                  pentru antreprenor: <strong>obligațiile de plată</strong>. Neclaritatea sumelor, a termenelor sau 
+                  a eventualelor restanțe generează confuzie, întârzieri și, în timp, penalități.
+                </p>
+                
+                <h4 class="mb-sm text-accent">O imagine completă asupra obligațiilor de plată</h4>
+                <p class="mb-md">eConta identifică și centralizează automat:</p>
+                <ul class="key-points mb-md">
+                  <li>
+                    <div class="key-point-icon">💳</div>
+                    <div>Obligațiile curente rezultate din declarațiile depuse</div>
+                  </li>
+                  <li>
+                    <div class="key-point-icon">📊</div>
+                    <div>Obligațiile istorice și eventualele restanțe</div>
+                  </li>
+                  <li>
+                    <div class="key-point-icon">📅</div>
+                    <div>Termenele de plată aferente fiecărei obligații</div>
+                  </li>
+                </ul>
+                
+                <div class="highlight-callout">
+                  <p>👉 Antreprenorul vede exact unde se află.<br>👉 Contabilul păstrează controlul complet.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Deliverables -->
+            <div class="process-step">
+              <div class="step-header">
+                <div class="step-icon">📊</div>
+                <div class="step-title">Trimitere și prezentare clară a livrabilelor</div>
+              </div>
+              <div class="step-content">
+                <p class="mb-md">
+                  eConta automatizează trimiterea livrabilelor și le prezintă într-o formă clară, 
+                  structurată și ușor de înțeles, fără a schimba rolul contabilului.
+                </p>
+                
+                <h4 class="mb-sm text-accent">Interpretare și prezentare pe înțelesul antreprenorului</h4>
+                <p class="mb-md">
+                  Pentru livrabilele cu grad ridicat de complexitate — precum balanțele și raportările contabile — 
+                  eConta utilizează AI pentru a interpreta datele contabile și a le prezenta într-un format accesibil.
+                </p>
+                
+                <div class="highlight-callout">
+                  <span class="emoji">⚠️</span>
+                  <p>Chiar dacă situațiile de plată și verificările sunt generate cu suport AI, decizia finală și validarea aparțin întotdeauna contabilului.</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
+          <!-- Benefits -->
+          <h3 class="text-center mb-lg">Impact măsurabil</h3>
+          <div class="benefits-grid">
+            <div class="benefit-card card">
+              <div class="benefit-number">25%</div>
+              <div class="benefit-label">reducere a timpului alocat activităților repetitive</div>
+            </div>
+            <div class="benefit-card card">
+              <div class="benefit-number">0</div>
+              <div class="benefit-label">declarații ratate prin monitorizare continuă</div>
+            </div>
+            <div class="benefit-card card">
+              <div class="benefit-number">100%</div>
+              <div class="benefit-label">prioritizare automată a muncii zilnice</div>
+            </div>
+          </div>
+          
+          <!-- Final CTA -->
+          <div class="card card-featured text-center">
+            <h3 class="mb-md">Gata să automatizezi fluxurile cabinetului tău?</h3>
+            <p class="body-text mb-lg">
+              Descoperă cum automatizarea eConta poate transforma eficiența operațională a cabinetului tău.
+            </p>
+            <a href="index.html#demo" class="btn btn-primary">
+              Programează o demonstrație
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+
+  </div>
+</body>
+</html>

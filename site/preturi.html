@@ -1,161 +1,1321 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prețuri Pay-Per-Use - eConta</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preturi platforma - eConta</title>
+  <meta name="description" content="Model pay-per-use transparent. Platesti doar ce folosesti - de la 0,99 EUR per firma pe luna. Fara abonamente fixe, fara surprize.">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Hero */
+    .hero {
+      padding: 72px 0 88px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 560px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: rgba(75,230,177,.1);
+      border: 1px solid rgba(75,230,177,.2);
+      color: var(--success);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 48px);
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .hero-problem {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .hero-problem strong {
+      color: var(--text-primary);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Pricing card hero */
+    .hero-pricing-card {
+      background: radial-gradient(600px 300px at 50% 0%, rgba(75,230,177,.12), transparent 65%),
+                  radial-gradient(400px 200px at 50% 100%, rgba(90,134,255,.08), transparent 65%),
+                  rgba(26,31,45,.5);
+      border: 1px solid rgba(75,230,177,.2);
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-pricing-card::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 200px;
+      height: 200px;
+      background: var(--success);
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.12;
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 100px;
+      background: rgba(75,230,177,.15);
+      color: var(--success);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+
+    .pricing-main {
+      margin-bottom: 28px;
+    }
+
+    .pricing-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .pricing-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .pricing-currency {
+      font-size: 24px;
+      color: var(--text-muted);
+    }
+
+    .pricing-amount {
+      font-size: 64px;
+      font-weight: 900;
+      color: var(--success);
+      line-height: 1;
+    }
+
+    .pricing-period {
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+
+    .pricing-includes {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 24px;
+    }
+
+    .pricing-include-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    .pricing-include-item svg {
+      color: var(--success);
+      flex-shrink: 0;
+    }
+
+    .pricing-note {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Variable costs section */
+    .costs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .cost-card {
+      padding: 28px;
+      background: rgba(26,31,45,.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+    }
+
+    .cost-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .cost-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cost-card-icon.blue { background: rgba(90,134,255,.12); color: var(--accent-secondary); }
+    .cost-card-icon.green { background: rgba(75,230,177,.12); color: var(--success); }
+    .cost-card-icon.purple { background: rgba(123,92,255,.12); color: var(--accent-purple); }
+
+    .cost-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .cost-table {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cost-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+
+    .cost-row:last-child {
+      border-bottom: none;
+    }
+
+    .cost-item {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .cost-price {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .cost-price.free {
+      color: var(--success);
+    }
+
+    .cost-note {
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: rgba(90,134,255,.06);
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Client examples */
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .example-card {
+      padding: 24px;
+      background: rgba(26,31,45,.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+    }
+
+    .example-card-header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .example-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .example-card-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .example-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .example-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,.03);
+    }
+
+    .example-row-label {
+      color: var(--text-muted);
+    }
+
+    .example-row-value {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .example-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0 0;
+      border-top: 2px solid rgba(255,255,255,.08);
+    }
+
+    .example-total-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .example-total-value {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--success);
+    }
+
+    .example-onorariu {
+      margin-top: 12px;
+      padding: 10px;
+      background: rgba(90,134,255,.06);
+      border-radius: 8px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .example-onorariu strong {
+      color: var(--accent-secondary);
+    }
+
+    /* Features included */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(26,31,45,.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+    }
+
+    .feature-item svg {
+      color: var(--success);
+      flex-shrink: 0;
+    }
+
+    .feature-item span {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    /* FAQ Section */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: rgba(26,31,45,.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-question h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .faq-question svg {
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item.open .faq-question svg {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .faq-answer-inner ul {
+      margin-top: 12px;
+      padding-left: 20px;
+    }
+
+    .faq-answer-inner li {
+      margin-bottom: 6px;
+    }
+
+    /* Insight callout */
+    .insight-callout {
+      max-width: 800px;
+      margin: 48px auto 0;
+      padding: 28px 32px;
+      background: rgba(75,230,177,.08);
+      border: 1px solid rgba(75,230,177,.15);
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .insight-callout p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .insight-callout strong {
+      color: var(--success);
+    }
+
+    /* Section headers */
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    .section-header h2 {
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 72px 64px;
+      background: radial-gradient(600px 300px at 50% 0%, rgba(75,230,177,.15), transparent),
+                  radial-gradient(400px 200px at 50% 100%, rgba(90,134,255,.10), transparent),
+                  rgba(26,31,45,.6);
+      border: 1px solid var(--border-medium);
+      border-radius: 28px;
+      box-shadow: 0 32px 80px rgba(0,0,0,.4);
+    }
+
+    .final-cta h2 {
+      margin-bottom: 16px;
+    }
+
+    .final-cta > p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+    }
+
+    .final-cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .hero-pricing-card {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .costs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .examples-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 48px 0 64px;
+      }
+
+      .examples-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .final-cta {
+        padding: 48px 24px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="page">
+
+    <!-- Segment Banner -->
+    <div class="segment-banner" id="segmentBanner">
+      <div class="container">
+        <span class="segment-banner-text">Esti antreprenor?</span>
+        <a href="https://www.econta.ro" class="segment-banner-link">
+          Vezi serviciile de contabilitate
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <button class="segment-banner-close" onclick="closeSegmentBanner()" aria-label="Inchide">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <!-- Header -->
     <header class="header">
       <div class="container">
         <nav class="nav">
-          <a href="index.html" class="brand"><div class="brand-mark"></div>eConta</a>
-          <ul class="nav-menu">
-            <li><a href="scaleaza-cabinetul.html" class="nav-link">Scalează cabinetul</a></li>
-            <li><a href="automatizare-operationala.html" class="nav-link">Automatizare</a></li>
-            <li><a href="servicii-premium.html" class="nav-link">Servicii Premium</a></li>
-            <li><a href="documente-anaf.html" class="nav-link">Documente & ANAF</a></li>
-            <li><a href="venituri-facturare.html" class="nav-link">Venituri & Facturare</a></li>
-            <li><a href="preturi.html" class="nav-link active">Prețuri</a></li>
-            <li><a href="#demo" class="btn btn-primary">Demo</a></li>
+          <a href="index.html" class="brand"><img src="https://www.econta.ro/wp-content/uploads/2024/05/tmb6SlMI8Z8yWKghKpDCspfzFM.webp" alt="eConta" class="brand-logo"></a>
+          <ul class="nav-main">
+            <li class="nav-item">
+              <a href="#" class="nav-link">Scaleaza <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Scaleaza cabinetul</div>
+                  <div class="mega-menu-grid">
+                    <a href="scaleaza-cabinetul.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 21V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 21V9C20 7.89543 19.1046 7 18 7H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 7H6C4.89543 7 4 7.89543 4 9V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Scaleaza cabinetul</div><div class="mega-menu-item-desc">Creste portofoliul fara angajari</div></div>
+                    </a>
+                    <a href="studii-de-caz.html" class="mega-menu-item">
+                      <div class="mega-menu-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 20V10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 20V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Studii de caz</div><div class="mega-menu-item-desc">Rezultate reale de la cabinete</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Automatizare <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Automatizare</div>
+                  <div class="mega-menu-grid">
+                    <a href="automatizare-operationala.html" class="mega-menu-item">
+                      <div class="mega-menu-icon pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Automatizare operationala</div><div class="mega-menu-item-desc">Declaratii, obligatii, termene</div></div>
+                    </a>
+                    <a href="documente-anaf.html" class="mega-menu-item">
+                      <div class="mega-menu-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Documente & ANAF</div><div class="mega-menu-item-desc">eFactura, SPV, procesare AI</div></div>
+                    </a>
+                    <a href="venituri-facturare.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Venituri si facturare</div><div class="mega-menu-item-desc">Onorarii, facturare, incasari</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="clientii-tai.html" class="nav-link">Clientii tai</a></li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Platforma <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Platforma si ecosistem</div>
+                  <div class="mega-menu-grid">
+                    <a href="cum-functioneaza.html" class="mega-menu-item">
+                      <div class="mega-menu-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Cum functioneaza eConta</div><div class="mega-menu-item-desc">Prezentare completa a platformei</div></div>
+                    </a>
+                    <a href="aplicatie-desktop-integrari.html" class="mega-menu-item">
+                      <div class="mega-menu-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Aplicatie desktop si integrari</div><div class="mega-menu-item-desc">SAGA, WinMentor, arhivare</div></div>
+                    </a>
+                    <a href="securitate-gdpr.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Securitate si GDPR</div><div class="mega-menu-item-desc">Protectia datelor si conformitate</div></div>
+                    </a>
+                    <a href="clienti-noi.html" class="mega-menu-item">
+                      <div class="mega-menu-icon pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M20 8V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M23 11H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Clienti noi prin eConta</div><div class="mega-menu-item-desc">Optional: primesti clienti de la noi</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="preturi.html" class="nav-link active">Preturi</a></li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Comparatii <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Comparatii si alternative</div>
+                  <div class="mega-menu-grid">
+                    <a href="vs-taxdome.html" class="mega-menu-item">
+                      <div class="mega-menu-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12H22" stroke="currentColor" stroke-width="2"/><path d="M12 2C14.5 4.73835 15.92 8.29 16 12C15.92 15.71 14.5 19.26 12 22" stroke="currentColor" stroke-width="2"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">TaxDome vs eConta</div><div class="mega-menu-item-desc">Platforma globala vs locala</div></div>
+                    </a>
+                    <a href="vs-keez.html" class="mega-menu-item">
+                      <div class="mega-menu-icon pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9H21" stroke="currentColor" stroke-width="2"/><path d="M9 21V9" stroke="currentColor" stroke-width="2"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Keez vs eConta</div><div class="mega-menu-item-desc">Marketplace vs platforma proprie</div></div>
+                    </a>
+                    <a href="vs-huddle.html" class="mega-menu-item">
+                      <div class="mega-menu-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17 21V19C17 16.79 15.21 15 13 15H5C2.79 15 1 16.79 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21V19C23 17.18 21.77 15.59 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 3.13C17.77 3.59 19 5.18 19 7C19 8.82 17.77 10.41 16 10.87" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Huddle vs eConta</div><div class="mega-menu-item-desc">Organizare vs automatizare</div></div>
+                    </a>
+                    <a href="vs-econtaai.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">eContaAI vs eConta</div><div class="mega-menu-item-desc">AI punctual vs platforma completa</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
           </ul>
+          <ul class="nav-utility">
+            <li><a href="programeaza-demo.html" class="btn btn-primary">Programeaza demo</a></li>
+          </ul>
+          <button class="mobile-menu-toggle" onclick="openMobileMenu()" aria-label="Meniu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
         </nav>
       </div>
     </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" onclick="closeMobileMenu(event)">
+      <div class="mobile-menu-panel" onclick="event.stopPropagation()">
+        <div class="mobile-menu-header">
+          <div class="brand"><img src="https://www.econta.ro/wp-content/uploads/2024/05/tmb6SlMI8Z8yWKghKpDCspfzFM.webp" alt="eConta" class="brand-logo"></div>
+          <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Inchide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <a href="https://www.econta.ro" class="mobile-segment-link">Esti antreprenor? <span>Vezi serviciile de contabilitate</span></a>
+        <nav class="mobile-menu-nav">
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Scaleaza cabinetul <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="scaleaza-cabinetul.html" class="mobile-nav-link">Scaleaza cabinetul</a>
+              <a href="studii-de-caz.html" class="mobile-nav-link">Studii de caz</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Automatizare <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="automatizare-operationala.html" class="mobile-nav-link">Automatizare operationala</a>
+              <a href="documente-anaf.html" class="mobile-nav-link">Documente & ANAF</a>
+              <a href="venituri-facturare.html" class="mobile-nav-link">Venituri si facturare</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section"><a href="clientii-tai.html" class="mobile-nav-direct">Clientii tai</a></div>
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Platforma <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="cum-functioneaza.html" class="mobile-nav-link">Cum functioneaza eConta</a>
+              <a href="aplicatie-desktop-integrari.html" class="mobile-nav-link">Aplicatie desktop si integrari</a>
+              <a href="securitate-gdpr.html" class="mobile-nav-link">Securitate si GDPR</a>
+              <a href="clienti-noi.html" class="mobile-nav-link">Clienti noi prin eConta</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section"><a href="preturi.html" class="mobile-nav-direct">Preturi</a></div>
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Comparatii <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="vs-taxdome.html" class="mobile-nav-link">TaxDome vs eConta</a>
+              <a href="vs-keez.html" class="mobile-nav-link">Keez vs eConta</a>
+              <a href="vs-huddle.html" class="mobile-nav-link">Huddle vs eConta</a>
+              <a href="vs-econtaai.html" class="mobile-nav-link">eContaAI vs eConta</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section">
+            <a href="despre-noi.html" class="mobile-nav-direct">Despre noi</a>
+            <a href="contact.html" class="mobile-nav-direct">Contact</a>
+          </div>
+        </nav>
+        <div class="mobile-menu-cta"><a href="programeaza-demo.html" class="btn btn-primary">Programeaza demo</a></div>
+      </div>
+    </div>
+
     <main>
-      <section class="section-hero">
-        <div class="container" style="text-align:center;max-width:900px;margin:0 auto">
-          <div style="display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(26,31,45,.6);color:rgba(244,246,255,.7);font-size:13px;margin-bottom:24px">
-            <div style="width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,#5A86FF,#FF4FBF);box-shadow:0 0 0 3px rgba(255,79,191,.2)"></div>
-            <span>Pay-per-use. Fără abonamente. Transparent.</span>
-          </div>
-          <h1 style="font-size:clamp(36px,6vw,56px);line-height:1.1;margin-bottom:24px">Plătești exact cât folosești</h1>
-          <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.6;margin-bottom:32px">Model de preț construit pentru realitățile cabinetelor: volum variabil, necesități diferite, buget predictibil. Începi de la <strong style="color:#FF4FBF">€0.99/firmă/lună</strong> și plătești progresiv pentru serviciile procesate.</p>
-          <p style="font-size:16px;color:rgba(244,246,255,.6);margin-bottom:48px">Nu mai plătești pentru limite teoretice pe care nu le folosești niciodată.</p>
-        </div>
-      </section>
-
-      <section class="section">
+      <!-- Hero Section -->
+      <section class="hero">
         <div class="container">
-          <div style="max-width:500px;margin:0 auto 64px;padding:48px;border-radius:16px;background:radial-gradient(600px 300px at 50% 0%,rgba(90,134,255,.16),transparent 65%),radial-gradient(400px 200px at 50% 100%,rgba(255,79,191,.08),transparent 65%),rgba(26,31,45,.45);border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 48px rgba(0,0,0,.3);text-align:center">
-            <div style="display:inline-block;padding:8px 20px;border-radius:999px;background:rgba(90,134,255,.16);color:#5A86FF;font-size:14px;font-weight:650;margin-bottom:32px">Pay-per-use</div>
-            <div style="margin-bottom:32px">
-              <div style="font-size:14px;color:rgba(244,246,255,.6);margin-bottom:8px">Bază per firmă</div>
-              <div style="display:flex;align-items:baseline;justify-content:center;gap:4px">
-                <span style="font-size:20px;color:rgba(244,246,255,.6)">€</span>
-                <span style="font-size:56px;font-weight:900;color:#FF4FBF;line-height:1">0.99</span>
-                <span style="font-size:16px;color:rgba(244,246,255,.6)">/lună</span>
+          <div class="hero-grid">
+            <div class="hero-content">
+              <div class="hero-eyebrow">Preturi transparente</div>
+              <h1>Platesti doar ce folosesti. Nimic mai mult.</h1>
+              <p class="hero-problem">
+                eConta functioneaza pe un model <strong>pay-per-use</strong> simplu si corect. Nu platesti functionalitati "la pachet" si nici promisiuni. Platesti exact ce folosesti - declaratii, documente, stocare - intr-un mod <strong>predictibil si usor de explicat in onorariile tale</strong>.
+              </p>
+              <div class="hero-cta">
+                <a href="programeaza-demo.html" class="btn btn-primary btn-lg">Programeaza demo</a>
+                <a href="#exemple" class="btn btn-secondary btn-lg">Vezi exemple de cost</a>
               </div>
             </div>
-            <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.08)">
-              <div style="display:flex;align-items:center;justify-content:center;gap:8px"><span style="display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:4px;background:rgba(90,134,255,.12);color:#5A86FF;font-size:12px;font-weight:700">+</span><span style="font-size:16px;color:rgba(244,246,255,.8)">Declarații procesate</span></div>
-              <div style="display:flex;align-items:center;justify-content:center;gap:8px"><span style="display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:4px;background:rgba(90,134,255,.12);color:#5A86FF;font-size:12px;font-weight:700">+</span><span style="font-size:16px;color:rgba(244,246,255,.8)">Documente analizate</span></div>
-              <div style="display:flex;align-items:center;justify-content:center;gap:8px"><span style="display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:4px;background:rgba(90,134,255,.12);color:#5A86FF;font-size:12px;font-weight:700">+</span><span style="font-size:16px;color:rgba(244,246,255,.8)">Notificări & comunicări</span></div>
-            </div>
-            <p style="margin:0;font-style:italic;color:rgba(244,246,255,.7);font-size:15px">Transparent. Predictibil. Fair pentru toate tipurile de cabinete.</p>
-          </div>
 
-          <div style="max-width:800px;margin:0 auto 64px;text-align:center">
-            <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">De ce pay-per-use?</h2>
-            <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.6;margin-bottom:48px">Modelul nostru elimină problemele abonamentelor fixe și oferă flexibilitate reală.</p>
-          </div>
-
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:64px">
-            <div style="padding:32px;border-radius:16px;border:1px solid rgba(255,107,138,.2);background:rgba(255,107,138,.05)">
-              <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px">
-                <div style="width:48px;height:48px;border-radius:14px;background:rgba(255,107,138,.12);color:#FF6B8A;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="hero-pricing-card">
+              <div class="pricing-badge">Pay-per-use</div>
+              <div class="pricing-main">
+                <div class="pricing-label">Cost fix per cod fiscal</div>
+                <div class="pricing-value">
+                  <span class="pricing-currency">EUR</span>
+                  <span class="pricing-amount">0,99</span>
+                  <span class="pricing-period">/luna</span>
                 </div>
-                <h3>Abonamente tradiționale</h3>
               </div>
-              <div style="display:flex;flex-direction:column;gap:16px">
-                <div style="padding-left:12px;border-left:3px solid #FF6B8A"><strong style="display:block;margin-bottom:4px;color:#F4F6FF">Costuri fixe indiferent de utilizare</strong><p style="margin:0;font-size:14px;color:rgba(244,246,255,.7);line-height:1.5">Plătești la fel pentru 10 sau 100 firme, luni aglomerate sau calme</p></div>
-                <div style="padding-left:12px;border-left:3px solid #FF6B8A"><strong style="display:block;margin-bottom:4px;color:#F4F6FF">Pachete umflate cu funcții inutile</strong><p style="margin:0;font-size:14px;color:rgba(244,246,255,.7);line-height:1.5">Forțat să plătești pentru module pe care nu le vei folosi</p></div>
-                <div style="padding-left:12px;border-left:3px solid #FF6B8A"><strong style="display:block;margin-bottom:4px;color:#F4F6FF">Escaladă rapidă costuri</strong><p style="margin:0;font-size:14px;color:rgba(244,246,255,.7);line-height:1.5">Următorul tier disproporțional față de nevoi</p></div>
-              </div>
-            </div>
-
-            <div style="padding:32px;border-radius:16px;border:1px solid rgba(75,230,177,.2);background:rgba(75,230,177,.05)">
-              <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px">
-                <div style="width:48px;height:48px;border-radius:14px;background:rgba(75,230,177,.12);color:#4BE6B1;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div class="pricing-includes">
+                <div class="pricing-include-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Dashboard client & portofoliu</span>
                 </div>
-                <h3>Modelul eConta</h3>
+                <div class="pricing-include-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Status declaratii si obligatii</span>
+                </div>
+                <div class="pricing-include-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Notificari critice</span>
+                </div>
+                <div class="pricing-include-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>CRM si fluxuri operationale</span>
+                </div>
               </div>
-              <div style="display:flex;flex-direction:column;gap:16px">
-                <div style="padding-left:12px;border-left:3px solid #4BE6B1"><strong style="display:block;margin-bottom:4px;color:#F4F6FF">Costul urmează utilizarea reală</strong><p style="margin:0;font-size:14px;color:rgba(244,246,255,.7);line-height:1.5">În lunile calme plătești mai puțin, proporțional cu volumul</p></div>
-                <div style="padding-left:12px;border-left:3px solid #4BE6B1"><strong style="display:block;margin-bottom:4px;color:#F4F6FF">Acces la toate funcționalitățile</strong><p style="margin:0;font-size:14px;color:rgba(244,246,255,.7);line-height:1.5">Fără limite artificiale - toate modulele din start</p></div>
-                <div style="padding-left:12px;border-left:3px solid #4BE6B1"><strong style="display:block;margin-bottom:4px;color:#F4F6FF">Scaling natural predictibil</strong><p style="margin:0;font-size:14px;color:rgba(244,246,255,.7);line-height:1.5">Cost per firmă scade pe măsură ce crești</p></div>
-              </div>
-            </div>
-          </div>
-
-          <div style="max-width:800px;margin:0 auto 48px;text-align:center">
-            <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Exemple de costuri reale</h2>
-            <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.6">Estimări pe baza utilizării tipice pentru diferite tipuri de cabinete.</p>
-          </div>
-
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
-            <div style="padding:32px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:radial-gradient(400px 200px at 50% 0%,rgba(90,134,255,.08),transparent 60%),rgba(26,31,45,.4)">
-              <div style="text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)">
-                <h3 style="margin-bottom:8px">Cabinet mic</h3>
-                <span style="font-size:14px;color:rgba(244,246,255,.6)">15-40 firme</span>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px">
-                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:14px;color:rgba(244,246,255,.7)">Bază (30 × €0.99)</span><span style="font-weight:650;color:#F4F6FF">€29.70</span></div>
-                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:14px;color:rgba(244,246,255,.7)">~120 declarații</span><span style="font-weight:650;color:#F4F6FF">€18.00</span></div>
-                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:14px;color:rgba(244,246,255,.7)">~300 documente</span><span style="font-weight:650;color:#F4F6FF">€12.00</span></div>
-                <div style="display:flex;justify-content:space-between;padding:16px 0 0;margin-top:8px;border-top:2px solid rgba(255,255,255,.1)"><strong style="color:#F4F6FF;font-size:16px">Total lunar</strong><strong style="color:#FF4FBF;font-size:20px;font-weight:800">€59.70</strong></div>
-              </div>
-              <div style="text-align:center;margin-bottom:16px"><span style="display:block;font-size:24px;font-weight:800;color:#5A86FF;margin-bottom:4px">≈€2.00</span><span style="font-size:12px;color:rgba(244,246,255,.5)">per firmă/lună</span></div>
-              <p style="font-size:14px;color:rgba(244,246,255,.7);text-align:center;margin:0;line-height:1.5">Economii 8-12h lunar. ROI pozitiv din prima lună.</p>
-            </div>
-
-            <div style="padding:32px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:radial-gradient(400px 200px at 50% 0%,rgba(90,134,255,.08),transparent 60%),rgba(26,31,45,.4)">
-              <div style="text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)">
-                <h3 style="margin-bottom:8px">Cabinet mediu</h3>
-                <span style="font-size:14px;color:rgba(244,246,255,.6)">40-120 firme</span>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px">
-                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:14px;color:rgba(244,246,255,.7)">Bază (80 × €0.99)</span><span style="font-weight:650;color:#F4F6FF">€79.20</span></div>
-                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:14px;color:rgba(244,246,255,.7)">~280 declarații</span><span style="font-weight:650;color:#F4F6FF">€36.40</span></div>
-                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:14px;color:rgba(244,246,255,.7)">~650 documente</span><span style="font-weight:650;color:#F4F6FF">€22.75</span></div>
-                <div style="display:flex;justify-content:space-between;padding:16px 0 0;margin-top:8px;border-top:2px solid rgba(255,255,255,.1)"><strong style="color:#F4F6FF;font-size:16px">Total lunar</strong><strong style="color:#FF4FBF;font-size:20px;font-weight:800">€138.35</strong></div>
-              </div>
-              <div style="text-align:center;margin-bottom:16px"><span style="display:block;font-size:24px;font-weight:800;color:#5A86FF;margin-bottom:4px">≈€1.73</span><span style="font-size:12px;color:rgba(244,246,255,.5)">per firmă/lună</span></div>
-              <p style="font-size:14px;color:rgba(244,246,255,.7);text-align:center;margin:0;line-height:1.5">Economii 20+ ore. +40% firme fără angajări.</p>
-            </div>
-
-            <div style="padding:32px;border-radius:16px;border:1px solid rgba(255,255,255,.1);background:radial-gradient(400px 200px at 50% 0%,rgba(90,134,255,.08),transparent 60%),rgba(26,31,45,.4)">
-              <div style="text-align:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)">
-                <h3 style="margin-bottom:8px">Cabinet mare</h3>
-                <span style="font-size:14px;color:rgba(244,246,255,.6)">120+ firme</span>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px">
-                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:14px;color:rgba(244,246,255,.7)">Bază (200 × €0.99)</span><span style="font-weight:650;color:#F4F6FF">€198.00</span></div>
-                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:14px;color:rgba(244,246,255,.7)">~650 declarații</span><span style="font-weight:650;color:#F4F6FF">€78.00</span></div>
-                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:14px;color:rgba(244,246,255,.7)">~1400 documente</span><span style="font-weight:650;color:#F4F6FF">€42.00</span></div>
-                <div style="display:flex;justify-content:space-between;padding:16px 0 0;margin-top:8px;border-top:2px solid rgba(255,255,255,.1)"><strong style="color:#F4F6FF;font-size:16px">Total lunar</strong><strong style="color:#FF4FBF;font-size:20px;font-weight:800">€318.00</strong></div>
-              </div>
-              <div style="text-align:center;margin-bottom:16px"><span style="display:block;font-size:24px;font-weight:800;color:#5A86FF;margin-bottom:4px">≈€1.59</span><span style="font-size:12px;color:rgba(244,246,255,.5)">per firmă/lună</span></div>
-              <p style="font-size:14px;color:rgba(244,246,255,.7);text-align:center;margin:0;line-height:1.5">Economii = contabil full-time. Cost scade la volum.</p>
+              <p class="pricing-note">Costul de baza pentru fiecare firma din portofoliu</p>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- Section: Costuri variabile -->
+      <section class="section" style="background: rgba(26,31,45,.3);">
+        <div class="container">
+          <div class="section-header">
+            <h2>Costuri variabile - platesti doar ce procesezi</h2>
+            <p>Tarifele sunt fixe si predictibile. Costul creste doar cand creste si munca reala.</p>
+          </div>
+
+          <div class="costs-grid">
+            <div class="cost-card">
+              <div class="cost-card-header">
+                <div class="cost-card-icon blue">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Declaratii fiscale</h3>
+              </div>
+              <div class="cost-table">
+                <div class="cost-row">
+                  <span class="cost-item">D112, D300, D101, D100</span>
+                  <span class="cost-price">0,50 EUR</span>
+                </div>
+                <div class="cost-row">
+                  <span class="cost-item">Alte declaratii</span>
+                  <span class="cost-price">0,20 EUR</span>
+                </div>
+              </div>
+              <div class="cost-note">Include: Validare, depunere, arhivare, generare obligatii</div>
+            </div>
+
+            <div class="cost-card">
+              <div class="cost-card-header">
+                <div class="cost-card-icon green">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2"/><path d="M14 2V8H20" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <h3>Documente (procesare AI)</h3>
+              </div>
+              <div class="cost-table">
+                <div class="cost-row">
+                  <span class="cost-item">eFactura</span>
+                  <span class="cost-price free">GRATUIT</span>
+                </div>
+                <div class="cost-row">
+                  <span class="cost-item">Alte documente</span>
+                  <span class="cost-price">0,05 EUR</span>
+                </div>
+              </div>
+              <div class="cost-note">Include: Arhivare, sortare, sumarizare AI</div>
+            </div>
+
+            <div class="cost-card">
+              <div class="cost-card-header">
+                <div class="cost-card-icon purple">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 16V8C21 6.89543 20.1046 6 19 6H5C3.89543 6 3 6.89543 3 8V16C3 17.1046 3.89543 18 5 18H19C20.1046 18 21 17.1046 21 16Z" stroke="currentColor" stroke-width="2"/><path d="M3 10H21" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <h3>Stocare suplimentara</h3>
+              </div>
+              <div class="cost-table">
+                <div class="cost-row">
+                  <span class="cost-item">Cloud storage</span>
+                  <span class="cost-price">0,19 EUR/GB/luna</span>
+                </div>
+              </div>
+              <div class="cost-note">Optional - pentru arhive vechi, documente peste 10 GB, cabinete cu volum mare</div>
+            </div>
+          </div>
+
+          <div class="insight-callout">
+            <p>eFactura este <strong>gratuita</strong> - indiferent daca procesezi 20 sau 3.000 de facturi pe luna. <strong>eConta nu penalizeaza volumele mari.</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Exemple de costuri -->
+      <section class="section" id="exemple">
+        <div class="container">
+          <div class="section-header">
+            <h2>Exemple de costuri reale</h2>
+            <p>Cat costa eConta pentru diferite tipuri de clienti, cu calculele complete din spec.</p>
+          </div>
+
+          <div class="examples-grid">
+            <!-- Client 1: Micro SRL -->
+            <div class="example-card">
+              <div class="example-card-header">
+                <h4>Micro SRL</h4>
+                <span class="example-card-subtitle">Firma mica de servicii</span>
+              </div>
+              <div class="example-breakdown">
+                <div class="example-row">
+                  <span class="example-row-label">Abonament</span>
+                  <span class="example-row-value">0,99 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">D112 lunar</span>
+                  <span class="example-row-value">0,50 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">D100 trimestrial</span>
+                  <span class="example-row-value">0,17 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">SAF-T trimestrial</span>
+                  <span class="example-row-value">0,07 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">4 eFactura</span>
+                  <span class="example-row-value">0,00 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">10 documente</span>
+                  <span class="example-row-value">0,50 EUR</span>
+                </div>
+              </div>
+              <div class="example-total">
+                <span class="example-total-label">Total lunar</span>
+                <span class="example-total-value">2,23 EUR</span>
+              </div>
+              <div class="example-onorariu">Onorariu contabil: <strong>70 EUR</strong></div>
+            </div>
+
+            <!-- Client 2: SRL 1-5 salariati -->
+            <div class="example-card">
+              <div class="example-card-header">
+                <h4>SRL 1-5 salariati</h4>
+                <span class="example-card-subtitle">Firma cu angajati</span>
+              </div>
+              <div class="example-breakdown">
+                <div class="example-row">
+                  <span class="example-row-label">Cod fiscal</span>
+                  <span class="example-row-value">0,99 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">D112 + D300 lunar</span>
+                  <span class="example-row-value">1,00 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">D394 + SAF-T lunar</span>
+                  <span class="example-row-value">0,40 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">390 trimestrial</span>
+                  <span class="example-row-value">0,07 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">50 eFactura</span>
+                  <span class="example-row-value">0,00 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">10 documente</span>
+                  <span class="example-row-value">0,50 EUR</span>
+                </div>
+              </div>
+              <div class="example-total">
+                <span class="example-total-label">Total lunar</span>
+                <span class="example-total-value">2,96 EUR</span>
+              </div>
+              <div class="example-onorariu">Onorariu contabil: <strong>100 EUR</strong></div>
+            </div>
+
+            <!-- Client 3: Retail/HoReCa -->
+            <div class="example-card">
+              <div class="example-card-header">
+                <h4>Retail / HoReCa</h4>
+                <span class="example-card-subtitle">Volum moderat</span>
+              </div>
+              <div class="example-breakdown">
+                <div class="example-row">
+                  <span class="example-row-label">Cod fiscal</span>
+                  <span class="example-row-value">0,99 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">D112 + D300 lunar</span>
+                  <span class="example-row-value">1,00 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">D394 + SAF-T lunar</span>
+                  <span class="example-row-value">0,40 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">390 trimestrial</span>
+                  <span class="example-row-value">0,07 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">300 eFactura</span>
+                  <span class="example-row-value">0,00 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">20 documente</span>
+                  <span class="example-row-value">1,00 EUR</span>
+                </div>
+              </div>
+              <div class="example-total">
+                <span class="example-total-label">Total lunar</span>
+                <span class="example-total-value">3,46 EUR</span>
+              </div>
+              <div class="example-onorariu">Onorariu contabil: <strong>150 EUR</strong></div>
+            </div>
+
+            <!-- Client 4: E-commerce -->
+            <div class="example-card">
+              <div class="example-card-header">
+                <h4>E-commerce</h4>
+                <span class="example-card-subtitle">Volum mare de facturi</span>
+              </div>
+              <div class="example-breakdown">
+                <div class="example-row">
+                  <span class="example-row-label">Cod fiscal</span>
+                  <span class="example-row-value">0,99 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">D112 + D300 lunar</span>
+                  <span class="example-row-value">1,00 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">D394 + SAF-T lunar</span>
+                  <span class="example-row-value">0,40 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">390 trimestrial</span>
+                  <span class="example-row-value">0,07 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">3000 eFactura</span>
+                  <span class="example-row-value">0,00 EUR</span>
+                </div>
+                <div class="example-row">
+                  <span class="example-row-label">50 documente</span>
+                  <span class="example-row-value">2,50 EUR</span>
+                </div>
+              </div>
+              <div class="example-total">
+                <span class="example-total-label">Total lunar</span>
+                <span class="example-total-value">4,96 EUR</span>
+              </div>
+              <div class="example-onorariu">Onorariu contabil: <strong>300 EUR</strong></div>
+            </div>
+          </div>
+
+          <div class="insight-callout">
+            <p>Cu cat volumul creste, <strong>impactul eConta scade procentual raportat la onorariu</strong>. Modelul de pret se adapteaza automat.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Ce e inclus -->
+      <section class="section" style="background: rgba(26,31,45,.3);">
+        <div class="container">
+          <div class="section-header">
+            <h2>Totul este inclus. Fara add-on-uri.</h2>
+            <p>Nu exista "module premium" sau functii blocate. Primesti din start:</p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Identificare automata declaratii</span>
+            </div>
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Validare, semnare, depunere si arhivare declaratii</span>
+            </div>
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Generare automata obligatii de plata</span>
+            </div>
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Notificari ANAF critice (somatii, notificari)</span>
+            </div>
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Cereri automate SPV (vector fiscal, fisa platitor)</span>
+            </div>
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Preluare documente din toate sursele</span>
+            </div>
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Procesare AI + clarificari cu clientul</span>
+            </div>
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Livrabile structurate si interpretate</span>
+            </div>
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Politici de pret, facturare, plati automatizate</span>
+            </div>
+            <div class="feature-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Arhivare cloud + local, automata</span>
+            </div>
+          </div>
+
+          <div class="insight-callout">
+            <p><strong>Un singur sistem. Un singur cost.</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: FAQ -->
       <section class="section">
         <div class="container">
-          <div style="max-width:700px;margin:0 auto;padding:64px;border-radius:16px;background:radial-gradient(800px 400px at 50% 0%,rgba(90,134,255,.12),transparent 60%),rgba(26,31,45,.6);border:1px solid rgba(255,255,255,.1);text-align:center">
-            <h2 style="margin-bottom:16px;font-size:clamp(24px,3vw,32px)">Start fără risc în 48 ore</h2>
-            <p style="font-size:16px;color:rgba(244,246,255,.7);line-height:1.6;margin-bottom:32px">Solicită demo personalizată pentru costul exact al portofoliului tău. Implementare rapidă, fără contracte pe termen lung.</p>
-            <a href="index.html#demo" class="btn btn-primary btn-lg">Calcul personalizat de costuri →</a>
+          <div class="section-header">
+            <h2>Intrebari frecvente despre preturi</h2>
+          </div>
+
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <h4>Platesc daca nu folosesc platforma intr-o luna?</h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Platesti doar costul fix de 0,99 EUR / firma. Nu exista taxe minime ascunse. Daca intr-o luna nu procesezi declaratii sau documente, nu apar costuri variabile.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <h4>Costurile pot scapa de sub control la volume mari?</h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Nu. Modelul eConta este predictibil si scalabil. eFactura este gratuita, iar tarifele pentru declaratii si documente sunt fixe si mici. In practica, pe masura ce volumul creste, costul eConta scade procentual raportat la onorariu.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <h4>eFactura chiar este 0 EUR, indiferent de volum?</h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Da. eFactura este gratuita, indiferent daca procesezi 20 sau 3.000 de facturi pe luna. eConta nu penalizeaza volumele mari.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <h4>Pot seta politici de pret diferite pentru fiecare client?</h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Da. Poti defini politici:
+                  <ul>
+                    <li>fixe,</li>
+                    <li>in functie de volum,</li>
+                    <li>sau hibride,</li>
+                  </ul>
+                  la nivel de client, fara calcule manuale si fara Excel.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <h4>Facturarea si urmarirea platilor sunt incluse?</h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Da. Facturarea, anexele automate, platile online, payment link-urile si urmarirea restantelor sunt incluse, fara costuri suplimentare.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <h4>Ce se intampla cu documentele si declaratiile arhivate?</h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Toate documentele sunt arhivate in cloud, structurat, si local, la cabinet, automat. Declaratiile sunt pastrate complet: XML, PDF, recipisa. Arhiva eConta devine evidenta ta oficiala.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <h4>ANAF pastreaza doar 60 de zile datele din eFactura. Ce face eConta?</h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  eConta preia si arhiveaza automat eFactura (PDF + XML), astfel incat nu pierzi informatii, ai acces permanent la istoricul complet, esti protejat la controale sau clarificari ulterioare.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <h4>Ce se intampla daca apar erori sau respingeri ANAF?</h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  eConta gestioneaza inclusiv erori de validare, respingeri si redepuneri. Nicio declaratie nu "dispare" din flux, iar statusul este vizibil in timp real.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <h4>Pot renunta usor daca nu mi se potriveste?</h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  Da. Nu exista contracte rigide sau penalitati ascunse. eConta se castiga prin valoare, nu prin blocaje contractuale.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                <h4>Pentru ce tip de cabinet este eConta?</h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  eConta este potrivit:
+                  <ul>
+                    <li>pentru cabinete mici care vor sa castige timp,</li>
+                    <li>pentru firme medii care vor control si predictibilitate,</li>
+                    <li>pentru cabinete mari care vor scalare fara haos.</li>
+                  </ul>
+                  Modelul de pret se adapteaza automat, indiferent de dimensiune.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="section">
+        <div class="container">
+          <div class="final-cta">
+            <h2>Calculeaza costul pentru portofoliul tau</h2>
+            <p>Vezi exact cat costa eConta pentru cabinetul tau. Transparent, fara surprize.</p>
+            <div class="final-cta-buttons">
+              <a href="programeaza-demo.html" class="btn btn-primary btn-lg">Programeaza demo</a>
+              <a href="#exemple" class="btn btn-secondary btn-lg">Vezi exemple de cost</a>
+            </div>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <a href="index.html" class="brand"><img src="https://www.econta.ro/wp-content/uploads/2024/05/tmb6SlMI8Z8yWKghKpDCspfzFM.webp" alt="eConta" class="brand-logo"></a>
+            <p class="footer-tagline">Infrastructura digitala pentru cabinete contabile din Romania</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Platforma</h4>
+              <ul>
+                <li><a href="scaleaza-cabinetul.html">Scaleaza cabinetul</a></li>
+                <li><a href="automatizare-operationala.html">Automatizare operationala</a></li>
+                <li><a href="documente-anaf.html">Documente & ANAF</a></li>
+                <li><a href="venituri-facturare.html">Venituri si facturare</a></li>
+                <li><a href="clientii-tai.html">Clientii tai</a></li>
+                <li><a href="cum-functioneaza.html">Cum functioneaza</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Comparatii</h4>
+              <ul>
+                <li><a href="vs-taxdome.html">TaxDome vs eConta</a></li>
+                <li><a href="vs-keez.html">Keez vs eConta</a></li>
+                <li><a href="vs-huddle.html">Huddle vs eConta</a></li>
+                <li><a href="vs-econtaai.html">eContaAI vs eConta</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Companie</h4>
+              <ul>
+                <li><a href="despre-noi.html">Despre noi</a></li>
+                <li><a href="preturi.html">Preturi</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 AI DIGITALTRANSFORMATION S.R.L. Toate drepturile rezervate.</p>
+          <div class="footer-legal">
+            <a href="#">Termeni si conditii</a>
+            <a href="#">Politica de confidentialitate</a>
+            <a href="securitate-gdpr.html">GDPR</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </div>
+
+  <script>
+    function closeSegmentBanner() {
+      document.getElementById('segmentBanner').classList.add('hidden');
+      localStorage.setItem('segmentBannerClosed', 'true');
+    }
+    if (localStorage.getItem('segmentBannerClosed') === 'true') {
+      document.getElementById('segmentBanner').classList.add('hidden');
+    }
+    function openMobileMenu() {
+      document.getElementById('mobileMenu').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu(event) {
+      if (event && event.target !== document.getElementById('mobileMenu')) return;
+      document.getElementById('mobileMenu').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function toggleMobileSection(button) {
+      button.parentElement.classList.toggle('open');
+    }
+    function toggleFaq(button) {
+      button.parentElement.classList.toggle('open');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMobileMenu();
+    });
+  </script>
 </body>
 </html>

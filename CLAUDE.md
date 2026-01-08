@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Claude Persona
+You act as an experienced copywritter and webiste designed, experienced in creating sites for fast growth B2B startups that scalled up fast.
+You create content that is convicing, high convertion, highlight aligned to the target segment and specifics for the marketing (Romania) while borrowing practices that were proven in the US but are plausble for RO.
+
 ## Project Overview
 
 This is the eConta website project focused on creating a new site variant targeting accountants who want to purchase the eConta platform for internal work organization. The project repositions eConta from B2B accounting services to B2B accounting software for independent accountants.
@@ -30,27 +34,97 @@ eConta has a dual positioning:
 1. **Accounting services**: Traditional B2B accounting services for small companies
 2. **Platform software**: Management platform for accountants to organize their own client portfolios (focus of this project)
 
+### Site Layout Structure
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│ SEGMENT BANNER (top, dismissable)                                       │
+│ "Ești antreprenor? Cauți servicii de contabilitate?" → [Vezi oferta]    │
+├─────────────────────────────────────────────────────────────────────────┤
+│ HEADER                                                                  │
+│ ┌─────────┐                                          ┌───────────────┐  │
+│ │  LOGO   │         MAIN NAV (6 items)               │  UTILITY NAV  │  │
+│ └─────────┘  Scalează | Automatizare | Clienții tăi  │ Despre|Contact│  │
+│              Platformă | Prețuri | Comparații        │[Demo button]  │  │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+**Segment Banner**: Link către site-ul pentru antreprenori (al doilea segment de clienți). Nu e în meniu, e un div/banner separat.
+
 ### Content Architecture
-The main navigation structure from `2025 New site.md` includes:
-- **Scalează cabinetul** (Scale your practice)
-- **Automatizare operațională** (Operational automation)
-- **Servicii contabile premium** (Premium accounting services)
-- **Documente & ANAF** (Documents & Tax Authority)
-- **Venituri & facturare** (Revenue & billing)
-- **Platformă & ecosistem** (Platform & ecosystem)
+
+**Container menu** = jumbo menu cu headline, nu e clickabil direct, dar afișează paginile din el pentru click.
+
+**SITEMAP FINAL (19 pagini)**:
+
+```
+MAIN NAV:
+├── 📁 SCALEAZĂ CABINETUL (container)
+│   ├── Scalează cabinetul
+│   └── Studii de caz
+├── 📁 AUTOMATIZARE (container)
+│   ├── Automatizare operațională
+│   ├── Documente & ANAF
+│   └── Venituri & facturare
+├── 📄 CLIENȚII TĂI (pagină directă - beneficii pentru clienții contabilului)
+├── 📁 PLATFORMĂ (container)
+│   ├── Cum funcționează eConta
+│   ├── Aplicație desktop & integrări
+│   ├── Securitate & GDPR
+│   └── Clienți noi prin eConta
+├── 📁 PREȚURI (container)
+│   ├── Prețuri platformă
+│   └── Calculator
+└── 📁 COMPARAȚII (container - ultimul în meniu)
+    ├── vs TaxDome
+    ├── vs Keez
+    ├── vs Huddle
+    └── vs eContaAI
+
+UTILITY NAV (dreapta header):
+├── 📄 Despre noi
+├── 📄 Contact (cu Calendly)
+└── 🔘 [Programează demo] - button CTA
+
+FOOTER:
+└── Toate paginile + legal + social
+```
+
+### Content Files Structure
+
+Fișierele markdown pentru conținut sunt în `content/` cu naming convention `container--pagina.md`:
+
+```
+content/
+├── home.md
+├── scaleaza-cabinetul--scaleaza-cabinetul.md
+├── scaleaza-cabinetul--studii-de-caz.md
+├── automatizare--automatizare-operationala.md
+├── automatizare--documente-anaf.md
+├── automatizare--venituri-facturare.md
+├── clientii-tai.md
+├── platforma--cum-functioneaza.md
+├── platforma--aplicatie-desktop-integrari.md
+├── platforma--securitate-gdpr.md
+├── platforma--clienti-noi.md
+├── preturi--preturi-platforma.md
+├── preturi--calculator.md
+├── comparatii--vs-taxdome.md
+├── comparatii--vs-keez.md
+├── comparatii--vs-huddle.md
+├── comparatii--vs-econtaai.md
+├── despre-noi.md
+└── contact.md
+```
+
+### CTA Standards
+- **CTA Primar**: "Programează demo" (acțiune directă, high commitment)
+- **CTA Secundar**: "Vezi cum funcționează" (low commitment, explorare)
 
 ### Design Reference
-- Base HTML template: `inputs/eConta – Scalează cabinetul.html` (dark theme with blue/pink accents)
+- Base HTML template: `site/index.html` (dark theme with blue/pink accents)
 - UI inspiration: `inputs/color theme.png`
 - Brand assets: `inputs/logo econta.png`
-
-## Development Notes
-
-This appears to be a content and design project rather than a traditional software development project. The main work involves:
-
-1. **Content organization**: Converting the draft content from `2025 New site.md` into structured web pages
-2. **Design implementation**: Building on the reference HTML template and design mockups
-3. **Site structure**: Implementing the defined navigation and page hierarchy
 
 ## Languages
 - **Content**: Romanian
@@ -59,7 +133,7 @@ This appears to be a content and design project rather than a traditional softwa
 ## Important Files to Reference
 - `inputs/readme.md`: Core project requirements and positioning
 - `inputs/2025 New site.md`: Complete sitemap and content (use offset/limit when reading due to 2MB size)
-- `inputs/eConta – Scalează cabinetul.html`: Reference implementation for styling and layout patterns
+- `site/index.html`: Reference implementation for styling and layout patterns
 
 ## CRITICAL: Content Accuracy Principles
 
@@ -100,37 +174,145 @@ Before completing ANY page implementation:
 - **Style**: Dark theme B2B SaaS, professional, clean
 - **No emojis** in production code unless explicitly requested
 
-### 6. Site Structure (from spec)
-Main pages:
-1. **Home** (index.html)
-2. **Scalează cabinetul** (scaleaza-cabinetul.html)
-3. **Automatizare operațională** (automatizare-operationala.html)
-4. **Servicii contabile premium** (servicii-premium.html)
-5. **Documente & ANAF** (documente-anaf.html)
-6. **Venituri & facturare** (venituri-facturare.html)
-7. **Prețuri** (preturi.html)
-
-**Note**: Platformă & ecosistem page will be redesigned separately.
-
-### 7. Key Integrations & Features (from spec)
+### 6. Key Integrations & Features (from spec)
 - **ANAF**: eFactura, SPV integration (native)
 - **Billing**: Included as module for entrepreneurs (not separate app)
 - **Arhivare**: Cloud + local automatic archiving
 - **AI**: Document processing, interpretation, clarifications
 - **Communication**: Multi-channel (email, WhatsApp, platform)
 
-### 8. What eConta Does NOT Have
-- ❌ Mobile apps
-- ❌ Features not in specification
-- ❌ Any content not explicitly mentioned in `2025 New site.md`
+## Company Information (for Despre noi & Contact)
+
+- **Fondatori**: Claudiu (CEO), Petrișor (Expert fiscal-contabil), Dragoș (Tech lead)
+- **Entitate legală**: AI DIGITALTRANSFORMATION S.R.L.
+- **CUI**: 48990514
+- **J**: J40/19937/2023
+- **Email**: office@econta.ro
+- **Telefon**: +40 784242424
+- **Adresă**: Nu se afișează public pe site
+
+**Experiență echipă**: 25+ ani în dezvoltare software de gestiune și contabilitate (Centro de Soft background).
+
+## Copywriting Rules
+
+### DO (Ce să faci):
+- Curăță H1 duplicate din conținutul original
+- Scurtează secțiuni repetitive
+- Îmbunătățește titluri să fie mai "punchier" și orientate pe beneficii
+- Standardizează CTA-uri conform standardelor de mai sus
+- Structurează clar: Hero → Secțiuni → CTA final
+- Elimină emoji-uri excesive (👉) din text - păstrează doar pentru bullet points dacă e necesar
+- Păstrează tabelele comparative "Fără/Cu eConta" dar nu le multiplica excesiv
+
+### DON'T (Ce să NU faci):
+- NU inventa metrici/procente noi
+- NU adăuga features inexistente
+- NU fabrica testimoniale sau case studies
+- NU adăuga integrări nementionate (doar SAGA, WinMentor sunt confirmate)
+- NU schimba prețurile (0.99€/firmă/lună etc.)
+- NU adăuga mobile apps (nu există)
 
 ## Working Methodology
 
-When implementing ANY page:
-1. Read the relevant section from `inputs/2025 New site.md` completely
-2. Take notes on ALL sections and subsections
-3. Identify any metrics or data points mentioned
-4. Implement ONLY what's in the spec
-5. Double-check before marking as complete
+Citește `content/*.md` complet înainte de implementare. Nu fabrica - întreabă dacă nu e clar.
 
-**Remember**: It's better to ask for clarification than to fabricate content.
+## Design & UX Learnings
+
+### Navigation
+- **Mega menu**: Full-width (100vw), position fixed, cu grid layout pe orizontală
+- **NU** dropdowns înguste sau verticale — arată basic/neprofesionist
+- Include icons în fiecare menu item pentru scanabilitate
+
+### Page Layout
+
+**Homepage vs Pagini specifice — roluri diferite:**
+- **Homepage** = overview, punct de intrare → centered hero, broad messaging
+- **Pagini interne** = deep dive pe un topic → problem-focused, pain points vizuale
+- ❌ NU copia structura de pe o pagină pe alta fără a gândi rolul
+
+**Hero homepage:**
+- Trebuie să comunice CE vindem, nu beneficii vagi
+- ❌ "Rămâi relevant într-o contabilitate care se schimbă" — nu spune ce e produsul
+- ✅ "Scalează cabinetul fără să scalezi echipa" — direct pe valoare
+- Valoarea principală eConta: **scalare fără angajări** (automatizare + standardizare)
+
+**Hero pagini interne** (problem-focused):
+  - Eyebrow tag cu problema ("Problema reală a creșterii")
+  - Headline care articulează dilema clientului
+  - Pain points visual panel (nu doar text)
+  - Social proof metrics sub CTA
+- **Comparison sections**: Cards side-by-side cu gradiente
+  - Roșu/coral pentru "Fără eConta" (rgba(255,107,138,.08))
+  - Verde pentru "Cu eConta" (rgba(75,230,177,.08))
+  - Icons X și ✓ în pătrate colorate
+  - NU tabele simple — arată basic
+
+## Copywriting & Tone of Voice Learnings
+
+### Forma de adresare
+- **"Tu"** este corect pentru B2B SaaS modern în România
+- Creează apropriere și încredere, nu distanță formală
+- Contabilii care caută să scaleze cu tehnologie sunt deschiși la comunicare directă
+
+### Limbaj profesional - CE SĂ EVIȚI
+| ❌ Evită | ✅ Folosește |
+|----------|-------------|
+| "stres" | "presiune operațională" |
+| "haos" | "informații disparate" |
+| "ținute în cap" | "gestionate informal" |
+| "fără surprize" | "predictibil și planificat" |
+| "-Stres" (ca metrică) | "Predictibil" sau "Controlat" |
+
+### Limbaj profesional - CE FUNCȚIONEAZĂ
+- Terminologie din domeniu: "portofoliu", "operațional", "echipă", "capacitate"
+- Headline-uri care articulează problema exact cum o gândește clientul
+- Exemple concrete relevante pentru audiență (PFA, Uber, prag TVA/micro)
+- Hook-uri directe dar profesionale ("Nu mai pierzi timp întrebând «unde suntem?»")
+
+### Content completeness
+Când implementezi o pagină, include TOATE elementele din markdown:
+1. ✅ Intro paragraphs (context și empatie)
+2. ✅ Exemple concrete (specifice pentru contabili)
+3. ✅ Hooks și callouts
+4. ✅ Insight boxes cu mesaje cheie
+5. ✅ Dashboard/UI previews unde e relevant
+6. ✅ Beneficii summary boxes
+
+### Conversion principles
+- Above the fold = problema + soluție + CTA + social proof
+- Pain points vizuale, nu doar enumerate în text
+- Metrici concrete (dar doar cele din spec!)
+- CTA-uri clare: "Programează demo" (primary), "Vezi cum funcționează" (secondary)
+
+### Data-Heavy Pages (Case Studies, Comparisons)
+
+**Layout:**
+- ❌ NU carduri side-by-side când ai mult conținut (devine înghesuit, criptic)
+- ✅ Layout vertical, full-width, cu spațiu generos între secțiuni
+- ✅ Grid 2 coloane pentru fiecare caz: summary (stânga) + comparison table (dreapta)
+
+**Tabele comparative (Before/After):**
+- ✅ Folosește `<table>` semantic HTML pentru date tabulare, NU div-uri cu grid
+- ✅ `<thead>`, `<tbody>`, `<tfoot>` pentru structură clară
+- ✅ Stilizare: borders subtile, rows alternante, totals highlighted
+- ✅ Footer row cu totale și diferența procentuală
+
+**Principii generale:**
+- Conținutul data-heavy trebuie să "respire" — spațiu generos
+- Design execution contează la fel de mult ca structura
+- Testează vizual înainte de a considera complet
+
+## Comparison Pages (vs X)
+
+### Ierarhia Informației (sus = relevant, jos = explicativ)
+
+1. **Hero: Punchline** - diferența cheie într-o propoziție (statement, NU întrebare)
+2. **Quick proof** - 3 diferențe critice cu ❌/✅ vizual, above the fold
+3. **Decision matrix** - "Când alegi fiecare" pentru scanners rapizi
+4. **Comparison table** - tabelul complet din spec cu ❌/✅
+5. **Fairness section** - unde funcționează bine competitorul (recunoaștere onestă)
+6. **Solution summary** - ce face eConta diferit (scurt)
+7. **Final CTA** - simplu, cu risk reversal
+
+### Principiu
+Informația valoroasă sus (decizia în 5 secunde), detaliile și explicațiile jos (pentru cei care vor să citească mai mult).

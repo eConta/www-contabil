@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Securitate & GDPR - eConta</title>
+  <meta name="description" content="Cum protejăm datele în eConta: responsabilități clare, izolare date între clienți, backup și abordarea noastră pentru GDPR și AI.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .hero-security {
+      padding: 72px 0 88px;
+    }
+    .hero-security-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-security-content {
+      max-width: 560px;
+    }
+    .hero-security-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: rgba(75,230,177,.1);
+      border: 1px solid rgba(75,230,177,.2);
+      color: #4BE6B1;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero-security h1 {
+      font-size: clamp(32px, 4.5vw, 44px);
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .hero-security-sub {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .hero-security-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .hero-security-visual {
+      background: rgba(26,31,45,.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+    }
+    .question-item {
+      display: flex;
+      align-items: start;
+      gap: 14px;
+      padding: 16px 18px;
+      background: rgba(26,31,45,.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .question-item:last-child {
+      margin-bottom: 0;
+    }
+    .question-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: rgba(75,230,177,.15);
+      color: #4BE6B1;
+    }
+    .question-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .responsibility-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .responsibility-col {
+      padding: 28px;
+      border-radius: 16px;
+    }
+    .responsibility-col.you {
+      background: rgba(90,134,255,.06);
+      border: 1px solid rgba(90,134,255,.15);
+    }
+    .responsibility-col.us {
+      background: rgba(75,230,177,.06);
+      border: 1px solid rgba(75,230,177,.15);
+    }
+    .gdpr-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .hero-security-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .hero-security-visual {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .responsibility-table {
+        grid-template-columns: 1fr;
+      }
+      .gdpr-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .gdpr-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .isolation-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .isolation-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .isolation-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Segment Banner -->
+    <div class="segment-banner" id="segmentBanner">
+      <div class="container">
+        <span class="segment-banner-text">Ești antreprenor?</span>
+        <a href="https://www.econta.ro" class="segment-banner-link">
+          Vezi serviciile de contabilitate
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <button class="segment-banner-close" onclick="closeSegmentBanner()" aria-label="Închide">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <a href="index.html" class="brand"><img src="https://www.econta.ro/wp-content/uploads/2024/05/tmb6SlMI8Z8yWKghKpDCspfzFM.webp" alt="eConta" class="brand-logo"></a>
+          <ul class="nav-main">
+            <li class="nav-item">
+              <a href="#" class="nav-link">Scalează <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Scalează cabinetul</div>
+                  <div class="mega-menu-grid">
+                    <a href="scaleaza-cabinetul.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 21V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 21V9C20 7.89543 19.1046 7 18 7H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 7H6C4.89543 7 4 7.89543 4 9V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Scalează cabinetul</div><div class="mega-menu-item-desc">Crește portofoliul fără angajări</div></div>
+                    </a>
+                    <a href="studii-de-caz.html" class="mega-menu-item">
+                      <div class="mega-menu-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 20V10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 20V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Studii de caz</div><div class="mega-menu-item-desc">Rezultate reale de la cabinete</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Automatizare <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Automatizare</div>
+                  <div class="mega-menu-grid">
+                    <a href="automatizare-operationala.html" class="mega-menu-item">
+                      <div class="mega-menu-icon pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Automatizare operațională</div><div class="mega-menu-item-desc">Declarații, obligații, termene</div></div>
+                    </a>
+                    <a href="documente-anaf.html" class="mega-menu-item">
+                      <div class="mega-menu-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Documente & ANAF</div><div class="mega-menu-item-desc">eFactura, SPV, procesare AI</div></div>
+                    </a>
+                    <a href="venituri-facturare.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Venituri și facturare</div><div class="mega-menu-item-desc">Onorarii, facturare, încasări</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="clientii-tai.html" class="nav-link">Clienții tăi</a></li>
+            <li class="nav-item">
+              <a href="#" class="nav-link active">Platformă <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Platformă și ecosistem</div>
+                  <div class="mega-menu-grid">
+                    <a href="cum-functioneaza.html" class="mega-menu-item">
+                      <div class="mega-menu-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Cum funcționează eConta</div><div class="mega-menu-item-desc">Prezentare completă a platformei</div></div>
+                    </a>
+                    <a href="aplicatie-desktop-integrari.html" class="mega-menu-item">
+                      <div class="mega-menu-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Aplicație desktop și integrări</div><div class="mega-menu-item-desc">SAGA, WinMentor, arhivare</div></div>
+                    </a>
+                    <a href="securitate-gdpr.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Securitate și GDPR</div><div class="mega-menu-item-desc">Protecția datelor și conformitate</div></div>
+                    </a>
+                    <a href="clienti-noi.html" class="mega-menu-item">
+                      <div class="mega-menu-icon pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M20 8V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M23 11H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Clienți noi prin eConta</div><div class="mega-menu-item-desc">Opțional: primești clienți de la noi</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="preturi.html" class="nav-link">Prețuri</a></li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Comparații <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Comparații și alternative</div>
+                  <div class="mega-menu-grid">
+                    <a href="vs-taxdome.html" class="mega-menu-item">
+                      <div class="mega-menu-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12H22" stroke="currentColor" stroke-width="2"/><path d="M12 2C14.5 4.73835 15.92 8.29 16 12C15.92 15.71 14.5 19.26 12 22" stroke="currentColor" stroke-width="2"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">TaxDome vs eConta</div><div class="mega-menu-item-desc">Platformă globală vs locală</div></div>
+                    </a>
+                    <a href="vs-keez.html" class="mega-menu-item">
+                      <div class="mega-menu-icon pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9H21" stroke="currentColor" stroke-width="2"/><path d="M9 21V9" stroke="currentColor" stroke-width="2"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Keez vs eConta</div><div class="mega-menu-item-desc">Marketplace vs platformă proprie</div></div>
+                    </a>
+                    <a href="vs-huddle.html" class="mega-menu-item">
+                      <div class="mega-menu-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17 21V19C17 16.79 15.21 15 13 15H5C2.79 15 1 16.79 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21V19C23 17.18 21.77 15.59 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 3.13C17.77 3.59 19 5.18 19 7C19 8.82 17.77 10.41 16 10.87" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Huddle vs eConta</div><div class="mega-menu-item-desc">Organizare vs automatizare</div></div>
+                    </a>
+                    <a href="vs-econtaai.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">eContaAI vs eConta</div><div class="mega-menu-item-desc">AI punctual vs platformă completă</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="nav-utility">
+            <li><a href="programeaza-demo.html" class="btn btn-primary">Programează demo</a></li>
+          </ul>
+          <button class="mobile-menu-toggle" onclick="openMobileMenu()" aria-label="Meniu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" onclick="closeMobileMenu(event)">
+      <div class="mobile-menu-panel" onclick="event.stopPropagation()">
+        <div class="mobile-menu-header">
+          <div class="brand"><img src="https://www.econta.ro/wp-content/uploads/2024/05/tmb6SlMI8Z8yWKghKpDCspfzFM.webp" alt="eConta" class="brand-logo"></div>
+          <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Închide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <a href="https://www.econta.ro" class="mobile-segment-link">Ești antreprenor? <span>Vezi serviciile de contabilitate</span></a>
+        <nav class="mobile-menu-nav">
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Scalează cabinetul <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="scaleaza-cabinetul.html" class="mobile-nav-link">Scalează cabinetul</a>
+              <a href="studii-de-caz.html" class="mobile-nav-link">Studii de caz</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Automatizare <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="automatizare-operationala.html" class="mobile-nav-link">Automatizare operațională</a>
+              <a href="documente-anaf.html" class="mobile-nav-link">Documente & ANAF</a>
+              <a href="venituri-facturare.html" class="mobile-nav-link">Venituri și facturare</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section"><a href="clientii-tai.html" class="mobile-nav-direct">Clienții tăi</a></div>
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Platformă <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="cum-functioneaza.html" class="mobile-nav-link">Cum funcționează eConta</a>
+              <a href="aplicatie-desktop-integrari.html" class="mobile-nav-link">Aplicație desktop și integrări</a>
+              <a href="securitate-gdpr.html" class="mobile-nav-link">Securitate și GDPR</a>
+              <a href="clienti-noi.html" class="mobile-nav-link">Clienți noi prin eConta</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section"><a href="preturi.html" class="mobile-nav-direct">Prețuri</a></div>
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Comparații <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="vs-taxdome.html" class="mobile-nav-link">TaxDome vs eConta</a>
+              <a href="vs-keez.html" class="mobile-nav-link">Keez vs eConta</a>
+              <a href="vs-huddle.html" class="mobile-nav-link">Huddle vs eConta</a>
+              <a href="vs-econtaai.html" class="mobile-nav-link">eContaAI vs eConta</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section">
+            <a href="despre-noi.html" class="mobile-nav-direct">Despre noi</a>
+            <a href="contact.html" class="mobile-nav-direct">Contact</a>
+          </div>
+        </nav>
+        <div class="mobile-menu-cta"><a href="programeaza-demo.html" class="btn btn-primary">Programează demo</a></div>
+      </div>
+    </div>
+
+    <main>
+
+      <!-- Hero Section -->
+      <section class="hero-security">
+        <div class="container">
+          <div class="hero-security-grid">
+            <div class="hero-security-content">
+              <div class="hero-security-eyebrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Securitate & GDPR
+              </div>
+              <h1>Securitatea datelor, pe înțelesul tău</h1>
+              <p class="hero-security-sub">
+                Fără jargon tehnic. Răspunsuri directe la întrebările pe care le ai despre protecția datelor.
+              </p>
+              <div class="hero-security-cta">
+                <a href="programeaza-demo.html" class="btn btn-primary btn-lg">Programează demo</a>
+                <a href="cum-functioneaza.html" class="btn btn-secondary btn-lg">Vezi cum funcționează</a>
+              </div>
+            </div>
+            <div class="hero-security-visual">
+              <div class="question-item">
+                <div class="question-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="question-text">Dacă se pierd date, cine răspunde?</div>
+              </div>
+              <div class="question-item">
+                <div class="question-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="question-text">Cum abordați conformitatea GDPR?</div>
+              </div>
+              <div class="question-item">
+                <div class="question-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="question-text">Clientul X poate vedea datele clientului Y?</div>
+              </div>
+              <div class="question-item">
+                <div class="question-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="question-text">Ce se întâmplă dacă pică? Pierd tot?</div>
+              </div>
+              <div class="question-item">
+                <div class="question-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="question-text">Datele mele antrenează AI-ul?</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECȚIUNEA 1 — Cine răspunde pentru ce -->
+      <section class="section" id="responsabilitate">
+        <div class="container">
+          <div style="max-width:800px;margin:0 auto 64px auto;text-align:center">
+            <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Responsabilitate clară, fără zone gri</h2>
+            <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.6">
+              Contract clar, responsabilități clare. Știi exact cine răspunde pentru ce.
+            </p>
+          </div>
+
+          <div class="responsibility-table" style="max-width:900px;margin:0 auto 48px auto">
+            <!-- Tu răspunzi -->
+            <div class="responsibility-col you">
+              <h3 style="font-size:20px;margin-bottom:24px;color:#5A86FF;display:flex;align-items:center;gap:12px">
+                <span style="width:32px;height:32px;border-radius:8px;background:rgba(90,134,255,.15);display:flex;align-items:center;justify-content:center">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 21V19C20 16.79 18.21 15 16 15H8C5.79 15 4 16.79 4 19V21" stroke="#5A86FF" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="#5A86FF" stroke-width="2"/></svg>
+                </span>
+                Tu răspunzi pentru
+              </h3>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px">
+                <li style="display:flex;align-items:start;gap:10px;font-size:15px;color:rgba(244,246,255,.85)">
+                  <span style="color:#5A86FF;font-weight:600;flex-shrink:0">1.</span>
+                  Corectitudinea datelor introduse
+                </li>
+                <li style="display:flex;align-items:start;gap:10px;font-size:15px;color:rgba(244,246,255,.85)">
+                  <span style="color:#5A86FF;font-weight:600;flex-shrink:0">2.</span>
+                  Accesul pe care îl dai echipei tale
+                </li>
+                <li style="display:flex;align-items:start;gap:10px;font-size:15px;color:rgba(244,246,255,.85)">
+                  <span style="color:#5A86FF;font-weight:600;flex-shrink:0">3.</span>
+                  Relația contractuală cu clienții tăi
+                </li>
+                <li style="display:flex;align-items:start;gap:10px;font-size:15px;color:rgba(244,246,255,.85)">
+                  <span style="color:#5A86FF;font-weight:600;flex-shrink:0">4.</span>
+                  Păstrarea parolelor în siguranță
+                </li>
+              </ul>
+            </div>
+
+            <!-- eConta răspunde -->
+            <div class="responsibility-col us">
+              <h3 style="font-size:20px;margin-bottom:24px;color:#4BE6B1;display:flex;align-items:center;gap:12px">
+                <span style="width:32px;height:32px;border-radius:8px;background:rgba(75,230,177,.15);display:flex;align-items:center;justify-content:center">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="#4BE6B1" stroke-width="2"/></svg>
+                </span>
+                eConta răspunde pentru
+              </h3>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px">
+                <li style="display:flex;align-items:start;gap:10px;font-size:15px;color:rgba(244,246,255,.85)">
+                  <span style="color:#4BE6B1;font-weight:600;flex-shrink:0">1.</span>
+                  Securitatea infrastructurii
+                </li>
+                <li style="display:flex;align-items:start;gap:10px;font-size:15px;color:rgba(244,246,255,.85)">
+                  <span style="color:#4BE6B1;font-weight:600;flex-shrink:0">2.</span>
+                  Disponibilitatea platformei
+                </li>
+                <li style="display:flex;align-items:start;gap:10px;font-size:15px;color:rgba(244,246,255,.85)">
+                  <span style="color:#4BE6B1;font-weight:600;flex-shrink:0">3.</span>
+                  Backup și recuperare date
+                </li>
+                <li style="display:flex;align-items:start;gap:10px;font-size:15px;color:rgba(244,246,255,.85)">
+                  <span style="color:#4BE6B1;font-weight:600;flex-shrink:0">4.</span>
+                  Îmbunătățirea continuă a securității
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECȚIUNEA 2 — Izolare date -->
+      <section class="section" style="background:rgba(15,18,32,.6)">
+        <div class="container">
+          <div style="max-width:800px;margin:0 auto 64px auto;text-align:center">
+            <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Clientul A nu vede niciodată datele clientului B</h2>
+            <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.6">
+              Izolare completă, nu doar promisiuni. Fiecare firmă are spațiul ei separat.
+            </p>
+          </div>
+
+          <div class="isolation-grid" style="max-width:1000px;margin:0 auto 48px auto">
+
+            <div style="padding:24px;border-radius:14px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px">
+              <div style="width:40px;height:40px;border-radius:10px;background:rgba(75,230,177,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="#4BE6B1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span style="font-size:15px;color:rgba(244,246,255,.85)">Fiecare firmă = spațiu separat</span>
+            </div>
+
+            <div style="padding:24px;border-radius:14px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px">
+              <div style="width:40px;height:40px;border-radius:10px;background:rgba(75,230,177,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="#4BE6B1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span style="font-size:15px;color:rgba(244,246,255,.85)">Accesul se dă explicit, per firmă</span>
+            </div>
+
+            <div style="padding:24px;border-radius:14px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px">
+              <div style="width:40px;height:40px;border-radius:10px;background:rgba(75,230,177,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="#4BE6B1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span style="font-size:15px;color:rgba(244,246,255,.85)">Echipa vede doar firmele alocate</span>
+            </div>
+
+            <div style="padding:24px;border-radius:14px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px">
+              <div style="width:40px;height:40px;border-radius:10px;background:rgba(75,230,177,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="#4BE6B1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span style="font-size:15px;color:rgba(244,246,255,.85)">Antreprenorul vede doar firma lui</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECȚIUNEA 3 — Backup și copie locală -->
+      <section class="section">
+        <div class="container">
+          <div style="max-width:800px;margin:0 auto 64px auto;text-align:center">
+            <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Nu depinzi 100% de noi. Și nici nu pierzi nimic.</h2>
+            <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.6">
+              Datele există în două locuri. Controlul rămâne la tine.
+            </p>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:900px;margin:0 auto 48px auto">
+
+            <div style="padding:32px;border-radius:16px;background:rgba(26,31,45,.6);border:1px solid rgba(255,255,255,.1)">
+              <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
+                <div style="width:52px;height:52px;border-radius:12px;background:rgba(90,134,255,.1);border:1px solid rgba(90,134,255,.2);display:flex;align-items:center;justify-content:center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 10H16.74C16.36 8.55 15.59 7.23 14.5 6.2C13.4 5.17 12.07 4.47 10.6 4.17C9.14 3.87 7.62 3.99 6.22 4.51C4.81 5.03 3.59 5.94 2.68 7.12C1.77 8.31 1.22 9.72 1.08 11.21C0.94 12.7 1.22 14.19 1.9 15.53C2.57 16.87 3.61 18 4.9 18.79C6.18 19.57 7.65 19.98 9.15 20H18C19.32 20 20.59 19.47 21.53 18.53C22.47 17.59 23 16.32 23 15C23 13.67 22.47 12.4 21.53 11.46C20.59 10.52 19.32 10 18 10Z" stroke="#5A86FF" stroke-width="2"/>
+                  </svg>
+                </div>
+                <h3 style="margin:0;font-size:20px">Backup în cloud</h3>
+              </div>
+              <p style="color:rgba(244,246,255,.7);line-height:1.6;font-size:15px">
+                <strong>Noi facem backup zilnic.</strong> Tu nu trebuie să faci nimic. Dacă se întâmplă ceva, datele sunt recuperabile.
+              </p>
+            </div>
+
+            <div style="padding:32px;border-radius:16px;background:rgba(26,31,45,.6);border:1px solid rgba(255,255,255,.1)">
+              <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
+                <div style="width:52px;height:52px;border-radius:12px;background:rgba(75,230,177,.1);border:1px solid rgba(75,230,177,.2);display:flex;align-items:center;justify-content:center">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="3" width="20" height="14" rx="2" stroke="#4BE6B1" stroke-width="2"/>
+                    <path d="M8 21H16" stroke="#4BE6B1" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M12 17V21" stroke="#4BE6B1" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <h3 style="margin:0;font-size:20px">Copie locală automată</h3>
+              </div>
+              <p style="color:rgba(244,246,255,.7);line-height:1.6;font-size:15px">
+                <strong>Aplicația desktop salvează și pe calculatorul tău.</strong> Ai o copie locală, sub controlul tău direct.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECȚIUNEA 4 — AI și protecția datelor -->
+      <section class="section" style="background:rgba(15,18,32,.6)">
+        <div class="container">
+          <div style="max-width:800px;margin:0 auto 64px auto;text-align:center">
+            <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Datele tale NU antrenează AI-ul</h2>
+            <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.6">
+              eConta folosește AI pentru procesare documente. Dar datele tale rămân ale tale.
+            </p>
+          </div>
+
+          <div style="max-width:800px;margin:0 auto 48px auto;padding:40px;border-radius:20px;background:radial-gradient(600px 300px at 50% 0%,rgba(255,79,191,.08),transparent 60%),rgba(26,31,45,.6);border:1px solid rgba(255,79,191,.15)">
+
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px">
+              <div style="width:56px;height:56px;border-radius:14px;background:rgba(255,79,191,.1);border:1px solid rgba(255,79,191,.2);display:flex;align-items:center;justify-content:center">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="#FF4FBF" stroke-width="2"/>
+                  <path d="M9 12L11 14L15 10" stroke="#FF4FBF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 style="margin:0 0 4px 0;font-size:20px">DPA Enterprise cu furnizorii de AI</h3>
+                <p style="margin:0;font-size:14px;color:rgba(244,246,255,.6)">Data Processing Agreement - contract de protecție date</p>
+              </div>
+            </div>
+
+            <p style="color:rgba(244,246,255,.8);line-height:1.7;font-size:16px;margin-bottom:24px">
+              Avem <strong>DPA enterprise</strong> cu furnizorii de AI (Anthropic, OpenAI). Ce înseamnă asta concret:
+            </p>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div style="padding:18px 20px;border-radius:12px;background:rgba(75,230,177,.08);border:1px solid rgba(75,230,177,.15);display:flex;align-items:center;gap:12px">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="#4BE6B1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-size:14px;color:rgba(244,246,255,.9)">NU sunt folosite pentru antrenare</span>
+              </div>
+              <div style="padding:18px 20px;border-radius:12px;background:rgba(75,230,177,.08);border:1px solid rgba(75,230,177,.15);display:flex;align-items:center;gap:12px">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="#4BE6B1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-size:14px;color:rgba(244,246,255,.9)">NU sunt partajate cu terți</span>
+              </div>
+              <div style="padding:18px 20px;border-radius:12px;background:rgba(75,230,177,.08);border:1px solid rgba(75,230,177,.15);display:flex;align-items:center;gap:12px">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="#4BE6B1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-size:14px;color:rgba(244,246,255,.9)">Procesate și șterse imediat</span>
+              </div>
+              <div style="padding:18px 20px;border-radius:12px;background:rgba(75,230,177,.08);border:1px solid rgba(75,230,177,.15);display:flex;align-items:center;gap:12px">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="#4BE6B1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="font-size:14px;color:rgba(244,246,255,.9)">Zero retenție în afara platformei</span>
+              </div>
+            </div>
+
+            <div style="margin-top:28px;padding:20px 24px;border-radius:12px;background:rgba(90,134,255,.08);border:1px solid rgba(90,134,255,.15);text-align:center">
+              <p style="font-size:16px;color:var(--text-primary);margin:0;font-weight:500">
+                AI-ul lucrează pentru tine, nu invers.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECȚIUNEA 5 — Infrastructură (scurt) -->
+      <section class="section">
+        <div class="container">
+          <div style="max-width:800px;margin:0 auto 64px auto;text-align:center">
+            <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Unde stau datele și cine are acces</h2>
+            <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.6">
+              Nu trebuie să înțelegi tehnologia. Trebuie să știi că funcționează.
+            </p>
+          </div>
+
+          <div class="gdpr-cards-grid" style="max-width:1000px;margin:0 auto">
+
+            <div style="padding:24px;border-radius:14px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.08)">
+              <div style="width:40px;height:40px;border-radius:10px;background:rgba(90,134,255,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5A86FF" stroke-width="2"/><path d="M2 12H22" stroke="#5A86FF" stroke-width="2"/></svg>
+              </div>
+              <h4 style="font-size:15px;margin-bottom:8px;color:var(--text-primary)">Găzduite în UE</h4>
+              <p style="font-size:13px;color:rgba(244,246,255,.6);margin:0;line-height:1.5">Pe servere Amazon (AWS) - aceleași pe care le folosesc băncile</p>
+            </div>
+
+            <div style="padding:24px;border-radius:14px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.08)">
+              <div style="width:40px;height:40px;border-radius:10px;background:rgba(75,230,177,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#4BE6B1" stroke-width="2"/><path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11" stroke="#4BE6B1" stroke-width="2"/></svg>
+              </div>
+              <h4 style="font-size:15px;margin-bottom:8px;color:var(--text-primary)">Acces restricționat</h4>
+              <p style="font-size:13px;color:rgba(244,246,255,.6);margin:0;line-height:1.5">Nimeni din eConta nu accesează datele tale fără motiv documentat</p>
+            </div>
+
+            <div style="padding:24px;border-radius:14px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.08)">
+              <div style="width:40px;height:40px;border-radius:10px;background:rgba(255,79,191,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="#FF4FBF" stroke-width="2"/></svg>
+              </div>
+              <h4 style="font-size:15px;margin-bottom:8px;color:var(--text-primary)">Comunicație criptată</h4>
+              <p style="font-size:13px;color:rgba(244,246,255,.6);margin:0;line-height:1.5">Datele circulă protejate între tine și platformă</p>
+            </div>
+
+            <div style="padding:24px;border-radius:14px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.08)">
+              <div style="width:40px;height:40px;border-radius:10px;background:rgba(123,92,255,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M1 12S5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="#7B5CFF" stroke-width="2"/><circle cx="12" cy="12" r="3" stroke="#7B5CFF" stroke-width="2"/></svg>
+              </div>
+              <h4 style="font-size:15px;margin-bottom:8px;color:var(--text-primary)">Monitorizare continuă</h4>
+              <p style="font-size:13px;color:rgba(244,246,255,.6);margin:0;line-height:1.5">Detectăm problemele înainte să le simți</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECȚIUNEA 6 — GDPR -->
+      <section class="section" style="background:rgba(15,18,32,.6)">
+        <div class="container">
+          <div style="max-width:800px;margin:0 auto 48px auto;text-align:center">
+            <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Conformitate GDPR</h2>
+            <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.7">
+              Platforma este construită cu principiile GDPR în minte. Lucrăm continuu la îmbunătățirea proceselor de protecție a datelor și suntem deschiși să discutăm cerințele specifice ale cabinetului tău.
+            </p>
+          </div>
+
+          <div style="max-width:700px;margin:0 auto;padding:32px;border-radius:16px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.1)">
+            <p style="color:rgba(244,246,255,.8);line-height:1.7;font-size:16px;margin:0">
+              Dacă ai întrebări despre cum gestionăm datele sau ai nevoie de documentație specifică pentru conformitate, <a href="contact.html" style="color:#5A86FF;text-decoration:underline">contactează-ne</a> și discutăm concret.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECȚIUNEA 7 — Rezumat Tu/Noi -->
+      <section class="section">
+        <div class="container">
+          <div style="max-width:900px;margin:0 auto">
+            <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:48px;text-align:center">Pe scurt: ce faci tu, ce facem noi</h2>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+
+              <div style="padding:32px;border-radius:20px;background:rgba(90,134,255,.06);border:1px solid rgba(90,134,255,.15)">
+                <h3 style="font-size:22px;margin-bottom:24px;color:#5A86FF">Tu</h3>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px">
+                  <li style="display:flex;align-items:start;gap:12px;font-size:15px;color:rgba(244,246,255,.85)">
+                    <svg width="18" height="18" style="margin-top:2px;flex-shrink:0" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#5A86FF"/></svg>
+                    <span>Alegi cine din echipă are acces la ce</span>
+                  </li>
+                  <li style="display:flex;align-items:start;gap:12px;font-size:15px;color:rgba(244,246,255,.85)">
+                    <svg width="18" height="18" style="margin-top:2px;flex-shrink:0" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#5A86FF"/></svg>
+                    <span>Păstrezi parolele în siguranță</span>
+                  </li>
+                  <li style="display:flex;align-items:start;gap:12px;font-size:15px;color:rgba(244,246,255,.85)">
+                    <svg width="18" height="18" style="margin-top:2px;flex-shrink:0" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#5A86FF"/></svg>
+                    <span>Verifici că datele introduse sunt corecte</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div style="padding:32px;border-radius:20px;background:rgba(75,230,177,.06);border:1px solid rgba(75,230,177,.15)">
+                <h3 style="font-size:22px;margin-bottom:24px;color:#4BE6B1">Noi</h3>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px">
+                  <li style="display:flex;align-items:start;gap:12px;font-size:15px;color:rgba(244,246,255,.85)">
+                    <svg width="18" height="18" style="margin-top:2px;flex-shrink:0" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#4BE6B1"/></svg>
+                    <span>Securizăm infrastructura</span>
+                  </li>
+                  <li style="display:flex;align-items:start;gap:12px;font-size:15px;color:rgba(244,246,255,.85)">
+                    <svg width="18" height="18" style="margin-top:2px;flex-shrink:0" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#4BE6B1"/></svg>
+                    <span>Facem backup automat</span>
+                  </li>
+                  <li style="display:flex;align-items:start;gap:12px;font-size:15px;color:rgba(244,246,255,.85)">
+                    <svg width="18" height="18" style="margin-top:2px;flex-shrink:0" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#4BE6B1"/></svg>
+                    <span>Lucrăm la conformitatea GDPR</span>
+                  </li>
+                  <li style="display:flex;align-items:start;gap:12px;font-size:15px;color:rgba(244,246,255,.85)">
+                    <svg width="18" height="18" style="margin-top:2px;flex-shrink:0" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#4BE6B1"/></svg>
+                    <span>Asigurăm că AI-ul nu folosește datele tale</span>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="section" style="background:rgba(15,18,32,.6)">
+        <div class="container">
+          <div style="max-width:700px;margin:0 auto;padding:48px;border-radius:20px;background:radial-gradient(600px 300px at 50% 0%,rgba(75,230,177,.1),transparent 60%),rgba(26,31,45,.6);border:1px solid rgba(255,255,255,.1);text-align:center">
+            <h2 style="font-size:clamp(24px,4vw,32px);margin-bottom:16px">Ai întrebări despre securitate?</h2>
+            <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.6;margin-bottom:32px">
+              Programează un demo și discutăm concret despre cum sunt protejate datele cabinetului tău.
+            </p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+              <a href="programeaza-demo.html" class="btn btn-primary btn-lg">Programează demo</a>
+              <a href="cum-functioneaza.html" class="btn btn-secondary btn-lg">Vezi cum funcționează eConta</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <a href="index.html" class="brand"><img src="https://www.econta.ro/wp-content/uploads/2024/05/tmb6SlMI8Z8yWKghKpDCspfzFM.webp" alt="eConta" class="brand-logo"></a>
+            <p class="footer-tagline">Infrastructura digitală pentru cabinete contabile din România</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Platformă</h4>
+              <ul>
+                <li><a href="scaleaza-cabinetul.html">Scalează cabinetul</a></li>
+                <li><a href="automatizare-operationala.html">Automatizare operațională</a></li>
+                <li><a href="documente-anaf.html">Documente & ANAF</a></li>
+                <li><a href="venituri-facturare.html">Venituri și facturare</a></li>
+                <li><a href="clientii-tai.html">Clienții tăi</a></li>
+                <li><a href="cum-functioneaza.html">Cum funcționează</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Comparații</h4>
+              <ul>
+                <li><a href="vs-taxdome.html">TaxDome vs eConta</a></li>
+                <li><a href="vs-keez.html">Keez vs eConta</a></li>
+                <li><a href="vs-huddle.html">Huddle vs eConta</a></li>
+                <li><a href="vs-econtaai.html">eContaAI vs eConta</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h4>Companie</h4>
+              <ul>
+                <li><a href="despre-noi.html">Despre noi</a></li>
+                <li><a href="preturi.html">Prețuri</a></li>
+                <li><a href="calculator.html">Calculator prețuri</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 AI DIGITALTRANSFORMATION S.R.L. Toate drepturile rezervate.</p>
+          <div class="footer-legal">
+            <a href="#">Termeni și condiții</a>
+            <a href="#">Politica de confidențialitate</a>
+            <a href="securitate-gdpr.html">GDPR</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function closeSegmentBanner() {
+      document.getElementById('segmentBanner').classList.add('hidden');
+      localStorage.setItem('segmentBannerClosed', 'true');
+    }
+    if (localStorage.getItem('segmentBannerClosed') === 'true') {
+      document.getElementById('segmentBanner').classList.add('hidden');
+    }
+    function openMobileMenu() {
+      document.getElementById('mobileMenu').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu(event) {
+      if (event && event.target !== document.getElementById('mobileMenu')) return;
+      document.getElementById('mobileMenu').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function toggleMobileSection(button) {
+      button.parentElement.classList.toggle('open');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMobileMenu();
+    });
+  </script>
+</body>
+</html>

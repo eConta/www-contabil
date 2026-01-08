@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scalează cabinetul fără angajări - eConta</title>
+  <meta name="description" content="Crește-ți portofoliul de clienți fără să mărești echipa. Standardizare, control operațional și performanță reală cu eConta.">
+  
+  <style>
+    :root {
+      /* Dark theme palette - consistent across site */
+      --bg-primary: #0F1220;
+      --bg-secondary: #151A29;
+      --bg-panel: #1A1F2D;
+      --bg-panel-alt: #161A26;
+      
+      --border-subtle: rgba(255,255,255,.08);
+      --border-medium: rgba(255,255,255,.12);
+      
+      --text-primary: #F4F6FF;
+      --text-secondary: rgba(244,246,255,.72);
+      --text-muted: rgba(244,246,255,.56);
+      
+      --accent-primary: #FF4FBF;    /* Pink for high-impact CTAs */
+      --accent-secondary: #5A86FF;  /* Blue for secondary actions */
+      --accent-purple: #7B5CFF;     /* Brand purple */
+      
+      --success: #4BE6B1;
+      --warning: #FF6B8A;
+      
+      --radius: 18px;
+      --radius-lg: 22px;
+      --shadow-soft: 0 14px 44px rgba(0,0,0,.40);
+      --shadow-strong: 0 22px 90px rgba(0,0,0,.60);
+      
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 32px;
+      --space-xl: 48px;
+      --space-2xl: 64px;
+      --space-3xl: 96px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* Background gradient overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(1000px 620px at 70% 22%, rgba(90,134,255,.14), transparent 68%),
+        radial-gradient(920px 560px at 18% 10%, rgba(123,92,255,.07), transparent 70%),
+        radial-gradient(920px 560px at 38% 92%, rgba(255,79,191,.045), transparent 72%),
+        linear-gradient(180deg, #0E1120 0%, #121628 55%, #0E1120 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Typography */
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.04;
+      letter-spacing: -0.4px;
+      font-weight: 800;
+      margin-bottom: var(--space-sm);
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.1;
+      letter-spacing: -0.25px;
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+    }
+
+    h3 {
+      font-size: clamp(20px, 3vw, 28px);
+      line-height: 1.2;
+      font-weight: 650;
+      margin-bottom: var(--space-sm);
+    }
+
+    .lead {
+      font-size: clamp(16px, 2vw, 18px);
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 64ch;
+    }
+
+    .body-text {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .section {
+      padding: var(--space-3xl) 0;
+    }
+
+    .section-hero {
+      padding: var(--space-2xl) 0 var(--space-3xl);
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(21,24,35,.55);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-sm) 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.2px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-primary));
+      box-shadow: 0 12px 24px rgba(90,134,255,.16);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-primary);
+      background: rgba(26,31,45,.55);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: 14px 20px;
+      border: none;
+      border-radius: 999px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: #FFFFFF;
+      box-shadow: 0 18px 40px rgba(255,79,191,.16);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(255,79,191,.20);
+    }
+
+    .btn-secondary {
+      background: rgba(26,31,45,.55);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+      background: rgba(26,31,45,.75);
+    }
+
+    /* Cards */
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      background: rgba(26,31,45,.38);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-featured {
+      background: 
+        radial-gradient(520px 260px at 80% 0%, rgba(90,134,255,.14), transparent 62%),
+        radial-gradient(520px 260px at 20% 15%, rgba(255,79,191,.08), transparent 62%),
+        rgba(26,31,45,.38);
+    }
+
+    /* Comparison Table */
+    .comparison-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+
+    .comparison-column {
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      padding: var(--space-lg);
+      position: relative;
+    }
+
+    .comparison-column.without {
+      background: rgba(255,107,138,.08);
+      border-color: rgba(255,107,138,.25);
+    }
+
+    .comparison-column.with {
+      background: rgba(75,230,177,.08);
+      border-color: rgba(75,230,177,.25);
+    }
+
+    .comparison-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-md);
+      font-weight: 650;
+    }
+
+    .comparison-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .without .comparison-icon {
+      background: var(--warning);
+      color: white;
+    }
+
+    .with .comparison-icon {
+      background: var(--success);
+      color: white;
+    }
+
+    .comparison-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .comparison-list li {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: var(--space-lg);
+    }
+
+    .stat-number {
+      font-size: clamp(32px, 4vw, 42px);
+      font-weight: 900;
+      color: var(--accent-secondary);
+      margin-bottom: var(--space-xs);
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Benefits List */
+    .benefits-list {
+      list-style: none;
+      display: grid;
+      gap: var(--space-sm);
+      margin: var(--space-lg) 0;
+    }
+
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .benefit-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background: rgba(75,230,177,.12);
+      color: var(--success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* CTA Link */
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      color: var(--accent-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: var(--space-lg);
+      transition: opacity 0.2s ease;
+    }
+
+    .cta-link:hover {
+      opacity: 0.8;
+    }
+
+    /* Utilities */
+    .text-center { text-align: center; }
+    .text-accent { color: var(--accent-secondary); }
+    .text-success { color: var(--success); }
+    .mb-sm { margin-bottom: var(--space-sm); }
+    .mb-md { margin-bottom: var(--space-md); }
+    .mb-lg { margin-bottom: var(--space-lg); }
+    .mb-xl { margin-bottom: var(--space-xl); }
+    .mt-lg { margin-top: var(--space-lg); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 var(--space-sm);
+      }
+      
+      .section {
+        padding: var(--space-2xl) 0;
+      }
+      
+      .nav-menu {
+        display: none;
+      }
+      
+      .comparison-table {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <a href="index.html" class="brand">
+            <div class="brand-mark"></div>
+            eConta
+          </a>
+          <ul class="nav-menu">
+            <li><a href="scaleaza-cabinetul.html" class="nav-link active">Scalează cabinetul</a></li>
+            <li><a href="automatizare-operationala.html" class="nav-link">Automatizare</a></li>
+            <li><a href="platforma-ecosistem.html" class="nav-link">Platformă</a></li>
+            <li><a href="preturi.html" class="nav-link">Prețuri</a></li>
+            <li><a href="#demo" class="btn btn-primary">Programează demo</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      
+      <!-- Hero Section -->
+      <section class="section-hero">
+        <div class="container">
+          <div class="text-center">
+            <h1>Scalează-ți cabinetul fără angajări</h1>
+            <p class="lead mb-lg">
+              Creștere predictibilă, control operațional și performanță reală 
+              într-un mod de lucru standardizat. Aceeași echipă, mai multe firme gestionate.
+            </p>
+            <a href="#crestere-fara-angajari" class="btn btn-primary">
+              Vezi cum funcționează
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 1: Growth Without Hiring -->
+      <section class="section" id="crestere-fara-angajaris">
+        <div class="container">
+          <h2>Crește portofoliul fără să mărești echipa</h2>
+          <p class="lead mb-xl">
+            Creșterea unui cabinet contabil înseamnă, de obicei, mai multă muncă, mai mult stres 
+            și nevoia de angajări constante. eConta schimbă această logică: automatizează 
+            activitățile repetitive și standardizează procesele, astfel încât aceeași echipă 
+            să poată gestiona mai multe firme, fără pierderea controlului.
+          </p>
+          
+          <!-- Comparison Table -->
+          <div class="comparison-table">
+            <div class="comparison-column without">
+              <div class="comparison-header">
+                <div class="comparison-icon">✗</div>
+                <span>Fără eConta</span>
+              </div>
+              <ul class="comparison-list">
+                <li>Preluare manuală documente</li>
+                <li>Depuneri repetitive</li>
+                <li>Explicații individuale pentru fiecare client</li>
+                <li>Timp pierdut în emailuri și WhatsApp</li>
+                <li>Dependență de oameni-cheie</li>
+              </ul>
+            </div>
+            
+            <div class="comparison-column with">
+              <div class="comparison-header">
+                <div class="comparison-icon">✓</div>
+                <span>Cu eConta</span>
+              </div>
+              <ul class="comparison-list">
+                <li>Documente colectate automat</li>
+                <li>Declarații identificate și pregătite automat</li>
+                <li>Livrabile structurate și explicate clienților</li>
+                <li>Comunicare centralizată</li>
+                <li>Procese replicabile în echipă</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Results Stats -->
+          <h3 class="text-center mb-lg">Rezultate tipice obținute cu eConta</h3>
+          <div class="stats-grid">
+            <div class="stat-card card">
+              <div class="stat-number">+25%</div>
+              <div class="stat-label">mai multe firme gestionate într-un cabinet mic, fără angajări</div>
+            </div>
+            <div class="stat-card card">
+              <div class="stat-number">+40%</div>
+              <div class="stat-label">capacitate suplimentară în cabinete cu 1-2 angajați</div>
+            </div>
+            <div class="stat-card card">
+              <div class="stat-number">≈1</div>
+              <div class="stat-label">contabil junior „virtual" în cabinete mari</div>
+            </div>
+          </div>
+          
+          <!-- Why It Works -->
+          <div class="card mb-lg">
+            <h3 class="mb-md">De ce este posibilă această creștere</h3>
+            <p class="body-text mb-md">
+              eConta elimină blocajele care limitează creșterea:
+            </p>
+            <ul class="benefits-list">
+              <li>
+                <div class="benefit-icon">✓</div>
+                Identifică automat declarațiile de depus
+              </li>
+              <li>
+                <div class="benefit-icon">✓</div>
+                Pregătește și arhivează livrabilele
+              </li>
+              <li>
+                <div class="benefit-icon">✓</div>
+                Generează obligațiile de plată
+              </li>
+              <li>
+                <div class="benefit-icon">✓</div>
+                Disciplinează clienții prin fluxuri automate
+              </li>
+            </ul>
+            <p class="body-text mt-lg">
+              Astfel, creșterea nu mai depinde de oameni în plus, ci de un mod de lucru mai inteligent.
+            </p>
+          </div>
+          
+          <a href="automatizare-operationala.html" class="cta-link">
+            Vezi cum funcționează automatizarea eConta
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+      
+      <!-- Section 2: Standardization & Control -->
+      <section class="section" id="standardizare-control">
+        <div class="container">
+          <h2>Lucrează organizat. Fără improvizații.</h2>
+          <p class="lead mb-xl">
+            Fiecare firmă este diferită: un PFA de servicii, un Uber, o firmă de software sau un retail 
+            au obligații și procese distincte. Problema nu este diversitatea, ci <strong>lipsa unei imagini de ansamblu</strong> 
+            atunci când aceste diferențe sunt gestionate manual, din surse multiple.
+          </p>
+          
+          <p class="lead mb-xl">
+            eConta nu forțează aceleași procese pentru toți clienții. În schimb, 
+            <strong>standardizează modul în care sunt urmărite, centralizate și controlate</strong> 
+            toate aceste procese.
+          </p>
+          
+          <h3 class="mb-lg">Un mod unitar de a vedea și gestiona lucruri diferite</h3>
+          
+          <div class="benefits-list mb-xl">
+            <li>
+              <div class="benefit-icon">🎯</div>
+              <div>
+                <strong>Identificare automată de taskuri și obligații</strong><br>
+                AI-ul eConta detectează declarații, documente lipsă și acțiuni necesare care, 
+                altfel, pot fi ușor omise (de exemplu depășirea pragului de TVA sau micro)
+              </div>
+            </li>
+            <li>
+              <div class="benefit-icon">📊</div>
+              <div>
+                <strong>Imagine de ansamblu asupra portofoliului</strong><br>
+                În orice moment vezi: documente de prelucrat, declarații de depus, 
+                clienți cu restanțe, notificări importante de la ANAF
+              </div>
+            </li>
+            <li>
+              <div class="benefit-icon">💬</div>
+              <div>
+                <strong>Canale unificate de comunicare și documente</strong><br>
+                Documentele se trimit pe canale diverse (email, WhatsApp, platformă) dar se 
+                regăsesc într-un singur loc. Comunicarea este centralizată.
+              </div>
+            </li>
+            <li>
+              <div class="benefit-icon">🗃️</div>
+              <div>
+                <strong>Arhivare coerentă și trasabilă</strong><br>
+                Fiecare document și livrabil ajunge automat în structura corectă, 
+                asociat firmei și lunii contabile, ușor de găsit oricând
+              </div>
+            </li>
+          </div>
+          
+          <div class="card card-featured text-center mb-xl">
+            <h3 class="text-accent">👉 Standardizarea nu este în procesele clientului, ci în controlul lor.</h3>
+          </div>
+          
+          <!-- Comparison Table 2 -->
+          <div class="comparison-table">
+            <div class="comparison-column without">
+              <div class="comparison-header">
+                <div class="comparison-icon">✗</div>
+                <span>Fără eConta</span>
+              </div>
+              <ul class="comparison-list">
+                <li>Obligații ținute „în cap"/Excel</li>
+                <li>Taskuri care pot scăpa</li>
+                <li>Imagine fragmentată pe clienți</li>
+                <li>ANAF comunică, dar mesajele se pierd</li>
+                <li>Documente dispersate pe canale diferite</li>
+              </ul>
+            </div>
+            
+            <div class="comparison-column with">
+              <div class="comparison-header">
+                <div class="comparison-icon">✓</div>
+                <span>Cu eConta</span>
+              </div>
+              <ul class="comparison-list">
+                <li>Taskuri identificate automat</li>
+                <li>Vedere globală asupra portofoliului</li>
+                <li>Prioritizare clară a lucrului zilnic</li>
+                <li>Notificări ANAF centralizate</li>
+                <li>Documente și comunicare într-un singur flux</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="card mt-lg">
+            <h3 class="text-accent mb-md">Standardizarea în eConta înseamnă:</h3>
+            <ul class="benefits-list">
+              <li>
+                <div class="benefit-icon">✓</div>
+                Mai puține lucruri scăpate
+              </li>
+              <li>
+                <div class="benefit-icon">✓</div>
+                Mai puțină dependență de memorie
+              </li>
+              <li>
+                <div class="benefit-icon">✓</div>
+                Decizii luate dintr-un tablou de bord, nu din haos
+              </li>
+              <li>
+                <div class="benefit-icon">✓</div>
+                Control real asupra complexității
+              </li>
+            </ul>
+          </div>
+          
+          <a href="#" class="cta-link">
+            Vezi cum arată tabloul de control al portofoliului
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+      
+      <!-- Section 3: Operational Performance -->
+      <section class="section" id="performanta-operationala">
+        <div class="container">
+          <h2>Mai mult control zilnic. Mai puțin stres pe termene.</h2>
+          <p class="lead mb-xl">
+            Performanța unui cabinet contabil nu se vede în rapoarte frumoase, ci în fiecare zi de lucru: 
+            cât de repede identifici ce e de făcut, câte lucruri scapi, cât timp pierzi căutând informații 
+            și cât stres apare înainte de termenele limită.
+          </p>
+          
+          <p class="lead mb-xl">
+            eConta optimizează munca zilnică prin <strong>vizibilitate, prioritizare și automatizare</strong>, 
+            nu prin promisiuni abstracte.
+          </p>
+          
+          <div class="benefits-list mb-xl">
+            <li>
+              <div class="benefit-icon">👁️</div>
+              <div>
+                <strong>Vedere clară asupra a ceea ce contează</strong><br>
+                Într-un singur tablou de bord, vezi: declarații care trebuie depuse, documente în așteptare, 
+                clienți cu restanțe, notificări importante de la ANAF, ce este în lucru și ce urmează.<br>
+                <span class="text-accent">👉 Nu mai pierzi timp întrebând „unde suntem?"</span>
+              </div>
+            </li>
+            <li>
+              <div class="benefit-icon">🛡️</div>
+              <div>
+                <strong>Mai puține erori, mai puține urgențe</strong><br>
+                Identificarea automată a obligațiilor reduce riscul de declarații omise. Notificările timpurii 
+                previn situațiile limită. Arhivarea automată elimină pierderile de documente.<br>
+                <span class="text-accent">👉 Problemele sunt rezolvate înainte să devină critice.</span>
+              </div>
+            </li>
+            <li>
+              <div class="benefit-icon">⏱️</div>
+              <div>
+                <strong>Timp câștigat, nu doar muncă mai rapidă</strong><br>
+                Mai puțin timp pe sarcini repetitive, mai mult timp pentru verificare și decizie, 
+                mai puțină muncă reactivă. În practică, asta se traduce prin ore salvate lunar.
+              </div>
+            </li>
+          </div>
+          
+          <!-- Final CTA -->
+          <div class="card card-featured text-center">
+            <h3 class="mb-md">Gata să transformi eficiența cabinetului tău?</h3>
+            <p class="body-text mb-lg">
+              Descoperă cum eConta poate ajuta cabinetul tău să crească fără complicații suplimentare.
+            </p>
+            <a href="index.html#demo" class="btn btn-primary">
+              Programează o demonstrație
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+
+  </div>
+</body>
+</html>

@@ -1,526 +1,243 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>eConta - Infrastructură digitală pentru cabinete contabile</title>
-  <meta name="description" content="Platformă dezvoltată în România pentru cabinete contabile. Scalează-ți cabinetul, automatizează operațiunile și oferă servicii premium clienților tăi.">
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eConta - Platformă pentru cabinete contabile</title>
+  <meta name="description" content="Infrastructură digitală pentru cabinete contabile din România. Automatizare, control operațional și experiență premium pentru clienții tăi.">
+  <link rel="stylesheet" href="styles.css">
   <style>
-    :root {
-      /* Dark theme palette - differentiation from entrepreneur site */
-      --bg-primary: #0F1220;
-      --bg-secondary: #151A29;
-      --bg-panel: #1A1F2D;
-      --bg-panel-alt: #161A26;
-      
-      --border-subtle: rgba(255,255,255,.08);
-      --border-medium: rgba(255,255,255,.12);
-      
-      --text-primary: #F4F6FF;
-      --text-secondary: rgba(244,246,255,.72);
-      --text-muted: rgba(244,246,255,.56);
-      
-      --accent-primary: #FF4FBF;    /* Pink for high-impact CTAs */
-      --accent-secondary: #5A86FF;  /* Blue for secondary actions */
-      --accent-purple: #7B5CFF;     /* Brand purple */
-      
-      --success: #4BE6B1;
-      --warning: #FF6B8A;
-      
-      --radius: 18px;
-      --radius-lg: 22px;
-      --shadow-soft: 0 14px 44px rgba(0,0,0,.40);
-      --shadow-strong: 0 22px 90px rgba(0,0,0,.60);
-      
-      --space-xs: 8px;
-      --space-sm: 16px;
-      --space-md: 24px;
-      --space-lg: 32px;
-      --space-xl: 48px;
-      --space-2xl: 64px;
-      --space-3xl: 96px;
+    /* Homepage specific styles */
+
+    /* Hero - centered, clean */
+    .hero {
+      padding: 80px 0 100px;
+      text-align: center;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
-    body {
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif;
-      color: var(--text-primary);
-      background: var(--bg-primary);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-
-    /* Background gradient overlay */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: 
-        radial-gradient(1000px 620px at 70% 22%, rgba(90,134,255,.14), transparent 68%),
-        radial-gradient(920px 560px at 18% 10%, rgba(123,92,255,.07), transparent 70%),
-        radial-gradient(920px 560px at 38% 92%, rgba(255,79,191,.045), transparent 72%),
-        linear-gradient(180deg, #0E1120 0%, #121628 55%, #0E1120 100%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .page {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Typography */
-    h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      line-height: 1.04;
-      letter-spacing: -0.4px;
-      font-weight: 800;
-      margin-bottom: var(--space-sm);
-    }
-
-    h2 {
-      font-size: clamp(28px, 4vw, 36px);
-      line-height: 1.1;
-      letter-spacing: -0.25px;
-      font-weight: 700;
-      margin-bottom: var(--space-sm);
-    }
-
-    h3 {
-      font-size: clamp(18px, 2.5vw, 24px);
-      line-height: 1.2;
-      font-weight: 650;
-      margin-bottom: var(--space-xs);
-    }
-
-    .lead {
-      font-size: clamp(16px, 2vw, 18px);
-      color: var(--text-secondary);
-      line-height: 1.65;
-      max-width: 64ch;
-    }
-
-    .body-text {
-      font-size: 16px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-
-    /* Layout */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--space-md);
-    }
-
-    .section {
-      padding: var(--space-3xl) 0;
-    }
-
-    .section-hero {
-      padding: var(--space-2xl) 0 var(--space-3xl);
-    }
-
-    /* Header */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(21,24,35,.55);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .nav {
-      display: flex;
+    .hero-badge {
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      padding: var(--space-sm) 0;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      background: rgba(90,134,255,.1);
+      border: 1px solid rgba(90,134,255,.2);
+      color: var(--accent-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 32px;
     }
 
-    .brand {
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-secondary);
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.1;
+      font-weight: 800;
+      max-width: 900px;
+      margin: 0 auto 24px;
+    }
+
+    .hero-description {
+      font-size: 20px;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto 48px;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+
+    .hero-benefits {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-benefit {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 800;
-      font-size: 18px;
-      letter-spacing: 0.2px;
-    }
-
-    .brand-mark {
-      width: 28px;
-      height: 28px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent-purple), var(--accent-primary));
-      box-shadow: 0 12px 24px rgba(90,134,255,.16);
-    }
-
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: var(--space-md);
-      list-style: none;
-    }
-
-    .nav-link {
       color: var(--text-secondary);
-      text-decoration: none;
-      padding: 10px 12px;
-      border-radius: 12px;
-      transition: all 0.2s ease;
-    }
-
-    .nav-link:hover {
-      color: var(--text-primary);
-      background: rgba(26,31,45,.55);
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-xs);
-      padding: 14px 20px;
-      border: none;
-      border-radius: 999px;
-      font-weight: 650;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
       font-size: 15px;
     }
 
-    .btn-primary {
-      background: var(--accent-primary);
-      color: #FFFFFF;
-      box-shadow: 0 18px 40px rgba(255,79,191,.16);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 20px 45px rgba(255,79,191,.20);
-    }
-
-    .btn-secondary {
-      background: rgba(26,31,45,.55);
-      color: var(--text-primary);
-      border: 1px solid var(--border-medium);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-1px);
-      background: rgba(26,31,45,.75);
-    }
-
-    /* Grid layouts */
-    .grid {
-      display: grid;
-      gap: var(--space-md);
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    .grid-4 {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-
-    /* Cards */
-    .card {
-      border-radius: var(--radius);
-      border: 1px solid var(--border-subtle);
-      background: rgba(26,31,45,.38);
-      padding: var(--space-md);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .card-featured {
-      background: 
-        radial-gradient(520px 260px at 80% 0%, rgba(90,134,255,.14), transparent 62%),
-        radial-gradient(520px 260px at 20% 15%, rgba(255,79,191,.08), transparent 62%),
-        rgba(26,31,45,.38);
-    }
-
-    /* Hero Section */
-    .section-hero {
-      padding-top: var(--space-2xl);
-    }
-    
-    .section-hero .container {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: var(--space-2xl);
-      align-items: center;
-    }
-    
-    .hero-badge {
-      display: inline-flex;
-    }
-    
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-xs);
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(26,31,45,.45);
-      color: var(--text-secondary);
-      font-size: 13px;
-    }
-    
-    .badge-dot {
-      width: 8px;
-      height: 8px;
+    .hero-benefit-icon {
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent-purple), var(--accent-primary));
-      box-shadow: 0 0 0 3px rgba(90,134,255,.12);
-    }
-    
-    .hero-benefits {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    
-    .benefit-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 16px;
-      color: var(--text-secondary);
-    }
-    
-    .benefit-icon {
+      background: rgba(75,230,177,.15);
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 6px;
-      background: rgba(75,230,177,.12);
-      color: var(--success);
-      flex-shrink: 0;
-    }
-    
-    .hero-cta {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
-      align-items: flex-start;
-    }
-    
-    .btn-lg {
-      padding: 16px 24px;
-      font-size: 16px;
-      font-weight: 700;
-    }
-    
-    .cta-support {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    
-    .support-text {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-    
-    .trust-indicators {
-      display: flex;
-      gap: var(--space-sm);
-    }
-    
-    .indicator {
-      font-size: 12px;
       color: var(--success);
     }
-    
-    /* Hero Visual */
-    .visual-container {
-      position: relative;
-    }
-    
-    .visual-placeholder {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      background: rgba(26,31,45,.24);
-      box-shadow: var(--shadow-strong);
-      overflow: hidden;
-      aspect-ratio: 16/10;
-    }
-    
-    .placeholder-content {
-      padding: var(--space-md);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-    }
-    
-    .placeholder-header {
-      display: flex;
-      gap: 8px;
-    }
-    
-    .ph-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--border-medium);
-    }
-    
-    .placeholder-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
-    }
-    
-    .ph-line {
-      height: 16px;
-      border-radius: 8px;
-      background: var(--border-medium);
-    }
-    
-    .ph-title {
-      width: 70%;
-    }
-    
-    .ph-subtitle {
-      width: 50%;
-      opacity: 0.6;
-    }
-    
-    .ph-metrics {
-      margin-top: auto;
-      display: flex;
-      gap: var(--space-md);
-    }
-    
-    .ph-metric {
+
+    /* Section headers - always centered */
+    .section-header {
       text-align: center;
-    }
-    
-    .ph-number {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--accent-secondary);
-      margin-bottom: 4px;
-    }
-    
-    .ph-label {
-      font-size: 12px;
-      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 64px;
     }
 
-    /* Utilities */
-    .text-center { text-align: center; }
-    .text-accent { color: var(--accent-secondary); }
-    .text-success { color: var(--success); }
-    .mb-sm { margin-bottom: var(--space-sm); }
-    .mb-md { margin-bottom: var(--space-md); }
-    .mb-lg { margin-bottom: var(--space-lg); }
-    .mb-2xl { margin-bottom: var(--space-2xl); }
-    .mt-md { margin-top: var(--space-md); }
-    .mt-lg { margin-top: var(--space-lg); }
-    
-    /* Feature Section Styles */
-    .features-grid {
-      margin-top: var(--space-xl);
+    .section-header h2 {
+      margin-bottom: 16px;
     }
-    
+
+    .section-header p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Features grid - 4 columns, equal cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: rgba(26,31,45,.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: left;
+    }
+
     .feature-icon {
-      display: inline-flex;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: rgba(90,134,255,.12);
-      color: var(--accent-secondary);
+      margin-bottom: 20px;
     }
-    
+
+    .feature-icon.blue { background: rgba(90,134,255,.12); color: var(--accent-secondary); }
+    .feature-icon.pink { background: rgba(255,79,191,.12); color: var(--accent-primary); }
+    .feature-icon.green { background: rgba(75,230,177,.12); color: var(--success); }
+    .feature-icon.purple { background: rgba(123,92,255,.12); color: var(--accent-purple); }
+
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
     .feature-list {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-    
+
     .feature-list li {
-      position: relative;
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 6px 0;
       padding-left: 20px;
-      margin-bottom: 8px;
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.6;
+      position: relative;
     }
-    
+
     .feature-list li::before {
-      content: "•";
+      content: "";
       position: absolute;
       left: 0;
-      color: var(--accent-secondary);
-      font-weight: bold;
+      top: 12px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-secondary);
     }
-    
-    /* Value Metrics */
-    .value-card {
+
+    /* Value metrics - 4 columns */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .metric-card {
+      background: rgba(26,31,45,.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 32px 24px;
       text-align: center;
-      padding: var(--space-lg);
     }
-    
-    .value-metric {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: var(--space-md);
-    }
-    
-    .metric-number {
-      font-size: clamp(36px, 5vw, 48px);
-      font-weight: 900;
+
+    .metric-value {
+      font-size: 48px;
+      font-weight: 800;
       line-height: 1;
+      margin-bottom: 8px;
     }
-    
+
+    .metric-value.green { color: var(--success); }
+    .metric-value.blue { color: var(--accent-secondary); }
+    .metric-value.pink { color: var(--accent-primary); }
+
     .metric-label {
-      font-size: 14px;
+      font-size: 12px;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      margin-bottom: 16px;
     }
-    
-    /* Case Studies */
-    .case-study {
-      padding: var(--space-lg);
+
+    .metric-card h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
-    
+
+    .metric-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Case studies - 3 columns */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .case-card {
+      background: rgba(26,31,45,.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 32px;
+    }
+
     .case-header {
       display: flex;
       align-items: center;
-      gap: var(--space-sm);
+      gap: 16px;
+      margin-bottom: 24px;
     }
-    
+
     .case-avatar {
       width: 48px;
       height: 48px;
@@ -532,994 +249,858 @@
       font-weight: 700;
       font-size: 18px;
       color: white;
-      flex-shrink: 0;
     }
-    
-    .case-info {
-      flex: 1;
-    }
-    
+
     .case-name {
-      margin: 0;
       font-size: 16px;
-      font-weight: 650;
+      font-weight: 600;
+      margin-bottom: 2px;
     }
-    
+
     .case-size {
       font-size: 13px;
       color: var(--text-muted);
     }
-    
+
     .case-metrics {
-      display: flex;
-      gap: var(--space-md);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
     }
-    
-    .metric {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+
+    .case-metric {
       text-align: center;
     }
-    
-    .metric-value {
+
+    .case-metric-value {
       font-size: 24px;
       font-weight: 800;
-      line-height: 1;
+      margin-bottom: 4px;
     }
-    
-    .metric-desc {
+
+    .case-metric-value.green { color: var(--success); }
+    .case-metric-value.blue { color: var(--accent-secondary); }
+
+    .case-metric-label {
       font-size: 12px;
       color: var(--text-muted);
     }
-    
+
     .case-quote {
-      font-style: italic;
+      font-size: 14px;
       color: var(--text-secondary);
-      margin: 0;
       line-height: 1.6;
+      font-style: italic;
     }
-    
-    /* Pricing */
-    .pricing-content {
+
+    /* Pricing section */
+    .pricing-section {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: var(--space-2xl);
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
       align-items: center;
     }
-    
+
+    .pricing-content h2 {
+      margin-bottom: 16px;
+    }
+
+    .pricing-content .lead {
+      margin-bottom: 32px;
+    }
+
+    .pricing-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .pricing-benefit {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    .pricing-benefit-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: rgba(75,230,177,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--success);
+      flex-shrink: 0;
+    }
+
     .pricing-cta {
       display: flex;
-      gap: var(--space-sm);
+      gap: 16px;
       flex-wrap: wrap;
     }
-    
+
     .pricing-card {
-      border-radius: var(--radius-lg);
+      background: rgba(26,31,45,.6);
       border: 1px solid var(--border-medium);
-      background: 
-        radial-gradient(400px 200px at 50% 0%, rgba(90,134,255,.16), transparent 60%),
-        rgba(26,31,45,.45);
-      box-shadow: var(--shadow-strong);
+      border-radius: 20px;
       overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,.4);
     }
-    
-    .pricing-header {
-      padding: var(--space-lg);
+
+    .pricing-card-header {
+      padding: 32px;
       text-align: center;
-      border-bottom: 1px solid var(--border-subtle);
+      background: radial-gradient(400px 200px at 50% 100%, rgba(90,134,255,.15), transparent);
     }
-    
+
     .pricing-badge {
       display: inline-block;
-      padding: 4px 12px;
-      border-radius: 999px;
-      background: rgba(90,134,255,.16);
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: rgba(90,134,255,.15);
       color: var(--accent-secondary);
       font-size: 12px;
       font-weight: 600;
-      margin-bottom: var(--space-sm);
+      margin-bottom: 16px;
     }
-    
+
     .pricing-amount {
       display: flex;
       align-items: baseline;
       justify-content: center;
       gap: 4px;
     }
-    
-    .currency {
-      font-size: 18px;
+
+    .pricing-currency {
+      font-size: 24px;
       color: var(--text-muted);
     }
-    
-    .amount {
-      font-size: 48px;
-      font-weight: 900;
+
+    .pricing-value {
+      font-size: 64px;
+      font-weight: 800;
       color: var(--accent-primary);
       line-height: 1;
     }
-    
-    .period {
-      font-size: 14px;
+
+    .pricing-period {
+      font-size: 16px;
       color: var(--text-muted);
     }
-    
-    .pricing-body {
-      padding: var(--space-lg);
+
+    .pricing-card-body {
+      padding: 24px 32px 32px;
     }
-    
+
     .pricing-feature {
-      padding: 8px 0;
-      color: var(--text-secondary);
+      padding: 12px 0;
       font-size: 14px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-subtle);
     }
-    
+
+    .pricing-feature:last-child {
+      border-bottom: none;
+    }
+
     .pricing-note {
-      margin-top: var(--space-sm);
-      padding-top: var(--space-sm);
-      border-top: 1px solid var(--border-subtle);
-      font-size: 12px;
-      color: var(--text-muted);
       text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
       font-style: italic;
+      margin-top: 16px;
     }
-    
-    /* Trust Items */
+
+    /* Trust grid - 4 columns */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
     .trust-item {
       text-align: center;
-      padding: var(--space-md);
     }
-    
+
     .trust-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       width: 64px;
       height: 64px;
       border-radius: 16px;
-      background: rgba(90,134,255,.10);
+      background: rgba(90,134,255,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
       color: var(--accent-secondary);
-      margin-bottom: var(--space-sm);
     }
-    
+
     .trust-item h4 {
-      margin-bottom: var(--space-xs);
-      color: var(--text-primary);
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
-    
+
     .trust-item p {
-      color: var(--text-secondary);
       font-size: 14px;
+      color: var(--text-secondary);
       line-height: 1.5;
-      margin: 0;
     }
-    
+
     /* Final CTA */
-    .final-box {
+    .final-cta {
+      text-align: center;
       max-width: 600px;
       margin: 0 auto;
-      padding: var(--space-2xl);
-      border-radius: var(--radius-lg);
+      padding: 64px;
+      background: radial-gradient(600px 300px at 50% 0%, rgba(90,134,255,.12), transparent),
+                  radial-gradient(400px 200px at 50% 100%, rgba(255,79,191,.08), transparent),
+                  rgba(26,31,45,.5);
       border: 1px solid var(--border-medium);
-      background: 
-        radial-gradient(600px 300px at 50% 0%, rgba(90,134,255,.14), transparent 65%),
-        radial-gradient(400px 200px at 50% 100%, rgba(255,79,191,.08), transparent 65%),
-        rgba(26,31,45,.45);
-      box-shadow: var(--shadow-strong);
+      border-radius: 24px;
     }
-    
-    .final-actions {
-      margin: var(--space-lg) 0;
+
+    .final-cta h2 {
+      margin-bottom: 16px;
     }
-    
-    .final-guarantee {
+
+    .final-cta p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+
+    .final-cta-buttons {
       display: flex;
+      gap: 16px;
       justify-content: center;
-      gap: var(--space-md);
-      font-size: 13px;
-      color: var(--success);
+      flex-wrap: wrap;
     }
 
     /* Responsive */
     @media (max-width: 1024px) {
-      .section-hero .container {
-        grid-template-columns: 1fr;
-        gap: var(--space-xl);
-      }
-      
-      .pricing-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-xl);
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 var(--space-sm);
-      }
-      
-      .section {
-        padding: var(--space-2xl) 0;
-      }
-      
-      .section-hero {
-        padding-top: var(--space-xl);
-      }
-      
-      .nav-menu {
-        display: none; /* Mobile menu would be implemented */
-      }
-      
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-      
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-      
-      .grid-4 {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero-benefits {
-        gap: 16px;
-      }
-      
-      .pricing-cta {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      
-      .case-metrics {
-        justify-content: space-around;
-      }
-      
-      .final-guarantee {
-        flex-direction: column;
-        gap: var(--space-xs);
-        align-items: center;
-      }
-      
-      .final-box {
-        padding: var(--space-xl);
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .section {
-        padding: var(--space-xl) 0;
-      }
-      
-      .btn {
-        width: 100%;
-        justify-content: center;
-      }
-      
+      .features-grid,
+      .metrics-grid,
       .trust-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      
-      .case-metrics {
-        flex-direction: column;
-        gap: var(--space-sm);
+
+      .pricing-section {
+        grid-template-columns: 1fr;
+        gap: 48px;
       }
     }
-    
-    /* Footer */
-    .footer {
-      background: var(--bg-secondary);
-      border-top: 1px solid var(--border-subtle);
-      padding: var(--space-2xl) 0 var(--space-xl);
-    }
-    
-    .footer-content {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: var(--space-2xl);
-      margin-bottom: var(--space-xl);
-    }
-    
-    .footer-brand .brand {
-      margin-bottom: var(--space-sm);
-    }
-    
-    .footer-tagline {
-      color: var(--text-secondary);
-      font-size: 14px;
-      line-height: 1.6;
-      margin: 0;
-      max-width: 300px;
-    }
-    
-    .footer-links {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-xl);
-    }
-    
-    .footer-section h4 {
-      color: var(--text-primary);
-      font-size: 14px;
-      font-weight: 650;
-      margin-bottom: var(--space-sm);
-    }
-    
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .footer-section li {
-      margin-bottom: 8px;
-    }
-    
-    .footer-section a {
-      color: var(--text-secondary);
-      font-size: 13px;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    
-    .footer-section a:hover {
-      color: var(--text-primary);
-    }
-    
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: var(--space-lg);
-      border-top: 1px solid var(--border-subtle);
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-    
-    .footer-legal {
-      display: flex;
-      gap: var(--space-md);
-    }
-    
-    .footer-legal a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    
-    .footer-legal a:hover {
-      color: var(--text-secondary);
-    }
-    
+
     @media (max-width: 768px) {
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: var(--space-xl);
+      .hero {
+        padding: 48px 0 64px;
       }
-      
-      .footer-links {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-      }
-      
-      .footer-bottom {
+
+      .hero-benefits {
         flex-direction: column;
-        gap: var(--space-sm);
-        text-align: center;
+        gap: 16px;
+        align-items: center;
       }
-      
-      .footer-legal {
-        justify-content: center;
+
+      .features-grid,
+      .metrics-grid,
+      .cases-grid,
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        margin-bottom: 48px;
+      }
+
+      .final-cta {
+        padding: 40px 24px;
       }
     }
   </style>
 </head>
-
 <body>
   <div class="page">
-    
+
+    <!-- Segment Banner -->
+    <div class="segment-banner" id="segmentBanner">
+      <div class="container">
+        <span class="segment-banner-text">Ești antreprenor?</span>
+        <a href="https://www.econta.ro" class="segment-banner-link">
+          Vezi serviciile de contabilitate
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <button class="segment-banner-close" onclick="closeSegmentBanner()" aria-label="Închide">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
     <!-- Header -->
     <header class="header">
       <div class="container">
         <nav class="nav">
-          <div class="brand">
-            <div class="brand-mark"></div>
-            eConta
-          </div>
-          <ul class="nav-menu">
-            <li><a href="scaleaza-cabinetul.html" class="nav-link">Scalează cabinetul</a></li>
-            <li><a href="automatizare-operationala.html" class="nav-link">Automatizare</a></li>
-            <li><a href="servicii-premium.html" class="nav-link">Servicii Premium</a></li>
-            <li><a href="documente-anaf.html" class="nav-link">Documente & ANAF</a></li>
-            <li><a href="venituri-facturare.html" class="nav-link">Venituri & Facturare</a></li>
-            <li><a href="preturi.html" class="nav-link">Prețuri</a></li>
-            <li><a href="#demo" class="btn btn-primary">Programează demo</a></li>
+          <a href="index.html" class="brand"><img src="https://www.econta.ro/wp-content/uploads/2024/05/tmb6SlMI8Z8yWKghKpDCspfzFM.webp" alt="eConta" class="brand-logo"></a>
+          <ul class="nav-main">
+            <li class="nav-item">
+              <a href="#" class="nav-link">Scalează <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Scalează cabinetul</div>
+                  <div class="mega-menu-grid">
+                    <a href="scaleaza-cabinetul.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 21V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 21V9C20 7.89543 19.1046 7 18 7H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 7H6C4.89543 7 4 7.89543 4 9V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Scalează cabinetul</div><div class="mega-menu-item-desc">Crește portofoliul fără angajări</div></div>
+                    </a>
+                    <a href="studii-de-caz.html" class="mega-menu-item">
+                      <div class="mega-menu-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 20V10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 20V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Studii de caz</div><div class="mega-menu-item-desc">Rezultate reale de la cabinete</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Automatizare <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Automatizare</div>
+                  <div class="mega-menu-grid">
+                    <a href="automatizare-operationala.html" class="mega-menu-item">
+                      <div class="mega-menu-icon pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Automatizare operațională</div><div class="mega-menu-item-desc">Declarații, obligații, termene</div></div>
+                    </a>
+                    <a href="documente-anaf.html" class="mega-menu-item">
+                      <div class="mega-menu-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Documente & ANAF</div><div class="mega-menu-item-desc">eFactura, SPV, procesare AI</div></div>
+                    </a>
+                    <a href="venituri-facturare.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Venituri și facturare</div><div class="mega-menu-item-desc">Onorarii, facturare, încasări</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="clientii-tai.html" class="nav-link">Clienții tăi</a></li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Platformă <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Platformă și ecosistem</div>
+                  <div class="mega-menu-grid">
+                    <a href="cum-functioneaza.html" class="mega-menu-item">
+                      <div class="mega-menu-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Cum funcționează eConta</div><div class="mega-menu-item-desc">Prezentare completă a platformei</div></div>
+                    </a>
+                    <a href="aplicatie-desktop-integrari.html" class="mega-menu-item">
+                      <div class="mega-menu-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Aplicație desktop și integrări</div><div class="mega-menu-item-desc">SAGA, WinMentor, arhivare</div></div>
+                    </a>
+                    <a href="securitate-gdpr.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Securitate și GDPR</div><div class="mega-menu-item-desc">Protecția datelor și conformitate</div></div>
+                    </a>
+                    <a href="clienti-noi.html" class="mega-menu-item">
+                      <div class="mega-menu-icon pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M20 8V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M23 11H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Clienți noi prin eConta</div><div class="mega-menu-item-desc">Opțional: primești clienți de la noi</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item"><a href="preturi.html" class="nav-link">Prețuri</a></li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Comparații <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+              <div class="mega-menu">
+                <div class="mega-menu-inner">
+                  <div class="mega-menu-header">Comparații și alternative</div>
+                  <div class="mega-menu-grid">
+                    <a href="vs-taxdome.html" class="mega-menu-item">
+                      <div class="mega-menu-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12H22" stroke="currentColor" stroke-width="2"/><path d="M12 2C14.5 4.73835 15.92 8.29 16 12C15.92 15.71 14.5 19.26 12 22" stroke="currentColor" stroke-width="2"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">TaxDome vs eConta</div><div class="mega-menu-item-desc">Platformă globală vs locală</div></div>
+                    </a>
+                    <a href="vs-keez.html" class="mega-menu-item">
+                      <div class="mega-menu-icon pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9H21" stroke="currentColor" stroke-width="2"/><path d="M9 21V9" stroke="currentColor" stroke-width="2"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Keez vs eConta</div><div class="mega-menu-item-desc">Marketplace vs platformă proprie</div></div>
+                    </a>
+                    <a href="vs-huddle.html" class="mega-menu-item">
+                      <div class="mega-menu-icon purple"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17 21V19C17 16.79 15.21 15 13 15H5C2.79 15 1 16.79 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21V19C23 17.18 21.77 15.59 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 3.13C17.77 3.59 19 5.18 19 7C19 8.82 17.77 10.41 16 10.87" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">Huddle vs eConta</div><div class="mega-menu-item-desc">Organizare vs automatizare</div></div>
+                    </a>
+                    <a href="vs-econtaai.html" class="mega-menu-item">
+                      <div class="mega-menu-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+                      <div class="mega-menu-content"><div class="mega-menu-item-title">eContaAI vs eConta</div><div class="mega-menu-item-desc">AI punctual vs platformă completă</div></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
           </ul>
+          <ul class="nav-utility">
+            <li><a href="programeaza-demo.html" class="btn btn-primary">Programează demo</a></li>
+          </ul>
+          <button class="mobile-menu-toggle" onclick="openMobileMenu()" aria-label="Meniu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
         </nav>
       </div>
     </header>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" onclick="closeMobileMenu(event)">
+      <div class="mobile-menu-panel" onclick="event.stopPropagation()">
+        <div class="mobile-menu-header">
+          <div class="brand"><img src="https://www.econta.ro/wp-content/uploads/2024/05/tmb6SlMI8Z8yWKghKpDCspfzFM.webp" alt="eConta" class="brand-logo"></div>
+          <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Închide">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <a href="https://www.econta.ro" class="mobile-segment-link">Ești antreprenor? <span>Vezi serviciile de contabilitate →</span></a>
+        <nav class="mobile-menu-nav">
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Scalează cabinetul <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="scaleaza-cabinetul.html" class="mobile-nav-link">Scalează cabinetul</a>
+              <a href="studii-de-caz.html" class="mobile-nav-link">Studii de caz</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Automatizare <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="automatizare-operationala.html" class="mobile-nav-link">Automatizare operațională</a>
+              <a href="documente-anaf.html" class="mobile-nav-link">Documente & ANAF</a>
+              <a href="venituri-facturare.html" class="mobile-nav-link">Venituri și facturare</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section"><a href="clientii-tai.html" class="mobile-nav-direct">Clienții tăi</a></div>
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Platformă <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="cum-functioneaza.html" class="mobile-nav-link">Cum funcționează eConta</a>
+              <a href="aplicatie-desktop-integrari.html" class="mobile-nav-link">Aplicație desktop și integrări</a>
+              <a href="securitate-gdpr.html" class="mobile-nav-link">Securitate și GDPR</a>
+              <a href="clienti-noi.html" class="mobile-nav-link">Clienți noi prin eConta</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section"><a href="preturi.html" class="mobile-nav-direct">Prețuri</a></div>
+          <div class="mobile-nav-section">
+            <button class="mobile-nav-trigger" onclick="toggleMobileSection(this)">Comparații <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <div class="mobile-nav-dropdown">
+              <a href="vs-taxdome.html" class="mobile-nav-link">TaxDome vs eConta</a>
+              <a href="vs-keez.html" class="mobile-nav-link">Keez vs eConta</a>
+              <a href="vs-huddle.html" class="mobile-nav-link">Huddle vs eConta</a>
+              <a href="vs-econtaai.html" class="mobile-nav-link">eContaAI vs eConta</a>
+            </div>
+          </div>
+          <div class="mobile-nav-section">
+            <a href="despre-noi.html" class="mobile-nav-direct">Despre noi</a>
+            <a href="contact.html" class="mobile-nav-direct">Contact</a>
+          </div>
+        </nav>
+        <div class="mobile-menu-cta"><a href="programeaza-demo.html" class="btn btn-primary">Programează demo</a></div>
+      </div>
+    </div>
+
     <main>
-      
-      <!-- Hero Section -->
-      <section class="section-hero">
+      <!-- Hero -->
+      <section class="hero">
         <div class="container">
-          <div class="hero-content">
-            <div class="hero-badge mb-md">
-              <span class="badge">
-                <span class="badge-dot"></span>
-                Platformă dezvoltată în România pentru cabinete românești
-              </span>
-            </div>
-            
-            <h1 class="hero-title">
-              Infrastructură digitală de nouă generație pentru cabinete contabile
-            </h1>
-            
-            <p class="lead mb-lg">
-              Digitalizarea, automatizarea și așteptările clienților nu mai sunt opționale. 
-              eConta îți oferă infrastructura necesară pentru a ține pasul cu schimbările 
-              și a rămâne competitiv într-o contabilitate care evoluează rapid.
-            </p>
-            
-            <!-- Value propositions -->
-            <div class="hero-benefits mb-lg">
-              <div class="benefit-item">
-                <div class="benefit-icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-                <span>Scalează cabinetul, crește veniturile</span>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-                <span>Control operațional complet</span>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-icon">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-                <span>Experiență premium pentru clienții tăi</span>
-              </div>
-            </div>
-            
-            <!-- CTA Section -->
-            <div class="hero-cta">
-              <a href="#demo" class="btn btn-primary btn-lg">
-                Solicită demonstrație gratuită
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-              
-              <div class="cta-support">
-                <span class="support-text">Demo personalizat în 15 minute</span>
-                <div class="trust-indicators">
-                  <span class="indicator">✓ Fără obligații</span>
-                  <span class="indicator">✓ Implementare în 48h</span>
-                </div>
-              </div>
-            </div>
-            
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Platformă pentru cabinete contabile
           </div>
-          
-          <!-- Hero Visual -->
-          <div class="hero-visual">
-            <div class="visual-container">
-              <div class="visual-placeholder">
-                <div class="placeholder-content">
-                  <div class="placeholder-header">
-                    <div class="ph-dot"></div>
-                    <div class="ph-dot"></div>
-                    <div class="ph-dot"></div>
-                  </div>
-                  <div class="placeholder-body">
-                    <div class="ph-line ph-title"></div>
-                    <div class="ph-line ph-subtitle"></div>
-                    <div class="ph-metrics">
-                      <div class="ph-metric">
-                        <div class="ph-number">25%</div>
-                        <div class="ph-label">timp economisit</div>
-                      </div>
-                      <div class="ph-metric">
-                        <div class="ph-number">0</div>
-                        <div class="ph-label">declarații ratate</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <h1>Scalează cabinetul fără să scalezi echipa.</h1>
+          <p class="hero-description">
+            Automatizarea care îți dă timpul înapoi. eConta preia declarațiile, documentele și termenele. Tu te ocupi de clienți și consultanță.
+          </p>
+          <div class="hero-cta">
+            <a href="programeaza-demo.html" class="btn btn-primary btn-lg">Programează demo</a>
+            <a href="cum-functioneaza.html" class="btn btn-secondary btn-lg">Vezi cum funcționează</a>
+          </div>
+          <div class="hero-benefits">
+            <div class="hero-benefit">
+              <div class="hero-benefit-icon">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
+              Scalează cabinetul, crește veniturile
+            </div>
+            <div class="hero-benefit">
+              <div class="hero-benefit-icon">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Control operațional complet
+            </div>
+            <div class="hero-benefit">
+              <div class="hero-benefit-icon">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Experiență premium pentru clienții tăi
             </div>
           </div>
-          
         </div>
       </section>
-      
-      <!-- Features Section -->
+
+      <!-- Features -->
       <section class="section">
         <div class="container">
-          <div class="text-center mb-2xl">
+          <div class="section-header">
             <h2>Tot ce ai nevoie pentru a rula un cabinet eficient</h2>
-            <p class="lead">
-              Funcționalități construite special pentru realitățile cabinetelor contabile din România. 
-              Fiecare modul este gândit să te ajute să lucrezi mai puțin, să câștigi mai mult și să oferi servicii superioare.
-            </p>
+            <p>Funcționalități construite special pentru realitățile cabinetelor contabile din România.</p>
           </div>
-          
-          <div class="features-grid grid grid-4">
-            
-            <!-- Venituri & Facturare -->
-            <div class="card card-featured">
-              <div class="feature-icon mb-md">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <path d="M4 8L16 14L28 8L16 2L4 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M4 16L16 22L28 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M4 24L16 30L28 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon blue">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
               <h3>Venituri și facturare</h3>
-              <p class="body-text mb-md">
-                Onorarii flexibile, anexe automate de facturare și urmărire restanțe. 
-                Plăți online integrate pentru cash flow îmbunătățit.
-              </p>
+              <p>Onorarii flexibile, anexe automate și plăți online integrate.</p>
               <ul class="feature-list">
-                <li>Politici de preț configurabile per client</li>
-                <li>Generare automată anexe de facturare</li>
-                <li>Notificări automate către clienți</li>
-                <li>Dashboard financiar pentru cabinet</li>
+                <li>Politici de preț per client</li>
+                <li>Generare automată anexe</li>
+                <li>Urmărire restanțe</li>
               </ul>
             </div>
-            
-            <!-- Operare & Automatizare -->
-            <div class="card card-featured">
-              <div class="feature-icon mb-md">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <path d="M16 2L30 16L16 30L2 16L16 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M11 16L15 20L21 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <div class="feature-card">
+              <div class="feature-icon pink">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
-              <h3>Operare & automatizare cabinet</h3>
-              <p class="body-text mb-md">
-                Identificare automată a declarațiilor, depunere și arhivare. 
-                Zero declarații ratate, controlul complet asupra obligațiilor.
-              </p>
+              <h3>Operare și automatizare</h3>
+              <p>Identificare automată declarații, depunere și arhivare.</p>
               <ul class="feature-list">
-                <li>Identificare automată declarații de depus</li>
-                <li>Generare automată obligații de plată</li>
-                <li>Depunere și sumarizare automată</li>
-                <li>Alerte pentru termene importante</li>
+                <li>Zero declarații ratate</li>
+                <li>Obligații de plată generate</li>
+                <li>Alerte termene</li>
               </ul>
             </div>
-            
-            <!-- Servicii Premium -->
-            <div class="card card-featured">
-              <div class="feature-icon mb-md">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <path d="M22 12H30L26 8H18V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M2 20H10L14 16H6V24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="16" cy="16" r="6" stroke="currentColor" stroke-width="2"/>
-                </svg>
+            <div class="feature-card">
+              <div class="feature-icon green">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 21V19C17 16.7909 15.2091 15 13 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21V19C22.9986 17.1771 21.765 15.5857 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 3.13C17.7699 3.58317 19.0078 5.17799 19.0078 7.005C19.0078 8.83201 17.7699 10.4268 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
-              <h3>Servicii contabile premium</h3>
-              <p class="body-text mb-md">
-                Portal client modern, comunicare unificată și interpretarea livrabilelor 
-                pe înțelesul antreprenorului. Clienții tăi vor aprecia diferența.
-              </p>
+              <h3>Servicii premium clienți</h3>
+              <p>Portal client, comunicare unificată, interpretare livrabile.</p>
               <ul class="feature-list">
-                <li>Portal client & aplicație de facturare</li>
-                <li>Comunicare multi-channel unificată</li>
-                <li>Notificări și alerte importante</li>
-                <li>Interpretarea rezultatelor financiare</li>
+                <li>Portal și aplicație facturare</li>
+                <li>Multi-channel unificat</li>
+                <li>Notificări automate</li>
               </ul>
             </div>
-            
-            <!-- Documente & ANAF -->
-            <div class="card card-featured">
-              <div class="feature-icon mb-md">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <path d="M20 2H8C6.89543 2 6 2.89543 6 4V28C6 29.1046 6.89543 30 8 30H24C25.1046 30 26 29.1046 26 28V8L20 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M20 2V8H26" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M12 18L20 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M12 22L20 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <div class="feature-card">
+              <div class="feature-icon purple">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </div>
-              <h3>Documente & ANAF</h3>
-              <p class="body-text mb-md">
-                Preluare documente din orice sursă, procesare AI și eFactura & SPV 
-                native integrate. Arhiva electronică completă în cloud.
-              </p>
+              <h3>Documente și ANAF</h3>
+              <p>Preluare din orice sursă, procesare AI, eFactura și SPV native.</p>
               <ul class="feature-list">
-                <li>Preluare din email, WhatsApp, platformă</li>
-                <li>Procesare automată cu AI</li>
-                <li>eFactura & SPV integrate nativ</li>
-                <li>Arhivă electronică structurată</li>
+                <li>Email, WhatsApp, platformă</li>
+                <li>Procesare AI documente</li>
+                <li>Arhivă electronică</li>
               </ul>
             </div>
-            
           </div>
         </div>
       </section>
-      
-      <!-- Value Proposition Section -->
-      <section class="section">
+
+      <!-- Value Metrics -->
+      <section class="section" style="background: rgba(26,31,45,.3);">
         <div class="container">
-          <div class="text-center mb-2xl">
+          <div class="section-header">
             <h2>Mai mult decât eficiență. Control și predictibilitate.</h2>
-            <p class="lead">
-              eConta nu doar automatizează procese - îți oferă controlul și vizibilitatea 
-              necesare pentru a lua decizii strategice în dezvoltarea cabinetului.
-            </p>
+            <p>eConta nu doar automatizează - îți oferă controlul necesar pentru decizii strategice.</p>
           </div>
-          
-          <div class="value-grid grid grid-2">
-            <div class="value-card card">
-              <div class="value-metric">
-                <span class="metric-number text-success">25%</span>
-                <span class="metric-label">reducere timp operațional lunar</span>
-              </div>
-              <p class="body-text">
-                Mai puțin timp petrecut cu task-uri repetitive înseamnă mai mult focus 
-                pe activitățile care aduc valoare și venituri cabinetului.
-              </p>
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-value green">25%</div>
+              <div class="metric-label">reducere timp</div>
+              <h4>Activități repetitive</h4>
+              <p>Mai puțin timp pe sarcini de rutină, mai mult pentru consultanță.</p>
             </div>
-            
-            <div class="value-card card">
-              <div class="value-metric">
-                <span class="metric-number text-success">0</span>
-                <span class="metric-label">erori umane și depuneri ratate</span>
-              </div>
-              <p class="body-text">
-                Automatizarea elimină riscul de erori costisitoare și asigură respectarea 
-                tuturor termenelor legale fără supervisare constantă.
-              </p>
+            <div class="metric-card">
+              <div class="metric-value green">0</div>
+              <div class="metric-label">erori și omisiuni</div>
+              <h4>Declarații ratate</h4>
+              <p>Automatizarea elimină riscul de erori costisitoare.</p>
             </div>
-            
-            <div class="value-card card">
-              <div class="value-metric">
-                <span class="metric-number text-accent">+40%</span>
-                <span class="metric-label">capacitate cabinet fără angajări</span>
-              </div>
-              <p class="body-text">
-                Crești numărul de clienți pe care îi poți deservi eficient 
-                fără costuri suplimentare cu personal sau infrastructură.
-              </p>
+            <div class="metric-card">
+              <div class="metric-value blue">Scalare</div>
+              <div class="metric-label">fără angajări</div>
+              <h4>Capacitate crescută</h4>
+              <p>Mai mulți clienți deserviți cu aceeași echipă.</p>
             </div>
-            
-            <div class="value-card card">
-              <div class="value-metric">
-                <span class="metric-number text-accent">Premium</span>
-                <span class="metric-label">servicii fără efort suplimentar</span>
-              </div>
-              <p class="body-text">
-                Poți oferi clienților servicii de nivel superior care justifică 
-                tarife mai mari, fără să investești timp adițional.
-              </p>
+            <div class="metric-card">
+              <div class="metric-value pink">Premium</div>
+              <div class="metric-label">fără efort extra</div>
+              <h4>Servicii superioare</h4>
+              <p>Oferă clienților experiență de nivel superior.</p>
             </div>
           </div>
         </div>
       </section>
-      
-      <!-- Social Proof / Case Studies -->
+
+      <!-- Case Studies -->
       <section class="section">
         <div class="container">
-          <div class="text-center mb-2xl">
+          <div class="section-header">
             <h2>Rezultate reale pentru cabinete contabile</h2>
-            <p class="lead">
-              Contabili din România folosesc deja eConta pentru a-și transforma cabinetele. 
-              Rezultatele vorbesc de la sine.
-            </p>
+            <p>Contabili din România folosesc deja eConta pentru a-și transforma cabinetele.</p>
           </div>
-          
-          <div class="case-studies grid grid-3">
-            
-            <div class="case-study card">
-              <div class="case-header mb-md">
+          <div class="cases-grid">
+            <!-- TESTIMONIAL - NECESITĂ APROBARE CLIENT -->
+            <div class="case-card">
+              <div class="case-header">
                 <div class="case-avatar">L</div>
-                <div class="case-info">
-                  <h4 class="case-name">Cabinet Lupescu</h4>
-                  <span class="case-size">Cabinet mic • 40 firme</span>
+                <div>
+                  <div class="case-name">Cabinet Lupescu</div>
+                  <div class="case-size">Cabinet mic · ~40 firme</div>
                 </div>
               </div>
-              
-              <div class="case-metrics mb-md">
-                <div class="metric">
-                  <span class="metric-value text-success">+3.4h</span>
-                  <span class="metric-desc">economisite lunar</span>
+              <div class="case-metrics">
+                <div class="case-metric">
+                  <div class="case-metric-value green">+3,4h</div>
+                  <div class="case-metric-label">economisite lunar</div>
                 </div>
-                <div class="metric">
-                  <span class="metric-value text-accent">+25%</span>
-                  <span class="metric-desc">capacitate fără angajări</span>
+                <div class="case-metric">
+                  <div class="case-metric-value blue">+20-25%</div>
+                  <div class="case-metric-label">capacitate</div>
                 </div>
               </div>
-              
-              <p class="case-quote">
-                "Am reușit să îmi cresc portofoliul cu 25% fără să angajez pe nimeni. 
-                Automatizarea ANAF mi-a dat înapoi timpul pentru dezvoltarea afacerii."
-              </p>
+              <p class="case-quote">"De când folosesc eConta, am preluat 10 firme noi fără să angajez. Declarațiile se depun la timp, iar eu am timp pentru consultanță."</p>
             </div>
-            
-            <div class="case-study card">
-              <div class="case-header mb-md">
+            <!-- TESTIMONIAL - NECESITĂ APROBARE CLIENT -->
+            <div class="case-card">
+              <div class="case-header">
                 <div class="case-avatar">B</div>
-                <div class="case-info">
-                  <h4 class="case-name">Cabinet Bianca</h4>
-                  <span class="case-size">Cabinet mediu • 100 firme</span>
+                <div>
+                  <div class="case-name">Cabinet Bianca</div>
+                  <div class="case-size">Cabinet mediu · ~100 firme</div>
                 </div>
               </div>
-              
-              <div class="case-metrics mb-md">
-                <div class="metric">
-                  <span class="metric-value text-success">~10h</span>
-                  <span class="metric-desc">economisite lunar</span>
+              <div class="case-metrics">
+                <div class="case-metric">
+                  <div class="case-metric-value green">~10h</div>
+                  <div class="case-metric-label">economisite lunar</div>
                 </div>
-                <div class="metric">
-                  <span class="metric-value text-accent">+40</span>
-                  <span class="metric-desc">firme în plus</span>
+                <div class="case-metric">
+                  <div class="case-metric-value blue">+30-40</div>
+                  <div class="case-metric-label">firme în plus</div>
                 </div>
               </div>
-              
-              <p class="case-quote">
-                "Pot gestiona acum 140 de firme cu aceeași echipă. 
-                Clienții apreciază portalul lor și comunicarea automată."
-              </p>
+              <p class="case-quote">"eConta mi-a dat controlul înapoi. Văd totul într-un singur loc și nu mai ratez nimic."</p>
             </div>
-            
-            <div class="case-study card">
-              <div class="case-header mb-md">
+            <!-- TESTIMONIAL - NECESITĂ APROBARE CLIENT -->
+            <div class="case-card">
+              <div class="case-header">
                 <div class="case-avatar">O</div>
-                <div class="case-info">
-                  <h4 class="case-name">Optim Accounting</h4>
-                  <span class="case-size">Cabinet mare • 200+ firme</span>
+                <div>
+                  <div class="case-name">Optim Accounting</div>
+                  <div class="case-size">Cabinet mare · ~200 firme</div>
                 </div>
               </div>
-              
-              <div class="case-metrics mb-md">
-                <div class="metric">
-                  <span class="metric-value text-success">+21h</span>
-                  <span class="metric-desc">economisite lunar</span>
+              <div class="case-metrics">
+                <div class="case-metric">
+                  <div class="case-metric-value green">+21h</div>
+                  <div class="case-metric-label">economisite lunar</div>
                 </div>
-                <div class="metric">
-                  <span class="metric-value text-accent">≈1</span>
-                  <span class="metric-desc">contabil "virtual"</span>
+                <div class="case-metric">
+                  <div class="case-metric-value blue">~1</div>
+                  <div class="case-metric-label">contabil "virtual"</div>
                 </div>
               </div>
-              
-              <p class="case-quote">
-                "Economia de timp echivalează cu un contabil junior full-time. 
-                ROI-ul a fost evident din prima lună."
-              </p>
+              <p class="case-quote">"eConta înseamnă un contabil junior în plus, fără costurile aferente. Ne-a schimbat complet modul de lucru."</p>
             </div>
-            
           </div>
         </div>
       </section>
-      
-      <!-- Pricing Section -->
-      <section class="section">
+
+      <!-- Pricing -->
+      <section class="section" style="background: rgba(26,31,45,.3);">
         <div class="container">
-          <div class="pricing-content">
-            <div class="pricing-text">
+          <div class="pricing-section">
+            <div class="pricing-content">
               <h2>Plătești doar ce folosești</h2>
-              <p class="lead mb-lg">
-                Fără abonamente umflate. Model pay-per-use, construit pentru cabinete contabile. 
-                Începi de la <strong class="text-accent">0,99 € / firmă / lună</strong> și plătești doar pentru 
-                declarațiile și documentele procesate.
+              <p class="lead">
+                Fără abonamente umflate. Model pay-per-use, construit pentru cabinete contabile.
+                Începi de la <strong style="color: var(--accent-primary);">0,99 € / firmă / lună</strong>.
               </p>
-              
-              <div class="pricing-benefits mb-lg">
-                <div class="benefit-item">
-                  <div class="benefit-icon">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+              <div class="pricing-benefits">
+                <div class="pricing-benefit">
+                  <div class="pricing-benefit-icon">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </div>
-                  <span>Fără pachete fixe, fără costuri inutile</span>
+                  Fără pachete fixe, fără costuri inutile
                 </div>
-                <div class="benefit-item">
-                  <div class="benefit-icon">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                <div class="pricing-benefit">
+                  <div class="pricing-benefit-icon">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </div>
-                  <span>Costul se ajustează automat în funcție de volum</span>
+                  Cost ajustat automat în funcție de volum
                 </div>
-                <div class="benefit-item">
-                  <div class="benefit-icon">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                <div class="pricing-benefit">
+                  <div class="pricing-benefit-icon">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </div>
-                  <span>De la micro-SRL la firme cu activitate intensă</span>
+                  De la micro-SRL la firme cu activitate intensă
                 </div>
               </div>
-              
               <div class="pricing-cta">
-                <a href="#pricing" class="btn btn-secondary">Vezi prețurile complete</a>
-                <a href="#compare" class="btn btn-primary">Compară cu / fără eConta</a>
+                <a href="preturi.html" class="btn btn-primary">Vezi prețurile</a>
               </div>
             </div>
-            
-            <div class="pricing-visual">
-              <div class="pricing-card">
-                <div class="pricing-header">
-                  <div class="pricing-badge">Pay-per-use</div>
-                  <div class="pricing-amount">
-                    <span class="currency">€</span>
-                    <span class="amount">0.99</span>
-                    <span class="period">/ firmă / lună</span>
-                  </div>
+            <div class="pricing-card">
+              <div class="pricing-card-header">
+                <div class="pricing-badge">Pay-per-use</div>
+                <div class="pricing-amount">
+                  <span class="pricing-currency">€</span>
+                  <span class="pricing-value">0,99</span>
+                  <span class="pricing-period">/ firmă / lună</span>
                 </div>
-                <div class="pricing-body">
-                  <div class="pricing-feature">+ declarații procesate</div>
-                  <div class="pricing-feature">+ documente analizate</div>
-                  <div class="pricing-feature">+ notificări trimise</div>
-                  <div class="pricing-note">Transparent. Predictibil. Fair.</div>
-                </div>
+              </div>
+              <div class="pricing-card-body">
+                <div class="pricing-feature">+ declarații procesate</div>
+                <div class="pricing-feature">+ documente analizate</div>
+                <div class="pricing-feature">+ notificări trimise</div>
+                <p class="pricing-note">Transparent. Predictibil. Fair.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-      
-      <!-- Trust & Compliance -->
+
+      <!-- Trust -->
       <section class="section">
         <div class="container">
-          <div class="text-center mb-lg">
+          <div class="section-header">
             <h2>Construit pentru cerințele reale ale contabililor din România</h2>
-            <p class="lead">
-              Securitate, conformitate și integrări native cu sistemele pe care le folosești deja.
-            </p>
+            <p>Securitate, conformitate și integrări native cu sistemele pe care le folosești deja.</p>
           </div>
-          
-          <div class="trust-grid grid grid-4">
+          <div class="trust-grid">
             <div class="trust-item">
               <div class="trust-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <path d="M16 2L26 8V16C26 23 16 30 16 30S6 23 6 16V8L16 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M12 16L15 19L20 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
               <h4>Automatizare ANAF-first</h4>
-              <p>Dezvoltat cu focus pe legislația și procedurile româneşti</p>
+              <p>eFactura, SPV, declarații integrate nativ</p>
             </div>
-            
             <div class="trust-item">
               <div class="trust-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <rect x="3" y="11" width="26" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
-                  <path d="M7 11V7C7 5.89543 7.89543 5 9 5H23C24.1046 5 25 5.89543 25 7V11" stroke="currentColor" stroke-width="2"/>
-                  <circle cx="16" cy="19" r="2" fill="currentColor"/>
-                </svg>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/><path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </div>
-              <h4>Securitate & GDPR</h4>
-              <p>Protecția datelor la standarde europene, hosting în România</p>
+              <h4>Securitate și GDPR</h4>
+              <p>Infrastructură AWS, date protejate</p>
             </div>
-            
             <div class="trust-item">
               <div class="trust-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <path d="M16 2V30M2 16H30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M21 6L16 2L11 6M21 26L16 30L11 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12H22" stroke="currentColor" stroke-width="2"/><path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/></svg>
               </div>
               <h4>Integrări native</h4>
-              <p>SAGA, eFactura, SPV și alte sisteme esenţiale</p>
+              <p>SAGA, WinMentor și alte aplicații</p>
             </div>
-            
             <div class="trust-item">
               <div class="trust-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                  <rect x="4" y="4" width="24" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
-                  <path d="M4 10H28" stroke="currentColor" stroke-width="2"/>
-                  <path d="M12 28H20" stroke="currentColor" stroke-width="2"/>
-                  <path d="M16 22V28" stroke="currentColor" stroke-width="2"/>
-                </svg>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </div>
               <h4>Aplicație desktop</h4>
-              <p>Pentru fluxuri critice şi lucru offline când este necesar</p>
+              <p>Pentru fluxuri locale și arhivare</p>
             </div>
           </div>
         </div>
       </section>
-      
+
       <!-- Final CTA -->
       <section class="section">
         <div class="container">
-          <div class="final-cta text-center">
-            <div class="final-box">
-              <h2>E timpul să lucrezi mai inteligent, nu mai mult</h2>
-              <p class="lead mb-lg">
-                Alătură-te contabililor care și-au transformat deja cabinetele cu eConta. 
-                Demo personalizat în 15 minute, implementare în 48 de ore.
-              </p>
-              
-              <div class="final-actions mb-md">
-                <a href="#demo" class="btn btn-primary btn-lg">
-                  Programează un demo personalizat
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </a>
-              </div>
-              
-              <div class="final-guarantee">
-                <span>✓ Fără risc</span>
-                <span>✓ Fără obligații</span>
-                <span>✓ Implementare rapidă</span>
-              </div>
+          <div class="final-cta">
+            <h2>E timpul să lucrezi mai inteligent, nu mai mult.</h2>
+            <p>Alătură-te contabililor care și-au transformat deja cabinetele cu eConta.</p>
+            <div class="final-cta-buttons">
+              <a href="programeaza-demo.html" class="btn btn-primary btn-lg">Programează demo</a>
+              <a href="cum-functioneaza.html" class="btn btn-secondary btn-lg">Vezi cum funcționează</a>
             </div>
           </div>
         </div>
       </section>
-      
     </main>
-    
+
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
           <div class="footer-brand">
-            <div class="brand">
-              <div class="brand-mark"></div>
-              eConta
-            </div>
-            <p class="footer-tagline">
-              Infrastructura digitală pentru cabinete contabile moderne
-            </p>
+            <a href="index.html" class="brand"><img src="https://www.econta.ro/wp-content/uploads/2024/05/tmb6SlMI8Z8yWKghKpDCspfzFM.webp" alt="eConta" class="brand-logo"></a>
+            <p class="footer-tagline">Infrastructura digitală pentru cabinete contabile din România</p>
           </div>
-          
           <div class="footer-links">
             <div class="footer-section">
               <h4>Platformă</h4>
               <ul>
-                <li><a href="#">Scalează cabinetul</a></li>
-                <li><a href="#">Automatizare operațională</a></li>
-                <li><a href="#">Servicii premium</a></li>
-                <li><a href="#">Documente & ANAF</a></li>
+                <li><a href="scaleaza-cabinetul.html">Scalează cabinetul</a></li>
+                <li><a href="automatizare-operationala.html">Automatizare operațională</a></li>
+                <li><a href="documente-anaf.html">Documente & ANAF</a></li>
+                <li><a href="venituri-facturare.html">Venituri și facturare</a></li>
+                <li><a href="clientii-tai.html">Clienții tăi</a></li>
+                <li><a href="cum-functioneaza.html">Cum funcționează</a></li>
               </ul>
             </div>
-            
+            <div class="footer-section">
+              <h4>Comparații</h4>
+              <ul>
+                <li><a href="vs-taxdome.html">TaxDome vs eConta</a></li>
+                <li><a href="vs-keez.html">Keez vs eConta</a></li>
+                <li><a href="vs-huddle.html">Huddle vs eConta</a></li>
+                <li><a href="vs-econtaai.html">eContaAI vs eConta</a></li>
+              </ul>
+            </div>
             <div class="footer-section">
               <h4>Companie</h4>
               <ul>
-                <li><a href="#">Despre eConta</a></li>
-                <li><a href="#">Prețuri</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Suport</a></li>
-              </ul>
-            </div>
-            
-            <div class="footer-section">
-              <h4>Resurse</h4>
-              <ul>
-                <li><a href="#">Documentație</a></li>
-                <li><a href="#">Integrări</a></li>
-                <li><a href="#">Articole</a></li>
-                <li><a href="#">Webinarii</a></li>
+                <li><a href="despre-noi.html">Despre noi</a></li>
+                <li><a href="preturi.html">Prețuri</a></li>
+                <li><a href="contact.html">Contact</a></li>
               </ul>
             </div>
           </div>
         </div>
-        
         <div class="footer-bottom">
-          <p>&copy; 2024 eConta. Toate drepturile rezervate.</p>
+          <p>&copy; 2025 AI DIGITALTRANSFORMATION S.R.L. Toate drepturile rezervate.</p>
           <div class="footer-legal">
             <a href="#">Termeni și condiții</a>
             <a href="#">Politica de confidențialitate</a>
-            <a href="#">GDPR</a>
+            <a href="securitate-gdpr.html">GDPR</a>
           </div>
         </div>
       </div>
     </footer>
 
   </div>
+
+  <script>
+    function closeSegmentBanner() {
+      document.getElementById('segmentBanner').classList.add('hidden');
+      localStorage.setItem('segmentBannerClosed', 'true');
+    }
+    if (localStorage.getItem('segmentBannerClosed') === 'true') {
+      document.getElementById('segmentBanner').classList.add('hidden');
+    }
+    function openMobileMenu() {
+      document.getElementById('mobileMenu').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu(event) {
+      if (event && event.target !== document.getElementById('mobileMenu')) return;
+      document.getElementById('mobileMenu').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function toggleMobileSection(button) {
+      button.parentElement.classList.toggle('open');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMobileMenu();
+    });
+  </script>
 </body>
 </html>
