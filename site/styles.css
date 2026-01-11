@@ -1,6 +1,6 @@
 :root {
   /* Dark theme palette */
-  --bg-primary: #0F1220;
+  --bg-primary: #151A28;
   --bg-secondary: #151A29;
   --bg-panel: #1A1F2D;
   --bg-panel-alt: #161A26;
@@ -61,7 +61,7 @@ body::before {
     radial-gradient(1000px 620px at 70% 22%, rgba(90,134,255,.14), transparent 68%),
     radial-gradient(920px 560px at 18% 10%, rgba(123,92,255,.07), transparent 70%),
     radial-gradient(920px 560px at 38% 92%, rgba(255,79,191,.045), transparent 72%),
-    linear-gradient(180deg, #0E1120 0%, #121628 55%, #0E1120 100%);
+    linear-gradient(180deg, #141924 0%, #181D2C 55%, #141924 100%);
   pointer-events: none;
   z-index: 0;
 }
