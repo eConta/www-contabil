@@ -15,6 +15,14 @@
       text-align: center;
     }
 
+    .hero-badges {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -26,7 +34,6 @@
       color: var(--accent-secondary);
       font-size: 13px;
       font-weight: 500;
-      margin-bottom: 32px;
     }
 
     .hero-badge-dot {
@@ -567,9 +574,19 @@
       <!-- Hero -->
       <section class="hero">
         <div class="container">
-          <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            Platformă pentru cabinete contabile • Integrată cu ANAF • Construită în România
+          <div class="hero-badges">
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              Platformă pentru cabinete contabile
+            </div>
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              Integrată cu ANAF
+            </div>
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              Construită în România
+            </div>
           </div>
           <h1 id="hero-headline">Scalează cabinetul fără să scalezi echipa.</h1>
           <p class="hero-description">
@@ -944,6 +961,20 @@
     const wordDelay = 120; // ms between each word appearing
     const waitTime = 3000; // 3 seconds display time after all words shown
 
+    // Calculate and set fixed height based on tallest headline
+    function setFixedHeight() {
+      let maxHeight = 0;
+
+      headlines.forEach(text => {
+        heroHeadline.innerHTML = text;
+        const height = heroHeadline.offsetHeight;
+        if (height > maxHeight) maxHeight = height;
+      });
+
+      heroHeadline.style.minHeight = maxHeight + 'px';
+      heroHeadline.innerHTML = '';
+    }
+
     function showHeadline(text) {
       const words = text.split(' ');
       heroHeadline.innerHTML = words.map(word => `<span class="word">${word}</span>`).join('');
@@ -976,8 +1007,12 @@
 
     // Start the effect after page load
     document.addEventListener('DOMContentLoaded', function() {
+      setFixedHeight();
       showHeadline(headlines[0]);
     });
+
+    // Recalculate on resize
+    window.addEventListener('resize', setFixedHeight);
   </script>
 </body>
 </html>
