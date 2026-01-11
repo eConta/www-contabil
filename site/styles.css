@@ -50,7 +50,6 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
 
 /* Background gradient overlay */
@@ -70,6 +69,14 @@ body::before {
 .page {
   position: relative;
   z-index: 1;
+}
+
+#site-header {
+  display: contents;
+}
+
+main {
+  overflow-x: hidden;
 }
 
 /* Typography */
@@ -460,7 +467,7 @@ h3 {
   border-top: 1px solid var(--border-medium);
   border-bottom: 1px solid var(--border-medium);
   box-shadow: 0 24px 80px rgba(0,0,0,.5);
-  padding: var(--space-lg) 0;
+  padding: var(--space-sm) 0;
   opacity: 0;
   visibility: hidden;
   transition: all 0.25s ease;
@@ -477,6 +484,101 @@ h3 {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-md);
+}
+
+/* SOLO style mega menu (for Scalează cabinetul) */
+.mega-menu-solo {
+  max-width: 880px;
+  padding: var(--space-md) var(--space-lg);
+}
+
+.mega-menu-layout {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 40px;
+  align-items: start;
+}
+
+.mega-menu-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-menu-main .mega-menu-header {
+  margin-bottom: var(--space-md);
+}
+
+.mega-menu-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 32px;
+}
+
+.mega-menu-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mega-menu-link {
+  display: block;
+  padding: 14px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+  min-width: 200px;
+}
+
+.mega-menu-link:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.mega-menu-link-title {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.mega-menu-link-desc {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.mega-menu-sidebar {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.mega-menu-sidebar-header {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.mega-menu-sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mega-menu-sidebar-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.15s ease;
+}
+
+.mega-menu-sidebar-links a:hover {
+  color: var(--accent-secondary);
 }
 
 .mega-menu-header {
@@ -577,16 +679,41 @@ h3 {
 }
 
 .mobile-menu-panel {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(85vw, 360px);
+  width: 320px;
+  max-width: 85vw;
   background: var(--bg-panel);
   border-left: 1px solid var(--border-medium);
   overflow-y: auto;
+  overflow-x: hidden;
   transform: translateX(100%);
   transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-panel {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+    border-left: none !important;
+  }
+
+  .mobile-menu.active .mobile-menu-panel {
+    transform: none !important;
+  }
+
+  .mobile-menu-panel * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
 }
 
 .mobile-menu.active .mobile-menu-panel {
