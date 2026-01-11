@@ -42,6 +42,24 @@
       font-weight: 800;
       max-width: 900px;
       margin: 0 auto 24px;
+      min-height: 2.2em; /* Fix height for 2 lines */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0 0.25em;
+    }
+
+    .hero h1 .word {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .hero h1 .word.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .hero-description {
@@ -62,9 +80,11 @@
 
     .hero-benefits {
       display: flex;
-      gap: 48px;
+      gap: 24px 32px;
       justify-content: center;
       flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .hero-benefit {
@@ -549,11 +569,11 @@
         <div class="container">
           <div class="hero-badge">
             <span class="hero-badge-dot"></span>
-            Platformă pentru cabinete contabile
+            Platformă pentru cabinete contabile • Integrată cu ANAF • Construită în România
           </div>
-          <h1>Scalează cabinetul fără să scalezi echipa.</h1>
+          <h1 id="hero-headline">Scalează cabinetul fără să scalezi echipa.</h1>
           <p class="hero-description">
-            Automatizarea care îți dă timpul înapoi. eConta preia declarațiile, documentele și termenele. Tu te ocupi de clienți și consultanță.
+            Automatizarea care îți dă timpul înapoi. eConta preia declarațiile, documentele și termenele. Tu te ocupi de clienți și consultanță. Control și predictibilitate.
           </p>
           <div class="hero-cta">
             <a href="programeaza-demo.html" class="btn btn-primary btn-lg">Programează demo</a>
@@ -564,19 +584,31 @@
               <div class="hero-benefit-icon">
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
-              Scalează cabinetul, crește veniturile
+              Mai mulți clienți cu aceeași echipă
             </div>
             <div class="hero-benefit">
               <div class="hero-benefit-icon">
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
-              Control operațional complet
+              Declarații, documente, venituri — totul vizibil
             </div>
             <div class="hero-benefit">
               <div class="hero-benefit-icon">
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
-              Experiență premium pentru clienții tăi
+              Email, WhatsApp, platformă — un singur loc
+            </div>
+            <div class="hero-benefit">
+              <div class="hero-benefit-icon">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Onorarii care cresc odată cu activitatea
+            </div>
+            <div class="hero-benefit">
+              <div class="hero-benefit-icon">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Portal și notificări automate pentru clienți
             </div>
           </div>
         </div>
@@ -896,6 +928,55 @@
     }
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeMobileMenu();
+    });
+
+    // Hero headline word-by-word effect
+    const headlines = [
+      "Scalează cabinetul fără să scalezi echipa.",
+      "Declarații, documente, venituri — un dashboard.",
+      "Preia documente în orice format și din orice sursă.",
+      "Onorarii aliniate cu serviciile prestate. Automat.",
+      "Sistem de operare pentru tine. Serviciu premium clienți."
+    ];
+
+    let currentHeadlineIndex = 0;
+    const heroHeadline = document.getElementById('hero-headline');
+    const wordDelay = 120; // ms between each word appearing
+    const waitTime = 3000; // 3 seconds display time after all words shown
+
+    function showHeadline(text) {
+      const words = text.split(' ');
+      heroHeadline.innerHTML = words.map(word => `<span class="word">${word}</span>`).join('');
+
+      const wordElements = heroHeadline.querySelectorAll('.word');
+      wordElements.forEach((word, index) => {
+        setTimeout(() => {
+          word.classList.add('visible');
+        }, index * wordDelay);
+      });
+
+      // Calculate total animation time + wait time
+      const totalAnimTime = words.length * wordDelay + waitTime;
+      setTimeout(hideAndShowNext, totalAnimTime);
+    }
+
+    function hideAndShowNext() {
+      const wordElements = heroHeadline.querySelectorAll('.word');
+
+      // Hide words in reverse order (optional: or all at once)
+      wordElements.forEach((word) => {
+        word.classList.remove('visible');
+      });
+
+      setTimeout(() => {
+        currentHeadlineIndex = (currentHeadlineIndex + 1) % headlines.length;
+        showHeadline(headlines[currentHeadlineIndex]);
+      }, 400);
+    }
+
+    // Start the effect after page load
+    document.addEventListener('DOMContentLoaded', function() {
+      showHeadline(headlines[0]);
     });
   </script>
 </body>
