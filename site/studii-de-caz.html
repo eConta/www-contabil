@@ -578,8 +578,8 @@
               </div>
 
               <div class="summary-quote">
-                <p class="quote-text">"Cu doi angajați gestionăm acum 100 de firme mai ușor decât gestionam 70 înainte. Diferența o face automatizarea declarațiilor."</p>
-                <p class="quote-author">— <strong>Bianca</strong>, Firmă de contabilitate</p>
+                <p class="quote-text">"Pentru noi, eConta este următoarea mare optimizare în biroul de conta. Clienții își trimit actele cum le e mai ușor (platformă, e-mail, WhatsApp), iar documentele ajung organizate direct în eConta, nu împrăștiate în conversații. Avem actele la timp, totul pe perioade și clienți. Chatul pe document îți schimbă viața: știi exact ce s-a discutat pe factura respectivă. Facturarea e alt nivel — clientul plătește după volumul real, iar tu poți automatiza pachete sau tarif per document. Iar partea de conformare e excelentă: te avertizează dacă apare ceva de depus (390/301 etc.), pentru că se bazează pe documentele încărcate. Dashboard-ul îți arată clar ce e făcut și pentru cine. Mă bucur că, în sfârșit, avem în România o platformă la nivelul acesta — sunt convinsă că va schimba piața serviciilor de contabilitate, în avantajul clienților și al contabililor."</p>
+                <p class="quote-author">— <strong>Meze Bianca Dolores</strong>, CONTEZIA</p>
               </div>
             </div>
 
@@ -734,55 +734,15 @@
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <a href="index.html" class="brand"><img src="https://www.econta.ro/wp-content/uploads/2024/05/tmb6SlMI8Z8yWKghKpDCspfzFM.webp" alt="eConta" class="brand-logo"></a>
-            <p class="footer-tagline">Infrastructura digitală pentru cabinete contabile din România</p>
-          </div>
-          <div class="footer-links">
-            <div class="footer-section">
-              <h4>Platformă</h4>
-              <ul>
-                <li><a href="scaleaza-cabinetul.html">Scalează cabinetul</a></li>
-                <li><a href="automatizare-operationala.html">Automatizare operațională</a></li>
-                <li><a href="documente-anaf.html">Documente & ANAF</a></li>
-                <li><a href="venituri-facturare.html">Venituri și facturare</a></li>
-                <li><a href="clientii-tai.html">Clienții tăi</a></li>
-                <li><a href="cum-functioneaza.html">Cum funcționează</a></li>
-              </ul>
-            </div>
-            <div class="footer-section">
-              <h4>Comparații</h4>
-              <ul>
-                <li><a href="vs-taxdome.html">TaxDome vs eConta</a></li>
-                <li><a href="vs-keez.html">Keez vs eConta</a></li>
-                <li><a href="vs-huddle.html">Huddle vs eConta</a></li>
-                <li><a href="vs-econtaai.html">eContaAI vs eConta</a></li>
-              </ul>
-            </div>
-            <div class="footer-section">
-              <h4>Companie</h4>
-              <ul>
-                <li><a href="despre-noi.html">Despre noi</a></li>
-                <li><a href="preturi.html">Prețuri</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2025 AI DIGITALTRANSFORMATION S.R.L. Toate drepturile rezervate.</p>
-          <div class="footer-legal">
-            <a href="#">Termeni și condiții</a>
-            <a href="#">Politica de confidențialitate</a>
-            <a href="securitate-gdpr.html">GDPR</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <!-- Footer loaded from includes/footer.html -->
+    <div id="site-footer"></div>
+    <script>
+      fetch('includes/footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('site-footer').innerHTML = html;
+        });
+    </script>
 
   </div>
 

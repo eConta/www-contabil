@@ -642,51 +642,15 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <a href="index.html" class="brand"><img src="https://www.econta.ro/wp-content/uploads/2024/05/tmb6SlMI8Z8yWKghKpDCspfzFM.webp" alt="eConta" class="brand-logo"></a>
-            <p class="footer-tagline">Infrastructura digitala pentru cabinete contabile din Romania</p>
-          </div>
-          <div class="footer-links">
-            <div class="footer-section">
-              <h4>Platforma</h4>
-              <ul>
-                <li><a href="scaleaza-cabinetul.html">Scaleaza cabinetul</a></li>
-                <li><a href="automatizare-operationala.html">Automatizare operationala</a></li>
-                <li><a href="documente-anaf.html">Documente & ANAF</a></li>
-                <li><a href="cum-functioneaza.html">Cum functioneaza</a></li>
-              </ul>
-            </div>
-            <div class="footer-section">
-              <h4>Comparatii</h4>
-              <ul>
-                <li><a href="vs-taxdome.html">TaxDome vs eConta</a></li>
-                <li><a href="vs-keez.html">Keez vs eConta</a></li>
-                <li><a href="vs-huddle.html">Huddle vs eConta</a></li>
-              </ul>
-            </div>
-            <div class="footer-section">
-              <h4>Companie</h4>
-              <ul>
-                <li><a href="despre-noi.html">Despre noi</a></li>
-                <li><a href="preturi.html">Preturi</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2025 AI DIGITALTRANSFORMATION S.R.L.</p>
-          <div class="footer-legal">
-            <a href="#">Termeni</a>
-            <a href="#">Confidentialitate</a>
-            <a href="securitate-gdpr.html">GDPR</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <!-- Footer loaded from includes/footer.html -->
+    <div id="site-footer"></div>
+    <script>
+      fetch('includes/footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('site-footer').innerHTML = html;
+        });
+    </script>
 
   </div>
 
