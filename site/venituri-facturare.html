@@ -166,6 +166,21 @@
       color: var(--success);
     }
 
+    /* Section pill for navigation anchors */
+    .section-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: rgba(75,230,177,.1);
+      border: 1px solid rgba(75,230,177,.2);
+      color: #4BE6B1;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
     /* Section intro text */
     .section-intro {
       max-width: 800px;
@@ -943,13 +958,13 @@
         <div class="container">
           <div class="hero-grid">
             <div class="hero-content">
-              <div class="hero-eyebrow">Monetizare automata</div>
-              <h1>Facturarea nu mai e o corvoada. E un rezultat automat.</h1>
-              <p class="hero-problem">
-                In majoritatea cabinetelor contabile, facturarea ramane un proces manual, rigid si greu de adaptat. Pe masura ce firmele cresc, <strong>volumul de documente se schimba, dar onorariile raman neschimbate</strong> - generand dezechilibre si pierderi de venit.
+              <div class="hero-eyebrow">Monetizare eficienta</div>
+              <h1>Monetizare eficienta a serviciilor contabile</h1>
+              <p class="hero-problem" style="font-size: 18px; color: var(--text-primary); font-weight: 500; margin-bottom: 28px; line-height: 1.6;">
+                Politici de pret flexibile si facturare automata, care <strong>alinaza activitatea reala a clientilor cu veniturile cabinetului</strong> - cu un castig real de timp operational.
               </p>
               <p class="hero-problem">
-                eConta transforma facturarea intr-un sistem automatizat si predictibil, care <strong>ajusteaza onorariile in functie de realitatea fiecarui client</strong>.
+                In majoritatea cabinetelor, facturarea ramane rigida: volumul de munca creste, dar onorariile raman neschimbate. eConta rezolva asta automat.
               </p>
               <div class="hero-cta">
                 <a href="programeaza-demo.html" class="btn btn-primary btn-lg">Programeaza demo</a>
@@ -990,7 +1005,7 @@
                 </div>
                 <div class="billing-status-item active">
                   <span>Onorariu calculat automat</span>
-                  <span class="billing-status-value">285 RON</span>
+                  <span class="billing-status-value">132 EUR</span>
                 </div>
                 <div class="billing-status-item pending">
                   <span>Factura generata si trimisa</span>
@@ -1003,10 +1018,11 @@
       </section>
 
       <!-- Section: Politici de pret -->
-      <section class="section" style="background: rgba(26,31,45,.3);">
+      <section id="politici-pret" class="section" style="background: rgba(26,31,45,.3);">
         <div class="container">
           <div class="section-header">
-            <h2>Onorarii flexibile care se adapteaza automat</h2>
+            <div class="section-pill">Politici de pret</div>
+            <h2>Monetizare eficienta a serviciilor contabile</h2>
           </div>
           <div class="section-intro">
             <p>
@@ -1067,9 +1083,10 @@
       </section>
 
       <!-- Section: Facturare automata -->
-      <section class="section">
+      <section id="facturare" class="section">
         <div class="container">
           <div class="section-header">
+            <div class="section-pill">Facturare automata</div>
             <h2>Facturare automata, fara calcule in Excel</h2>
             <p>Timp castigat pentru activitati cu valoare</p>
           </div>
@@ -1134,9 +1151,10 @@
       </section>
 
       <!-- Section: Plati si restante -->
-      <section class="section" style="background: rgba(26,31,45,.3);">
+      <section id="plati" class="section" style="background: rgba(26,31,45,.3);">
         <div class="container">
           <div class="section-header">
+            <div class="section-pill">Plati si restante</div>
             <h2>Incasari mai rapide, fara urmarire manuala</h2>
           </div>
 
@@ -1221,9 +1239,10 @@
       </section>
 
       <!-- Section: Vizibilitate financiara -->
-      <section class="section">
+      <section id="control" class="section">
         <div class="container">
           <div class="section-header">
+            <div class="section-pill">Control financiar</div>
             <h2>Vizibilitate clara asupra veniturilor</h2>
           </div>
 
@@ -1459,8 +1478,8 @@
       <section class="section">
         <div class="container">
           <div class="final-cta">
-            <h2>Facturarea nu mai trebuie sa consume timp</h2>
-            <p>Descopera cum poti automatiza facturarea si elibera timp pentru activitati cu valoare.</p>
+            <h2>Monetizeaza corect serviciile contabile</h2>
+            <p>Descopera cum poti alinia veniturile cu volumul real de munca si elibera timp pentru activitati cu valoare.</p>
             <div class="final-cta-buttons">
               <a href="programeaza-demo.html" class="btn btn-primary btn-lg">Programeaza demo</a>
               <a href="cum-functioneaza.html" class="btn btn-secondary btn-lg">Vezi cum functioneaza</a>
