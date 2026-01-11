@@ -113,6 +113,28 @@
         max-width: 500px;
         margin: 0 auto;
       }
+      .docs-overview-box {
+        padding: 28px 24px !important;
+      }
+      .docs-sources-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+      .two-col-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .three-col-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .five-col-grid {
+        grid-template-columns: 1fr 1fr !important;
+      }
+      .comparison-card {
+        padding: 24px !important;
+      }
+      .comparison-card li {
+        font-size: 13px !important;
+      }
     }
   </style>
 </head>
@@ -181,13 +203,64 @@
       <!-- SECȚIUNEA 1 — Flux inteligent de documente -->
       <section class="section" id="flux">
         <div class="container">
-          <div style="max-width:800px;margin:0 auto 64px auto;text-align:center">
+          <div style="max-width:800px;margin:0 auto 48px auto;text-align:center">
             <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Flux inteligent de documente</h2>
             <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.6">
               Documentele reprezintă punctul de plecare al întregii activități contabile.
-              Problema reală nu este de unde vin, ci <strong>cum sunt preluate, înțelese și integrate</strong> în procesul contabil fără pierderi de informație sau interpretări greșite.
+              Problema reală nu este de unde vin, ci <strong>cum sunt preluate, înțelese și integrate</strong> în procesul contabil.
             </p>
           </div>
+
+          <!-- Box full-width: Ce documente vin și de la cine -->
+          <div class="docs-overview-box" style="padding:40px 48px;border-radius:20px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.1);margin-bottom:48px">
+            <div style="margin-bottom:32px">
+              <h3 style="font-size:24px;margin-bottom:12px">Nu doar fișiere de la ANAF</h3>
+              <p style="font-size:16px;color:rgba(244,246,255,.6);line-height:1.6;margin:0">
+                În mod tradițional, toate aceste documente ajung fragmentate — în emailuri, mesaje WhatsApp, foldere locale și sisteme diferite.
+              </p>
+            </div>
+            <div>
+              <div class="docs-sources-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+                <div>
+                  <p style="font-size:12px;text-transform:uppercase;letter-spacing:1px;color:rgba(244,246,255,.5);margin-bottom:12px">De la antreprenor</p>
+                  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
+                    <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(244,246,255,.8)">
+                      <span style="width:6px;height:6px;border-radius:50%;background:#5A86FF"></span>Facturi și chitanțe
+                    </li>
+                    <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(244,246,255,.8)">
+                      <span style="width:6px;height:6px;border-radius:50%;background:#5A86FF"></span>Extrase de cont
+                    </li>
+                    <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(244,246,255,.8)">
+                      <span style="width:6px;height:6px;border-radius:50%;background:#5A86FF"></span>Contracte și acte
+                    </li>
+                    <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(244,246,255,.8)">
+                      <span style="width:6px;height:6px;border-radius:50%;background:#5A86FF"></span>Documente diverse
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <p style="font-size:12px;text-transform:uppercase;letter-spacing:1px;color:rgba(244,246,255,.5);margin-bottom:12px">De la ANAF / Contabil</p>
+                  <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
+                    <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(244,246,255,.8)">
+                      <span style="width:6px;height:6px;border-radius:50%;background:#FF4FBF"></span>eFacturi
+                    </li>
+                    <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(244,246,255,.8)">
+                      <span style="width:6px;height:6px;border-radius:50%;background:#FF4FBF"></span>Notificări SPV
+                    </li>
+                    <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(244,246,255,.8)">
+                      <span style="width:6px;height:6px;border-radius:50%;background:#FF4FBF"></span>Declarații depuse
+                    </li>
+                    <li style="display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(244,246,255,.8)">
+                      <span style="width:6px;height:6px;border-radius:50%;background:#4BE6B1"></span>Livrabile contabile
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ce se întâmplă cu toate acestea -->
+          <p style="text-align:center;font-size:14px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(244,246,255,.5);margin-bottom:24px">Ce se întâmplă cu toate acestea în eConta</p>
 
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-bottom:64px">
 
@@ -312,11 +385,35 @@
               </div>
             </div>
           </div>
+
+          <!-- 1.6 Eficiență + Autonomie + Punchline -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:48px auto 0 auto">
+            <div style="padding:28px;border-radius:14px;background:rgba(90,134,255,.08);border:1px solid rgba(90,134,255,.2)">
+              <h4 style="font-size:16px;margin-bottom:12px;color:#5A86FF">Pentru cabinet</h4>
+              <p style="font-size:15px;color:rgba(244,246,255,.8);line-height:1.6;margin:0">
+                Contabilul lucrează cu informație clară și structurată, fără a pierde timp cu organizarea manuală sau căutări repetitive.
+              </p>
+            </div>
+            <div style="padding:28px;border-radius:14px;background:rgba(75,230,177,.08);border:1px solid rgba(75,230,177,.2)">
+              <h4 style="font-size:16px;margin-bottom:12px;color:#4BE6B1">Pentru client</h4>
+              <p style="font-size:15px;color:rgba(244,246,255,.8);line-height:1.6;margin:0">
+                Antreprenorul accesează rapid documentele trimise, livrabilele primite și documentele ANAF — fără să mai ceară retrimiteri.
+              </p>
+            </div>
+          </div>
+
+          <!-- Punchline Section 1 -->
+          <div style="max-width:700px;margin:48px auto 0 auto;text-align:center;padding:32px;border-radius:12px;background:rgba(26,31,45,.4);border:1px solid rgba(255,255,255,.06)">
+            <p style="font-size:18px;color:rgba(244,246,255,.9);line-height:1.6;margin:0;font-weight:500">
+              Un singur flux, de la document brut la informație contabilă clară, validată și colaborativă.
+            </p>
+          </div>
+
         </div>
       </section>
 
       <!-- SECȚIUNEA 2 — eFactura & SPV -->
-      <section class="section" style="background:rgba(15,18,32,.6)">
+      <section id="efactura-spv" class="section" style="background:rgba(15,18,32,.6)">
         <div class="container">
           <div style="max-width:800px;margin:0 auto 64px auto;text-align:center">
             <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">eFactura & SPV integrate nativ</h2>
@@ -326,7 +423,7 @@
             </p>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px">
+          <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px">
 
             <!-- eFactura -->
             <div style="padding:40px;border-radius:16px;background:rgba(26,31,45,.6);border:1px solid rgba(255,255,255,.1)">
@@ -411,6 +508,46 @@
 
           </div>
 
+          <!-- 2.4 Cereri ANAF automatizate -->
+          <div style="max-width:900px;margin:48px auto 0 auto;padding:40px;border-radius:16px;background:rgba(26,31,45,.6);border:1px solid rgba(255,255,255,.1)">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px">
+              <div style="width:56px;height:56px;border-radius:14px;background:rgba(255,191,79,.1);border:1px solid rgba(255,191,79,.2);display:flex;align-items:center;justify-content:center">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                  <path d="M8 6H24M8 12H24M8 18H18" stroke="#FFBF4F" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M22 16L26 20L22 24" stroke="#FFBF4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h3 style="margin:0 0 4px 0">Cereri către ANAF, automatizate</h3>
+                <p style="margin:0;font-size:14px;color:rgba(244,246,255,.6)">Nu mai pierzi timp cu operațiuni repetitive</p>
+              </div>
+            </div>
+            <p style="color:rgba(244,246,255,.8);line-height:1.6;margin-bottom:20px">
+              Pe lângă cererile manuale, eConta generează automat cererile uzuale către ANAF, direct din platformă:
+            </p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+              <div style="padding:16px;border-radius:10px;background:rgba(255,191,79,.08);border:1px solid rgba(255,191,79,.15);text-align:center">
+                <p style="font-size:14px;color:rgba(244,246,255,.9);margin:0;font-weight:500">Vector fiscal</p>
+              </div>
+              <div style="padding:16px;border-radius:10px;background:rgba(255,191,79,.08);border:1px solid rgba(255,191,79,.15);text-align:center">
+                <p style="font-size:14px;color:rgba(244,246,255,.9);margin:0;font-weight:500">Fișa plătitor</p>
+              </div>
+              <div style="padding:16px;border-radius:10px;background:rgba(255,191,79,.08);border:1px solid rgba(255,191,79,.15);text-align:center">
+                <p style="font-size:14px;color:rgba(244,246,255,.9);margin:0;font-weight:500">Alte cereri recurente</p>
+              </div>
+            </div>
+            <p style="font-size:14px;color:rgba(244,246,255,.6);margin-top:16px;margin-bottom:0">
+              Cererile sunt inițiate, urmărite și arhivate în același flux — fără accesări separate sau reluări inutile.
+            </p>
+          </div>
+
+          <!-- Punchline Section 2 -->
+          <div style="max-width:700px;margin:48px auto 0 auto;text-align:center;padding:32px;border-radius:12px;background:rgba(26,31,45,.4);border:1px solid rgba(255,255,255,.06)">
+            <p style="font-size:18px;color:rgba(244,246,255,.9);line-height:1.6;margin:0;font-weight:500">
+              Relația cu ANAF devine un flux bidirecțional, automatizat și controlat — nu o sursă constantă de întreruperi.
+            </p>
+          </div>
+
           <!-- CTA intermediar -->
           <div style="text-align:center;margin-top:48px">
             <a href="programeaza-demo.html" class="btn btn-primary">Vezi integrarea ANAF în acțiune</a>
@@ -420,7 +557,7 @@
       </section>
 
       <!-- SECȚIUNEA 3 — Arhivare -->
-      <section class="section">
+      <section id="arhivare" class="section">
         <div class="container">
           <div style="max-width:800px;margin:0 auto 64px auto;text-align:center">
             <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">Arhivare electronică sigură și completă</h2>
@@ -431,7 +568,7 @@
           </div>
 
           <div style="max-width:900px;margin:0 auto">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px">
+            <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px">
 
               <div style="padding:32px;border-radius:16px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.1)">
                 <div style="width:56px;height:56px;border-radius:14px;background:rgba(90,134,255,.1);border:1px solid rgba(90,134,255,.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
@@ -502,6 +639,30 @@
                 </div>
               </div>
             </div>
+
+            <!-- 3.4 Siguranță + Liniște -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px">
+              <div style="padding:28px;border-radius:14px;background:rgba(75,230,177,.08);border:1px solid rgba(75,230,177,.2)">
+                <h4 style="font-size:16px;margin-bottom:12px;color:#4BE6B1">Pentru antreprenor</h4>
+                <p style="font-size:15px;color:rgba(244,246,255,.8);line-height:1.6;margin:0">
+                  Acces sigur și permanent la toate documentele firmei. Nu mai trebuie să ceară retrimiteri sau să caute prin emailuri vechi.
+                </p>
+              </div>
+              <div style="padding:28px;border-radius:14px;background:rgba(90,134,255,.08);border:1px solid rgba(90,134,255,.2)">
+                <h4 style="font-size:16px;margin-bottom:12px;color:#5A86FF">Pentru cabinet</h4>
+                <p style="font-size:15px;color:rgba(244,246,255,.8);line-height:1.6;margin:0">
+                  Control, conformitate și eliminarea situațiilor în care documentele trebuie retrimise sau reconstruite.
+                </p>
+              </div>
+            </div>
+
+            <!-- Punchline Section 3 -->
+            <div style="margin-top:48px;text-align:center;padding:32px;border-radius:12px;background:rgba(26,31,45,.4);border:1px solid rgba(255,255,255,.06)">
+              <p style="font-size:18px;color:rgba(244,246,255,.9);line-height:1.6;margin:0;font-weight:500">
+                Arhivarea devine un rezultat al procesului, nu o sarcină separată.
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
@@ -509,35 +670,79 @@
       <!-- De ce eConta -->
       <section class="section" style="background:rgba(15,18,32,.6)">
         <div class="container">
-          <div style="max-width:900px;margin:0 auto;text-align:center">
-            <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:32px">De ce eConta</h2>
-
-            <div style="margin-bottom:48px;text-align:left">
-              <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.7;margin-bottom:24px">
-                eConta transformă modul în care documentele sunt gestionate într-un cabinet contabil:
-                de la haos și fragmentare, la un flux unic, automatizat și sigur, care acoperă
-                <strong>documentele firmei, relația cu ANAF și arhivarea pe termen lung</strong>.
+          <div style="max-width:1000px;margin:0 auto">
+            <div style="text-align:center;margin-bottom:48px">
+              <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:16px">De ce eConta</h2>
+              <p style="font-size:18px;color:rgba(244,246,255,.7);line-height:1.7;max-width:700px;margin:0 auto">
+                eConta transformă modul în care documentele sunt gestionate: de la fragmentare, la un flux unic care acoperă <strong>documente, ANAF și arhivare</strong>.
               </p>
             </div>
 
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:48px;text-align:left">
-              <div style="padding:24px;border-radius:12px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.08)">
-                <h4 style="margin-bottom:12px;color:#5A86FF">Pentru Cabinet</h4>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
-                  <li style="font-size:14px;color:rgba(244,246,255,.75)">• Mai puțin timp pe organizare</li>
-                  <li style="font-size:14px;color:rgba(244,246,255,.75)">• Mai puține riscuri operaționale</li>
-                  <li style="font-size:14px;color:rgba(244,246,255,.75)">• Control și predictibilitate</li>
+            <!-- 3 categorii detaliate -->
+            <div class="three-col-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px">
+
+              <!-- 1. Procesare inteligentă -->
+              <div style="padding:32px;border-radius:16px;background:rgba(26,31,45,.5);border:1px solid rgba(90,134,255,.2)">
+                <div style="width:48px;height:48px;border-radius:12px;background:rgba(90,134,255,.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#5A86FF" stroke-width="2"/><path d="M12 8V12L14 14" stroke="#5A86FF" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <h4 style="font-size:18px;margin-bottom:16px;color:#5A86FF">Procesare inteligentă</h4>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+                  <li style="font-size:14px;color:rgba(244,246,255,.8);line-height:1.5">Documente de la client, livrabile și ANAF — într-un singur flux</li>
+                  <li style="font-size:14px;color:rgba(244,246,255,.8);line-height:1.5">AI identifică, categorisește și sumarizează</li>
+                  <li style="font-size:14px;color:rgba(244,246,255,.8);line-height:1.5">Clarificări gestionate direct în context</li>
                 </ul>
               </div>
-              <div style="padding:24px;border-radius:12px;background:rgba(26,31,45,.5);border:1px solid rgba(255,255,255,.08)">
-                <h4 style="margin-bottom:12px;color:#4BE6B1">Pentru Client</h4>
-                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
-                  <li style="font-size:14px;color:rgba(244,246,255,.75)">• Mai puțină fricțiune</li>
-                  <li style="font-size:14px;color:rgba(244,246,255,.75)">• Siguranță și transparență</li>
-                  <li style="font-size:14px;color:rgba(244,246,255,.75)">• Acces rapid la informație</li>
+
+              <!-- 2. Integrare ANAF -->
+              <div style="padding:32px;border-radius:16px;background:rgba(26,31,45,.5);border:1px solid rgba(255,79,191,.2)">
+                <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,79,191,.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="#FF4FBF" stroke-width="2"/><path d="M3 10H21" stroke="#FF4FBF" stroke-width="2"/></svg>
+                </div>
+                <h4 style="font-size:18px;margin-bottom:16px;color:#FF4FBF">Integrare completă ANAF</h4>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+                  <li style="font-size:14px;color:rgba(244,246,255,.8);line-height:1.5">Import automat eFactura, fără pierderi</li>
+                  <li style="font-size:14px;color:rgba(244,246,255,.8);line-height:1.5">Monitorizare SPV + alerte automate</li>
+                  <li style="font-size:14px;color:rgba(244,246,255,.8);line-height:1.5">Cereri automate: vector fiscal, fișa plătitor</li>
+                </ul>
+              </div>
+
+              <!-- 3. Arhivare -->
+              <div style="padding:32px;border-radius:16px;background:rgba(26,31,45,.5);border:1px solid rgba(75,230,177,.2)">
+                <div style="width:48px;height:48px;border-radius:12px;background:rgba(75,230,177,.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M22 12V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4H10" stroke="#4BE6B1" stroke-width="2" stroke-linecap="round"/><path d="M16 4H22V10" stroke="#4BE6B1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4L12 14" stroke="#4BE6B1" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <h4 style="font-size:18px;margin-bottom:16px;color:#4BE6B1">Arhivare sigură și completă</h4>
+                <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+                  <li style="font-size:14px;color:rgba(244,246,255,.8);line-height:1.5">Automată în cloud + local la cabinet</li>
+                  <li style="font-size:14px;color:rgba(244,246,255,.8);line-height:1.5">Declarații: XML + PDF + recipisă</li>
+                  <li style="font-size:14px;color:rgba(244,246,255,.8);line-height:1.5">eFactura arhivată complet (PDF + XML)</li>
                 </ul>
               </div>
             </div>
+
+            <!-- Rezultatul final -->
+            <div style="padding:32px 40px;border-radius:16px;background:radial-gradient(600px 300px at 50% 0%,rgba(90,134,255,.1),transparent 60%),rgba(26,31,45,.6);border:1px solid rgba(255,255,255,.1)">
+              <h4 style="font-size:18px;margin-bottom:20px;text-align:center">Rezultatul final</h4>
+              <div class="five-col-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;text-align:center">
+                <div>
+                  <p style="font-size:14px;color:rgba(244,246,255,.8);margin:0">Mai puțin timp pe organizare</p>
+                </div>
+                <div>
+                  <p style="font-size:14px;color:rgba(244,246,255,.8);margin:0">Mai puține riscuri operaționale</p>
+                </div>
+                <div>
+                  <p style="font-size:14px;color:rgba(244,246,255,.8);margin:0">Mai puțină fricțiune cu clientul</p>
+                </div>
+                <div>
+                  <p style="font-size:14px;color:rgba(244,246,255,.8);margin:0">Control și predictibilitate</p>
+                </div>
+                <div>
+                  <p style="font-size:14px;color:rgba(244,246,255,.8);margin:0">Siguranță și transparență</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -552,9 +757,9 @@
             </p>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:0 auto">
+          <div class="two-col-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1000px;margin:0 auto">
             <!-- Fără eConta -->
-            <div style="padding:32px;border-radius:16px;background:rgba(255,107,138,.06);border:1px solid rgba(255,107,138,.2)">
+            <div class="comparison-card" style="padding:32px;border-radius:16px;background:rgba(255,107,138,.06);border:1px solid rgba(255,107,138,.2)">
               <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
                 <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,107,138,.15);display:flex;align-items:center;justify-content:center">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="#FF6B8A" stroke-width="2.5" stroke-linecap="round"/></svg>
@@ -606,7 +811,7 @@
             </div>
 
             <!-- Cu eConta -->
-            <div style="padding:32px;border-radius:16px;background:rgba(75,230,177,.06);border:1px solid rgba(75,230,177,.2)">
+            <div class="comparison-card" style="padding:32px;border-radius:16px;background:rgba(75,230,177,.06);border:1px solid rgba(75,230,177,.2)">
               <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
                 <div style="width:36px;height:36px;border-radius:10px;background:rgba(75,230,177,.15);display:flex;align-items:center;justify-content:center">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="#4BE6B1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>

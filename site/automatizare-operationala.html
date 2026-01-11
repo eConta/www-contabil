@@ -587,6 +587,324 @@
       font-weight: 600;
     }
 
+    /* Value chain - vertical flow */
+    .value-chain {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 40px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .value-chain-box {
+      position: relative;
+      background: rgba(26,31,45,.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+    }
+
+    .value-chain-box::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid var(--border-medium);
+    }
+
+    .value-chain-box:last-child::after {
+      display: none;
+    }
+
+    .value-chain-box.need {
+      border-color: rgba(255,107,138,.3);
+      background: rgba(255,107,138,.05);
+    }
+
+    .value-chain-box.solution {
+      border-color: rgba(90,134,255,.3);
+      background: rgba(90,134,255,.05);
+    }
+
+    .value-chain-box.benefit-cabinet {
+      border-color: rgba(75,230,177,.3);
+      background: rgba(75,230,177,.05);
+    }
+
+    .value-chain-box.benefit-client {
+      border-color: rgba(255,79,191,.3);
+      background: rgba(255,79,191,.05);
+    }
+
+    .value-chain-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .value-chain-box.need .value-chain-label { color: #FF6B8A; }
+    .value-chain-box.solution .value-chain-label { color: var(--accent-secondary); }
+    .value-chain-box.benefit-cabinet .value-chain-label { color: var(--success); }
+    .value-chain-box.benefit-client .value-chain-label { color: var(--accent-primary); }
+
+    .value-chain-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .value-chain-content {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .value-chain-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .value-chain-content li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .value-chain-content li svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .value-chain-content li strong {
+      color: var(--text-primary);
+    }
+
+    .value-chain-box.need .value-chain-content li svg { color: #FF6B8A; }
+    .value-chain-box.solution .value-chain-content li svg { color: var(--accent-secondary); }
+    .value-chain-box.benefit-cabinet .value-chain-content li svg { color: var(--success); }
+    .value-chain-box.benefit-client .value-chain-content li svg { color: var(--accent-primary); }
+
+    /* Two column grid for benefits */
+    .value-chain-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .value-chain-column h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .value-chain-box.benefit-cabinet .value-chain-column h4 { color: var(--success); }
+    .value-chain-box.benefit-client .value-chain-column h4 { color: var(--accent-primary); }
+
+    /* Split card - title left, content right */
+    .split-card {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      background: rgba(26,31,45,.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .split-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .split-card-left {
+      border-right: 1px solid var(--border-subtle);
+      padding-right: 32px;
+    }
+
+    .split-card-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent-secondary);
+      margin-bottom: 12px;
+    }
+
+    .split-card-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .split-card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .split-card-right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Two column layout inside split card */
+    .split-card-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .split-card-column h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .split-card-column.accountant h4 { color: var(--accent-secondary); }
+    .split-card-column.management h4 { color: var(--accent-primary); }
+
+    .split-card-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .split-card-column li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .split-card-column li svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .split-card-column.accountant li svg { color: var(--accent-secondary); }
+    .split-card-column.management li svg { color: var(--accent-primary); }
+
+    /* Dashboard grid inside split card */
+    .split-card-dashboard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .split-card-dashboard-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: rgba(90,134,255,.06);
+      border-radius: 10px;
+    }
+
+    .split-card-dashboard-item svg {
+      color: var(--accent-secondary);
+      flex-shrink: 0;
+    }
+
+    .split-card-dashboard-item span {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .split-card-hook {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--accent-secondary);
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .split-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .split-card-left {
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        padding-right: 0;
+        padding-bottom: 24px;
+      }
+      .split-card-columns {
+        grid-template-columns: 1fr;
+      }
+      .split-card-dashboard {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .split-card-dashboard {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Value chain info box */
+    .value-chain-summary {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 32px;
+      background: linear-gradient(135deg, rgba(90,134,255,.08), rgba(255,79,191,.08));
+      border: 1px solid rgba(90,134,255,.2);
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .value-chain-summary p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .value-chain-summary strong {
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 600px) {
+      .value-chain-box {
+        padding: 24px;
+      }
+      .value-chain-content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* Comparison table */
     .comparison-table {
       max-width: 1000px;
@@ -714,6 +1032,254 @@
       flex-wrap: wrap;
     }
 
+    /* Split layout - headline left, content right */
+    .split-section {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .split-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .split-left {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+
+    .split-left h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .split-left p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .split-right > p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* Feature cards grid */
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .feature-card {
+      padding: 16px 18px;
+      background: rgba(26,31,45,.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .feature-card svg {
+      color: var(--accent-secondary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-card.green svg { color: var(--success); }
+    .feature-card.pink svg { color: var(--accent-primary); }
+
+    /* Workflow expanded card */
+    .workflow-expanded {
+      background: rgba(26,31,45,.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 32px;
+    }
+
+    .workflow-expanded-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .workflow-expanded-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .workflow-expanded-icon.blue { background: rgba(90,134,255,.12); color: var(--accent-secondary); }
+    .workflow-expanded-icon.green { background: rgba(75,230,177,.12); color: var(--success); }
+    .workflow-expanded-icon.pink { background: rgba(255,79,191,.12); color: var(--accent-primary); }
+    .workflow-expanded-icon.purple { background: rgba(123,92,255,.12); color: var(--accent-purple); }
+    .workflow-expanded-icon.yellow { background: rgba(255,191,79,.12); color: #FFBF4F; }
+
+    .workflow-expanded-header h3 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .workflow-expanded-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .workflow-expanded > .intro-text {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 800px;
+    }
+
+    /* Hook callout within sections */
+    .hook-callout {
+      padding: 20px 24px;
+      background: rgba(90,134,255,.06);
+      border-left: 3px solid var(--accent-secondary);
+      border-radius: 0 12px 12px 0;
+      margin: 24px 0;
+    }
+
+    .hook-callout p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .hook-callout strong {
+      color: var(--accent-secondary);
+    }
+
+    .hook-callout.green {
+      background: rgba(75,230,177,.06);
+      border-color: var(--success);
+    }
+
+    .hook-callout.green strong {
+      color: var(--success);
+    }
+
+    /* Inline link for cross-references */
+    .link-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      margin-top: 16px;
+    }
+
+    .link-inline:hover {
+      color: var(--accent-primary);
+      text-decoration: underline;
+    }
+
+    .link-inline svg {
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .link-inline:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* Insight callout - centered box */
+    .insight-callout {
+      max-width: 800px;
+      margin: 48px auto 0;
+      padding: 28px 32px;
+      background: rgba(90,134,255,.08);
+      border: 1px solid rgba(90,134,255,.15);
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .insight-callout p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .insight-callout strong {
+      color: var(--accent-secondary);
+    }
+
+    /* Operational benefits box */
+    .operational-benefits {
+      background: rgba(75,230,177,.05);
+      border: 1px solid rgba(75,230,177,.15);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-top: 32px;
+    }
+
+    .operational-benefits h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--success);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .operational-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .operational-benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: rgba(75,230,177,.06);
+      border-radius: 10px;
+    }
+
+    .operational-benefit-item svg {
+      color: var(--success);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .operational-benefit-item span {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .hero-grid {
@@ -759,12 +1325,27 @@
         gap: 16px;
       }
 
+      /* Keep automation flow horizontal on mobile - just make it compact */
       .automation-flow {
-        flex-direction: column;
+        gap: 6px;
+      }
+
+      .flow-step {
+        padding: 10px 6px;
+      }
+
+      .flow-step-icon {
+        width: 28px;
+        height: 28px;
+        margin-bottom: 4px;
+      }
+
+      .flow-step-label {
+        font-size: 11px;
       }
 
       .flow-arrow {
-        transform: rotate(90deg);
+        font-size: 14px;
       }
 
       .problem-grid,
@@ -788,6 +1369,256 @@
 
       .final-cta {
         padding: 48px 24px;
+      }
+
+      .workflow-expanded {
+        padding: 24px;
+      }
+
+      .split-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .split-left {
+        position: static;
+      }
+
+      .feature-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .operational-benefits {
+        padding: 20px;
+      }
+
+      .operational-benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Flow Timeline Styles */
+    .flow-timeline {
+      position: relative;
+      padding-left: 0;
+    }
+
+    .flow-step-box {
+      position: relative;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      padding: 32px 0;
+      margin-bottom: 24px;
+    }
+
+    .flow-step-box::before {
+      content: "";
+      position: absolute;
+      left: 140px;
+      top: 100%;
+      width: 2px;
+      height: 24px;
+      border-left: 2px dashed rgba(90,134,255,.3);
+    }
+
+    .flow-step-box:last-child::before {
+      display: none;
+    }
+
+    .flow-step-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 8px;
+    }
+
+    .flow-step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(90,134,255,.15);
+      border: 1px solid rgba(90,134,255,.3);
+      color: var(--accent-secondary);
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .flow-step-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .flow-step-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .flow-step-right {
+      background: rgba(26,31,45,.5);
+      border: 1px solid var(--border-medium);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .flow-step-right p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .flow-step-right p:last-child {
+      margin-bottom: 0;
+    }
+
+    .flow-substeps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .flow-substep {
+      display: flex;
+      gap: 16px;
+      padding: 16px;
+      background: rgba(26,31,45,.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+    }
+
+    .flow-substep-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .flow-substep-icon.pink {
+      background: rgba(255,79,191,.1);
+      color: var(--accent-primary);
+    }
+
+    .flow-substep-icon.blue {
+      background: rgba(90,134,255,.1);
+      color: var(--accent-secondary);
+    }
+
+    .flow-substep-icon.green {
+      background: rgba(75,230,177,.1);
+      color: var(--success);
+    }
+
+    .flow-substep-content h5 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .flow-substep-content p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .flow-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .flow-mini-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 10px 12px;
+      background: rgba(26,31,45,.4);
+      border-radius: 8px;
+    }
+
+    .flow-mini-item svg {
+      color: var(--success);
+      flex-shrink: 0;
+    }
+
+    /* Gradient punchline box (reusable) */
+    .gradient-punchline-box {
+      max-width: 720px;
+      margin: 48px auto 0;
+      padding: 40px 36px;
+      background: linear-gradient(135deg, rgba(255,79,191,.08) 0%, rgba(90,134,255,.08) 100%);
+      border: 1px solid rgba(255,79,191,.2);
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gradient-punchline-box::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      left: -40px;
+      width: 150px;
+      height: 150px;
+      background: rgba(255,79,191,.12);
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+
+    .gradient-punchline-box::after {
+      content: "";
+      position: absolute;
+      bottom: -40px;
+      right: -40px;
+      width: 150px;
+      height: 150px;
+      background: rgba(90,134,255,.12);
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+
+    .gradient-punchline-box p {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 700;
+      line-height: 1.4;
+      margin: 0;
+      background: linear-gradient(135deg, #FF4FBF 0%, #5A86FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    @media (max-width: 900px) {
+      .flow-step-box {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .flow-step-box::before {
+        display: none;
+      }
+
+      .flow-mini-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -886,35 +1717,33 @@
         </div>
       </section>
 
-      <!-- Section: De ce automatizarea -->
-      <section class="section" style="background: rgba(26,31,45,.3);">
+      <!-- Section 1: De ce este necesară automatizarea -->
+      <section class="section" id="de-ce-automatizarea" style="background: rgba(26,31,45,.3);">
         <div class="container">
           <div class="section-header">
             <h2>De ce automatizarea devine esentiala</h2>
           </div>
           <div class="section-intro">
             <p>
-              Pe masura ce cabinetul creste, portofoliul de clienti se multiplica exponential. <strong>Gestiunea manuala devine ineficienta</strong> - obligatii diferite pentru fiecare client, documente primite prin canale multiple, termene suprapuse, informatii fragmentate.
-            </p>
-            <p style="margin-top: 16px;">
-              Fara centralizare, <strong>informatia se fragmenteaza si controlul se pierde</strong>. Automatizarea trebuie sa fie in nucleul operatiunilor, acolo unde conteaza - mentinand eficienta, predictibilitatea si siguranta indiferent de dimensiunea portofoliului.
+              Odata cu cresterea portofoliului, volumul de documente si obligatii creste exponential. Fara un <strong>sistem de operare</strong> care sa alinieze si standardizeze, informatia se fragmenteaza si controlul se pierde.
             </p>
           </div>
 
-          <div class="problem-grid">
+          <!-- Probleme unificate - grid 4 carduri -->
+          <div class="problem-grid" style="margin-top: 48px;">
             <div class="problem-card">
               <div class="problem-card-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2"/><path d="M14 2V8H20" stroke="currentColor" stroke-width="2"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2"/><path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2"/></svg>
               </div>
-              <h4>Documente dispersate</h4>
-              <p>Email, WhatsApp, portal - informatia vine din multiple surse</p>
+              <h4>Canale multiple</h4>
+              <p>Email, WhatsApp, portal - informatia vine dispersat</p>
             </div>
             <div class="problem-card">
               <div class="problem-card-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 2V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 2V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 10H21" stroke="currentColor" stroke-width="2"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 2V6M8 2V6M3 10H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </div>
               <h4>Termene suprapuse</h4>
-              <p>Fiecare client cu obligatii si deadline-uri diferite</p>
+              <p>Obligatii diferite, deadline-uri diferite</p>
             </div>
             <div class="problem-card">
               <div class="problem-card-icon">
@@ -931,361 +1760,446 @@
               <p>Declaratii ratate, obligatii uitate</p>
             </div>
           </div>
+
         </div>
       </section>
 
-      <!-- Section: Fluxuri de automatizare -->
-      <section class="section">
+      <!-- Punchline Box -->
+      <section style="padding: 64px 0 80px;">
+        <div class="container">
+          <div style="max-width: 720px; margin: 0 auto; padding: 56px 48px; background: linear-gradient(135deg, rgba(255,79,191,.08) 0%, rgba(90,134,255,.08) 100%); border: 1px solid rgba(255,79,191,.2); border-radius: 24px; text-align: center; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -60px; left: -60px; width: 200px; height: 200px; background: rgba(255,79,191,.15); border-radius: 50%; filter: blur(80px);"></div>
+            <div style="position: absolute; bottom: -60px; right: -60px; width: 200px; height: 200px; background: rgba(90,134,255,.15); border-radius: 50%; filter: blur(80px);"></div>
+            <p style="font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1.2; margin: 0; background: linear-gradient(135deg, #FF4FBF 0%, #5A86FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; z-index: 1;">
+              Automatizarea nu mai este optionala.
+            </p>
+            <p style="font-size: 17px; color: var(--text-secondary); margin-top: 20px; position: relative; z-index: 1;">
+              eConta este sistemul de operare pentru cabinetul tau.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Fluxul de automatizare -->
+      <section class="section" id="ce-automatizeaza">
         <div class="container">
           <div class="section-header">
             <h2>Ce automatizeaza eConta</h2>
-            <p>5 fluxuri critice, integrate intr-un singur ecosistem</p>
+            <p>De la documente la obligatii de plata — un flux unitar, controlat</p>
           </div>
 
-          <div class="workflow-grid">
-            <!-- 1. Preluare documente -->
-            <div class="workflow-card">
-              <div class="workflow-card-header">
-                <div class="workflow-card-icon blue">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2"/><path d="M14 2V8H20" stroke="currentColor" stroke-width="2"/><path d="M12 18V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M9 15L12 12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <h4>Preluare documente</h4>
+          <!-- Flow Timeline -->
+          <div class="flow-timeline">
+
+            <!-- Step 1: Preluare documente -->
+            <div class="flow-step-box">
+              <div class="flow-step-left">
+                <div class="flow-step-number">1</div>
+                <h3 class="flow-step-title">Preluare documente</h3>
+                <p class="flow-step-subtitle">Punctul de pornire al oricarui flux contabil</p>
               </div>
-              <p>Unifica documentele din toate sursele folosite de clienti - email, WhatsApp, portal.</p>
-              <div class="workflow-features">
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Eliminare pierderi de informatii</span>
-                </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Integrare directa in flux</span>
-                </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Fara interventie manuala</span>
+              <div class="flow-step-right">
+                <p>eConta unifica documentele primite din toate canalele — email, WhatsApp, upload direct — si le integreaza in fluxul operational.</p>
+                <a href="documente-anaf.html" class="link-inline">
+                  Vezi detalii in Documente & ANAF
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Step 2: Identificare si depunere declaratii -->
+            <div class="flow-step-box">
+              <div class="flow-step-left">
+                <div class="flow-step-number">2</div>
+                <h3 class="flow-step-title">Identificare si depunere declaratii</h3>
+                <p class="flow-step-subtitle">Eliminam riscul declaratiilor omise sau tardive</p>
+              </div>
+              <div class="flow-step-right">
+                <p><strong>eConta este singura platforma din Romania</strong> care identifica obligatiile declarative depasind simpla citire a vectorului fiscal. Coreleaza vector fiscal, cifra de afaceri, tip firma si documente recurente pentru a semnala declaratiile relevante — inclusiv situatii care nu pot fi deduse doar din vectorul fiscal.</p>
+
+                <div class="flow-substeps">
+                  <div class="flow-substep">
+                    <div class="flow-substep-icon pink">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="flow-substep-content">
+                      <h5>Identificare inteligenta</h5>
+                      <p>Depasim vectorul fiscal — corelam surse multiple</p>
+                    </div>
+                  </div>
+                  <div class="flow-substep">
+                    <div class="flow-substep-icon blue">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div class="flow-substep-content">
+                      <h5>Depunere simplificata</h5>
+                      <p>Drag & drop, trimitere directa, flux urmarit cap-coada</p>
+                    </div>
+                  </div>
+                  <div class="flow-substep">
+                    <div class="flow-substep-icon pink">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 9V13M12 17H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10.29 3.86L1.82 18A2 2 0 0 0 3.54 21H20.46A2 2 0 0 0 22.18 18L13.71 3.86A2 2 0 0 0 10.29 3.86Z" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <div class="flow-substep-content">
+                      <h5>Gestionare exceptii</h5>
+                      <p>Erori, respingeri ANAF, redepuneri — nimic nu dispare</p>
+                    </div>
+                  </div>
+                  <div class="flow-substep">
+                    <div class="flow-substep-icon green">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 8V21H3V8" stroke="currentColor" stroke-width="2"/><path d="M1 3H23V8H1V3Z" stroke="currentColor" stroke-width="2"/><path d="M10 12H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="flow-substep-content">
+                      <h5>Arhivare automata</h5>
+                      <p>Cloud si local, istoric complet pe firma si perioada</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- 2. Identificare declaratii -->
-            <div class="workflow-card">
-              <div class="workflow-card-header">
-                <div class="workflow-card-icon pink">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <h4>Identificare si depunere declaratii</h4>
+            <!-- Step 3: Obligatii de plata -->
+            <div class="flow-step-box">
+              <div class="flow-step-left">
+                <div class="flow-step-number">3</div>
+                <h3 class="flow-step-title">Obligatii de plata</h3>
+                <p class="flow-step-subtitle">Zona sensibila pentru antreprenor, clara pentru tine</p>
               </div>
-              <p>Identificare inteligenta care coreleaza vector fiscal, venituri, tip firma si evenimente.</p>
-              <div class="workflow-features">
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Semnalare timpurie obligatii</span>
-                </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Depunere rapida si sigura</span>
-                </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Gestionare exceptii (resubmitere, corectii)</span>
-                </div>
-              </div>
-              <div class="ai-note">AI semnaleaza si automatizeaza, dar decizia finala apartine contabilului.</div>
-            </div>
+              <div class="flow-step-right">
+                <p>Obligatii curente, istorice si termene — centralizate. Situatii de plata cu sume detaliate si IBAN-uri. Notificari automate email + WhatsApp.</p>
 
-            <!-- 3. Obligatii de plata -->
-            <div class="workflow-card">
-              <div class="workflow-card-header">
-                <div class="workflow-card-icon green">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 1V23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 5H9.5C7.01472 5 5 7.01472 5 9.5C5 11.9853 7.01472 14 9.5 14H14.5C16.9853 14 19 16.0147 19 18.5C19 20.9853 16.9853 23 14.5 23H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <div class="flow-mini-grid">
+                  <div class="flow-mini-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Obligatii curente si restante
+                  </div>
+                  <div class="flow-mini-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Situatii clare cu IBAN
+                  </div>
+                  <div class="flow-mini-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Notificari email + WhatsApp
+                  </div>
+                  <div class="flow-mini-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Verificari automate dupa 25
+                  </div>
                 </div>
-                <h4>Obligatii de plata</h4>
-              </div>
-              <p>Centralizeaza automat obligatiile curente, istorice si termenele de plata.</p>
-              <div class="workflow-features">
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Situatii clare pentru antreprenor</span>
-                </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Notificari email si WhatsApp</span>
-                </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Verificare automata dupa data de 25</span>
+
+                <div class="hook-callout green" style="margin-top: 20px; padding: 14px 18px;">
+                  <p style="font-size: 14px; margin: 0;"><strong>Problemele sunt identificate din timp, nu descoperite tarziu.</strong></p>
                 </div>
               </div>
             </div>
 
-            <!-- 4. Livrabile -->
-            <div class="workflow-card">
-              <div class="workflow-card-header">
-                <div class="workflow-card-icon purple">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </div>
-                <h4>Trimitere livrabile</h4>
+            <!-- Step 4: Livrabile -->
+            <div class="flow-step-box">
+              <div class="flow-step-left">
+                <div class="flow-step-number">4</div>
+                <h3 class="flow-step-title">Livrabile pentru antreprenor</h3>
+                <p class="flow-step-subtitle">Nu doar documente — informatii pe intelesul lui</p>
               </div>
-              <p>Declaratii, obligatii, balante - toate asociate corect si usor de regasit.</p>
-              <div class="workflow-features">
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Interpretare AI pentru antreprenor</span>
+              <div class="flow-step-right">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                  <div>
+                    <p style="font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Ce trimitem</p>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                      <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary);">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-purple); flex-shrink: 0;"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        Declaratii depuse
+                      </div>
+                      <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary);">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-purple); flex-shrink: 0;"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        Obligatii de plata
+                      </div>
+                      <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary);">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-purple); flex-shrink: 0;"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        Balante contabile
+                      </div>
+                      <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary);">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-purple); flex-shrink: 0;"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        Raportari financiare
+                      </div>
+                      <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-secondary);">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-purple); flex-shrink: 0;"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        Notificari ANAF
+                      </div>
+                    </div>
+                  </div>
+                  <div style="background: rgba(123,92,255,.06); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style="color: var(--accent-purple); margin-bottom: 8px;"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 17H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <p style="font-size: 13px; color: var(--accent-purple); margin: 0; font-weight: 600;">AI traduce datele</p>
+                    <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0 0;">in limbaj antreprenorial</p>
+                  </div>
                 </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Transmitere automata pe canale</span>
-                </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Istoric complet si trasabil</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 5. Facturare -->
-            <div class="workflow-card">
-              <div class="workflow-card-header">
-                <div class="workflow-card-icon yellow">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 10H21" stroke="currentColor" stroke-width="2"/><path d="M7 16H10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </div>
-                <h4>Facturare automata</h4>
-              </div>
-              <p>Integrare directa in fluxul operational, bazata pe livrabile si volume.</p>
-              <div class="workflow-features">
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Generare automata facturi</span>
-                </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Transmitere si tracking</span>
-                </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Eliminare erori operationale</span>
-                </div>
+                <p style="font-size: 14px; color: var(--text-muted); margin-top: 16px; font-style: italic;">Antreprenorul nu primeste doar documente, ci intelege ce inseamna ele pentru businessul sau.</p>
               </div>
             </div>
 
-            <!-- Arhivare card -->
-            <div class="workflow-card">
-              <div class="workflow-card-header">
-                <div class="workflow-card-icon blue">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 8V21H3V8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 3H1V8H23V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </div>
-                <h4>Arhivare coerenta</h4>
+            <!-- Step 5: Facturare -->
+            <div class="flow-step-box" style="margin-bottom: 0;">
+              <div class="flow-step-left">
+                <div class="flow-step-number">5</div>
+                <h3 class="flow-step-title">Facturare automata</h3>
+                <p class="flow-step-subtitle">Direct din datele existente in platforma</p>
               </div>
-              <p>Arhivare automata cloud si locala, cu istoric complet pe firma si perioada.</p>
-              <div class="workflow-features">
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Regasire si verificare usoara</span>
-                </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Trasabilitate completa</span>
-                </div>
-                <div class="workflow-feature">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Accesibil oricand, de oriunde</span>
-                </div>
+              <div class="flow-step-right">
+                <p>Facturarea se bazeaza pe datele deja existente — clienti, servicii, perioade. Automata si controlata.</p>
+                <a href="venituri-facturare.html" class="link-inline">
+                  Vezi detalii in Venituri & facturare
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
               </div>
             </div>
+
           </div>
+
+          <!-- Clarificare esentiala - Gradient Punchline Box -->
+          <div class="gradient-punchline-box">
+            <p>AI semnaleaza si automatizeaza. Decizia finala apartine intotdeauna contabilului.</p>
+          </div>
+
         </div>
       </section>
 
-      <!-- Section: Rezultate -->
-      <section class="section" style="background: rgba(26,31,45,.3);">
+      <!-- Section: Rezultate - Value Chain -->
+      <section class="section" id="rezultate" style="background: rgba(26,31,45,.3);">
         <div class="container">
           <div class="section-header">
             <h2>Rezultatele automatizarii</h2>
-            <p>Beneficii concrete pentru cabinet si pentru relatia cu clientii</p>
           </div>
 
-          <div class="benefits-grid">
-            <div class="benefits-column cabinet">
-              <div class="benefits-column-header">
-                <div class="benefits-column-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 21V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V21" stroke="currentColor" stroke-width="2"/><path d="M4 21H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </div>
-                <div class="benefits-column-title">Pentru cabinet</div>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-item-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="benefit-item-text">Preventie, nu reactie - declaratii identificate la timp</span>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-item-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="benefit-item-text">Siguranta operationala crescuta - risc redus de omisiuni</span>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-item-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="benefit-item-text">Vizibilitate continua asupra portofoliului</span>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-item-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="benefit-item-text">Mai putina dependenta de verificari manuale</span>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-item-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="benefit-item-text">Mai mult timp pentru decizie, nu pentru cautare</span>
+          <!-- Value chain: Nevoie → Solutie → Beneficii -->
+          <div class="value-chain">
+            <!-- Box 1: Nevoia -->
+            <div class="value-chain-box need">
+              <div class="value-chain-label">Nevoia</div>
+              <div class="value-chain-title">Cabinetele de contabilitate au nevoie de structura si predictibilitate</div>
+              <div class="value-chain-content">
+                <p style="margin-bottom: 16px; color: var(--text-secondary); font-size: 14px; line-height: 1.6;">Pe masura ce portofoliul creste, volumul de informatii, documente si obligatii creste exponential. Gestionarea manuala devine rapid ineficienta:</p>
+                <ul>
+                  <li>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
+                    <span>Obligatii diferite pentru clienti diferiti</span>
+                  </li>
+                  <li>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
+                    <span>Documente primite prin canale multiple</span>
+                  </li>
+                  <li>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
+                    <span>Termene care se suprapun</span>
+                  </li>
+                  <li>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
+                    <span>Informatii distribuite intre emailuri, mesaje si fisiere separate</span>
+                  </li>
+                </ul>
               </div>
             </div>
 
-            <div class="benefits-column entrepreneur">
-              <div class="benefits-column-header">
-                <div class="benefits-column-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/><circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
-                </div>
-                <div class="benefits-column-title">In relatia cu antreprenorul</div>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-item-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="benefit-item-text">Mai putine explicatii repetitive despre declaratii si obligatii</span>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-item-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="benefit-item-text">Risc redus de neplatire prin notificare corecta</span>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-item-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="benefit-item-text">Relatie mai clara, profesionala, predictibila</span>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-item-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="benefit-item-text">Informatii livrate in format usor de inteles</span>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-item-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="benefit-item-text">Acces permanent la documente si istoric</span>
+            <!-- Box 2: Solutia eConta -->
+            <div class="value-chain-box solution">
+              <div class="value-chain-label">Solutia eConta</div>
+              <div class="value-chain-title">Automatizare exact acolo unde apar riscurile operationale</div>
+              <div class="value-chain-content">
+                <p style="margin-bottom: 16px; color: var(--text-secondary); font-size: 14px; line-height: 1.6;">eConta integreaza automatizarea in punctele critice ale activitatii contabile. Rezultatul nu e doar reducerea muncii manuale, ci un mod de operare stabil, verificabil si usor de controlat:</p>
+                <ul>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Identificarea obligatiilor declarative — nu doar din vector fiscal, ci prin corelari inteligente</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Gestionarea documentelor — preluare centralizata din toate sursele clientilor</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Depuneri si obligatii de plata — flux complet, de la validare la arhivare</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Livrarea informatiei catre antreprenor — clara, structurata, interpretata</span>
+                  </li>
+                </ul>
               </div>
             </div>
+
+            <!-- Box 3: Beneficii - 2 coloane -->
+            <div class="value-chain-box benefit-cabinet" style="border-color: rgba(75,230,177,.2); background: linear-gradient(135deg, rgba(75,230,177,.04), rgba(255,79,191,.04));">
+              <div class="value-chain-label" style="color: var(--text-muted);">Rezultatul</div>
+              <div class="value-chain-title">Ce obtii tu si ce obtine clientul tau</div>
+              <div class="value-chain-content-grid">
+                <div class="value-chain-column">
+                  <h4 style="color: var(--success);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M16 21V5C16 3.89543 15.1046 3 14 3H10C8.89543 3 8 3.89543 8 5V21" stroke="currentColor" stroke-width="2"/><path d="M4 21H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Pentru tine si echipa
+                  </h4>
+                  <div class="value-chain-content">
+                    <ul>
+                      <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--success);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <span><strong>Preventie, nu reactie</strong> — Declaratiile sunt identificate din timp, nu „descoperite" inainte de termen</span>
+                      </li>
+                      <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--success);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <span><strong>Siguranta operationala</strong> — Scade semnificativ riscul de declaratii omise sau depuse incorect</span>
+                      </li>
+                      <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--success);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <span><strong>Vizibilitate continua</strong> — Fiecare client monitorizat permanent, indiferent de complexitate</span>
+                      </li>
+                      <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--success);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <span><strong>Mai putin timp pe verificari</strong> — Listele tinute separat si verificarile repetate devin inutile</span>
+                      </li>
+                      <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--success);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <span><strong>Mai mult timp pentru decizie</strong> — Contabilul stie ce trebuie facut si cand</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="value-chain-column">
+                  <h4 style="color: var(--accent-primary);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M16 21V19C16 16.7909 14.2091 15 12 15H5C2.79086 15 1 16.7909 1 19V21" stroke="currentColor" stroke-width="2"/><circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
+                    Pentru clientul tau
+                  </h4>
+                  <div class="value-chain-content">
+                    <ul>
+                      <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-primary);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <span>Mai putine explicatii repetitive privind declaratii, obligatii plati sau livrabile</span>
+                      </li>
+                      <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-primary);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <span>Reducerea riscului de neplata sau penalitati prin informare corecta si la timp</span>
+                      </li>
+                      <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-primary);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <span>O relatie mai clara, mai profesionista si mai predictibila</span>
+                      </li>
+                      <li>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-primary);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        <span>Livrarea informatiei intr-un format usor de inteles, fara interpretari gresite</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary info box -->
+          <div class="value-chain-summary">
+            <p><strong>eConta nu inlocuieste contabilul.</strong> Creaza un sistem de operare si comunicare care ii simplifica munca si genereaza predictibilitate — atat pentru cabinet, cat si pentru clienti.</p>
           </div>
         </div>
       </section>
 
-      <!-- Section: Vizibilitate pe roluri -->
-      <section class="section">
+      <!-- Section: Roluri + Dashboard - Split Cards -->
+      <section class="section" id="vizibilitate">
         <div class="container">
-          <div class="section-header">
-            <h2>Vizibilitate pe roluri</h2>
-            <p>Fiecare rol are acces doar la informatiile relevante</p>
+          <!-- Card 1: Contabil vs Management -->
+          <div class="split-card">
+            <div class="split-card-left">
+              <div class="split-card-label">Informatii pe roluri</div>
+              <div class="split-card-title">Contabil vs. Management</div>
+              <div class="split-card-desc">Pe masura ce cabinetul creste, nevoile de informare devin diferite. eConta separa clar perspectiva operationala de cea de coordonare.</div>
+            </div>
+            <div class="split-card-right">
+              <div class="split-card-columns">
+                <div class="split-card-column accountant">
+                  <h4>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 21V19C20 16.7909 18.2091 15 16 15H8C5.79086 15 4 16.7909 4 19V21" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
+                    Contabil
+                  </h4>
+                  <ul>
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                      <span>Declaratii de identificat sau depus</span>
+                    </li>
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                      <span>Documente lipsa sau neprocesate</span>
+                    </li>
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                      <span>Obligatii de plata si situatii de atentie</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="split-card-column management">
+                  <h4>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/></svg>
+                    Management
+                  </h4>
+                  <ul>
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                      <span>Status global clienti si procese</span>
+                    </li>
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                      <span>Zone de risc operational</span>
+                    </li>
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                      <span>Incarcare echipa si volume de munca</span>
+                    </li>
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                      <span>Timp alocat pe activitati</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="roles-grid">
-            <div class="role-card accountant">
-              <div class="role-card-header">
-                <div class="role-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 21V19C20 16.7909 18.2091 15 16 15H8C5.79086 15 4 16.7909 4 19V21" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
+          <!-- Card 2: Dashboard -->
+          <div class="split-card">
+            <div class="split-card-left">
+              <div class="split-card-label">Punct central de control</div>
+              <div class="split-card-title">Dashboard contabil</div>
+              <div class="split-card-desc">Sinteza operationala in timp real. Tot ce ai nevoie sa stii despre portofoliul tau, intr-o singura vedere.</div>
+            </div>
+            <div class="split-card-right">
+              <div class="split-card-dashboard">
+                <div class="split-card-dashboard-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M21 12V19C21 20 20 21 19 21H5C4 21 3 20 3 19V5C3 4 4 3 5 3H16" stroke="currentColor" stroke-width="2"/></svg>
+                  <span>Declaratii depuse si ce urmeaza</span>
                 </div>
-                <h4>Contabil</h4>
-              </div>
-              <div class="role-items">
-                <div class="role-item">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M21 12V19C21 20 20 21 19 21H5C4 21 3 20 3 19V5C3 4 4 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                  <span>Declaratii de identificat sau depus</span>
-                </div>
-                <div class="role-item">
+                <div class="split-card-dashboard-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2"/></svg>
-                  <span>Documente lipsa sau neprocesate</span>
+                  <span>Documente lipsa sau in asteptare</span>
                 </div>
-                <div class="role-item">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 1V23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 5H9.5C7 5 5 7 5 9.5S7 14 9.5 14H14.5C17 14 19 16 19 18.5S17 23 14.5 23H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                  <span>Obligatii de plata si situatii de atentie</span>
+                <div class="split-card-dashboard-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 1V23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 5H9.5C7 5 5 7 5 9.5S7 14 9.5 14H14.5C17 14 19 16 19 18.5S17 23 14.5 23H6" stroke="currentColor" stroke-width="2"/></svg>
+                  <span>Obligatii curente sau restante</span>
                 </div>
-              </div>
-            </div>
-
-            <div class="role-card management">
-              <div class="role-card-header">
-                <div class="role-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/></svg>
+                <div class="split-card-dashboard-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="2"/><path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="2"/></svg>
+                  <span>Clienti care necesita interventie</span>
                 </div>
-                <h4>Management cabinet</h4>
-              </div>
-              <div class="role-items">
-                <div class="role-item">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20V10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 20V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                  <span>Status global clienti si procese</span>
-                </div>
-                <div class="role-item">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg>
-                  <span>Zone de risc operational</span>
-                </div>
-                <div class="role-item">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 21V19C17 16.79 15.21 15 13 15H5C2.79 15 1 16.79 1 19V21" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
-                  <span>Incarcare echipa si volume de munca</span>
-                </div>
-                <div class="role-item">
+                <div class="split-card-dashboard-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                  <span>Timp alocat pe activitati</span>
+                  <span>Ce e in lucru si ce urmeaza</span>
+                </div>
+                <div class="split-card-dashboard-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 20V10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 20V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  <span>Volume si progres pe luna</span>
                 </div>
               </div>
+              <p class="split-card-hook">Nu un raport static, ci un instrument activ de management.</p>
             </div>
-          </div>
-
-          <!-- Dashboard preview -->
-          <div class="dashboard-preview">
-            <div class="dashboard-preview-header">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="color: var(--accent-secondary);"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/></svg>
-              <h4>Dashboard contabil - sinteză operationala</h4>
-            </div>
-            <div class="dashboard-items">
-              <div class="dashboard-item">
-                <div class="dashboard-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M21 12V19C21 20 20 21 19 21H5C4 21 3 20 3 19V5C3 4 4 3 5 3H16" stroke="currentColor" stroke-width="2"/></svg></div>
-                <span>Declaratii depuse si ce urmeaza</span>
-              </div>
-              <div class="dashboard-item">
-                <div class="dashboard-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2"/></svg></div>
-                <span>Documente lipsa sau in asteptare</span>
-              </div>
-              <div class="dashboard-item">
-                <div class="dashboard-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 1V23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 5H9.5C7 5 5 7 5 9.5S7 14 9.5 14H14.5C17 14 19 16 19 18.5S17 23 14.5 23H6" stroke="currentColor" stroke-width="2"/></svg></div>
-                <span>Obligatii curente sau restante</span>
-              </div>
-              <div class="dashboard-item">
-                <div class="dashboard-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="2"/><path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="2"/></svg></div>
-                <span>Clienti care necesita interventie</span>
-              </div>
-              <div class="dashboard-item">
-                <div class="dashboard-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-                <span>Ce e in lucru si ce urmeaza</span>
-              </div>
-              <div class="dashboard-item">
-                <div class="dashboard-item-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 20V10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18 20V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 20V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-                <span>Volume si progres pe luna</span>
-              </div>
-            </div>
-            <p class="dashboard-hook">Nu mai pierzi timp intreband "unde suntem?"</p>
           </div>
         </div>
       </section>
 
       <!-- Section: Comparison table -->
-      <section class="section" style="background: rgba(26,31,45,.3);">
+      <section class="section" id="comparatie" style="background: rgba(26,31,45,.3);">
         <div class="container">
           <div class="section-header">
             <h2>Ce se schimba concret</h2>
@@ -1357,16 +2271,88 @@
       </section>
 
       <!-- Section: De ce eConta -->
-      <section class="section">
+      <section class="section" id="de-ce-econta">
         <div class="container">
-          <div class="insight-callout" style="margin-top: 0;">
-            <p><strong>eConta nu inlocuieste contabilul.</strong> Ofera infrastructura pentru a lucra mai eficient, mai sigur si pentru a creste valoarea perceputa a serviciilor de contabilitate.</p>
+          <div class="section-header">
+            <h2>De ce eConta</h2>
+            <p>Nu adauga doar functionalitati. Schimba fundamental modul in care cabinetul tau opereaza si este perceput.</p>
           </div>
 
-          <div class="section-intro" style="margin-top: 48px;">
-            <p>
-              Prin digitalizare si automatizare a proceselor critice, eConta schimba fundamental <strong>modul in care un cabinet opereaza si este perceput</strong>. Solicitarile repetitive scad, increderea si retentia cresc, iar serviciile de contabilitate sunt percepute ca <strong>valoare</strong>, nu doar conformitate.
-            </p>
+          <!-- Two column layout: Cabinet | Antreprenor -->
+          <div class="split-card" style="margin-bottom: 32px;">
+            <div class="split-card-left">
+              <div class="split-card-label" style="color: var(--success);">Pentru cabinet</div>
+              <div class="split-card-title">Control, predictibilitate si eficienta</div>
+            </div>
+            <div class="split-card-right">
+              <div class="value-chain-content">
+                <ul>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--success);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Identificarea automata a declaratiilor reduce riscul de omisiuni si elimina dependenta de verificari manuale</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--success);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Depunerea, arhivarea si verificarile post-depunere devin procese standardizate si sigure</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--success);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Obligatiile de plata sunt monitorizate si verificate automat, inainte sa genereze probleme</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--success);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Comunicarea si documentele sunt centralizate, organizate si trasabile</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--success);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Managementul are vizibilitate clara asupra portofoliului, volumelor si timpilor alocati</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--success);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span><strong>Timpul consumat pe activitati repetitive scade semnificativ, permitand cresterea portofoliului fara angajari suplimentare</strong></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="split-card" style="margin-bottom: 32px;">
+            <div class="split-card-left">
+              <div class="split-card-label" style="color: var(--accent-primary);">Pentru antreprenor</div>
+              <div class="split-card-title">Claritate, siguranta si experienta moderna</div>
+            </div>
+            <div class="split-card-right">
+              <div class="value-chain-content">
+                <ul>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-primary);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Acces permanent, oricand si de oriunde, la documentele si istoricul firmei</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-primary);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Informare proactiva privind declaratiile, obligatiile si situatiile critice</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-primary);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Livrabile contabile interpretate si prezentate intr-un limbaj usor de inteles</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-primary);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Comunicare unitara, fara mesaje pierdute sau confuzii</span>
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="color: var(--accent-primary);"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    <span>Siguranta ca documentele sunt arhivate si protejate intr-un sistem securizat</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outcome box -->
+          <div class="value-chain-summary" style="background: linear-gradient(135deg, rgba(75,230,177,.08), rgba(255,79,191,.08)); border-color: rgba(75,230,177,.2);">
+            <p style="font-size: 18px; margin-bottom: 16px;"><strong>Rezultatul: o relatie contabil-client mai matura si mai profesionista</strong></p>
+            <p style="font-size: 15px;">Scad solicitarile repetitive. Cresc increderea si retentia. Serviciile de contabilitate sunt percepute ca <strong>valoare</strong>, nu ca simpla conformitate.</p>
           </div>
         </div>
       </section>
@@ -1375,8 +2361,8 @@
       <section class="section">
         <div class="container">
           <div class="final-cta">
-            <h2>Operarea zilnica nu mai trebuie sa fie o sursa de presiune</h2>
-            <p>Descopera cum poti automatiza procesele critice si elibera timp pentru ce conteaza.</p>
+            <h2>Nu e doar despre eficienta. E despre cum esti perceput.</h2>
+            <p>Cabinetul care foloseste eConta nu livreaza doar contabilitate — livreaza <strong>claritate si control</strong>. Serviciile tale devin premium, nu doar conformitate.</p>
             <div class="final-cta-buttons">
               <a href="programeaza-demo.html" class="btn btn-primary btn-lg">Programeaza demo</a>
               <a href="cum-functioneaza.html" class="btn btn-secondary btn-lg">Vezi cum functioneaza</a>
