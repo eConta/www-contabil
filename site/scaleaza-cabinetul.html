@@ -24,20 +24,7 @@
       max-width: 560px;
     }
 
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: 100px;
-      background: rgba(255,107,138,.1);
-      border: 1px solid rgba(255,107,138,.2);
-      color: #FF6B8A;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-
+    
     .hero h1 {
       font-size: clamp(36px, 5vw, 48px);
       line-height: 1.1;
@@ -843,21 +830,7 @@
       color: var(--accent-secondary);
     }
 
-    /* Section eyebrow pill */
-    .section-eyebrow {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--accent-secondary);
-      background: rgba(90,134,255,.1);
-      border: 1px solid rgba(90,134,255,.2);
-      border-radius: 100px;
-      padding: 6px 14px;
-      margin-bottom: 16px;
-    }
-  </style>
+      </style>
 </head>
 <body>
   <div class="page">
@@ -884,7 +857,7 @@
         <div class="container">
           <div class="hero-grid">
             <div class="hero-content">
-              <div class="hero-eyebrow">Problema reală a creșterii</div>
+              <span class="eyebrow eyebrow--red" style="margin-bottom: 24px;">Problema reală a creșterii</span>
               <h1>Vrei mai mulți clienți, dar nu mai mulți angajați?</h1>
               <p class="hero-problem">
                 Creșterea unui cabinet contabil înseamnă, de obicei, <strong>volum crescut de muncă și presiune operațională</strong> pe măsura portofoliului. Fiecare client nou adaugă complexitate. Fiecare termen limită crește încărcarea echipei.
@@ -1089,7 +1062,7 @@
       <section class="section" id="standardizare-control">
         <div class="container">
           <div class="section-header">
-            <span class="section-eyebrow">Standardizare și control</span>
+            <span class="eyebrow eyebrow--sm" style="margin-bottom: 16px;">Standardizare și control</span>
             <h2>Lucrează organizat. Fără improvizații.</h2>
           </div>
           <div class="section-intro">
@@ -1234,7 +1207,7 @@
       <section class="section" id="performanta-operationala" style="background: rgba(26,31,45,.3);">
         <div class="container">
           <div class="section-header">
-            <span class="section-eyebrow">Performanță operațională</span>
+            <span class="eyebrow eyebrow--sm" style="margin-bottom: 16px;">Performanță operațională</span>
             <h2>Mai mult control zilnic. Mai puțin stres pe termene.</h2>
           </div>
           <div class="section-intro">
