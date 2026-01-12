@@ -225,83 +225,58 @@
       line-height: 1.5;
     }
 
-    /* Case studies - 3 columns */
-    .cases-grid {
+    /* Testimonials - 3 columns */
+    .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
-    .case-card {
+    .testimonial-card {
       background: rgba(26,31,45,.5);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
       padding: 32px;
     }
 
-    .case-header {
+    .testimonial-header {
       display: flex;
       align-items: center;
       gap: 16px;
       margin-bottom: 24px;
     }
 
-    .case-avatar {
-      width: 48px;
-      height: 48px;
+    .testimonial-photo {
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
+      object-fit: cover;
       background: linear-gradient(135deg, var(--accent-purple), var(--accent-primary));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 18px;
-      color: white;
     }
 
-    .case-name {
+    .testimonial-name {
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 2px;
     }
 
-    .case-size {
+    .testimonial-company {
       font-size: 13px;
       color: var(--text-muted);
     }
 
-    .case-metrics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .case-metric {
-      text-align: center;
-    }
-
-    .case-metric-value {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .case-metric-value.green { color: var(--success); }
-    .case-metric-value.blue { color: var(--accent-secondary); }
-
-    .case-metric-label {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .case-quote {
-      font-size: 14px;
+    .testimonial-text {
+      font-size: 15px;
       color: var(--text-secondary);
-      line-height: 1.6;
-      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .testimonial-text p {
+      margin-bottom: 12px;
+    }
+
+    .testimonial-text p:last-child {
+      margin-bottom: 0;
     }
 
     /* Pricing section */
@@ -517,7 +492,7 @@
 
       .features-grid,
       .metrics-grid,
-      .cases-grid,
+      .testimonials-grid,
       .trust-grid {
         grid-template-columns: 1fr;
       }
@@ -562,7 +537,7 @@
           </div>
           <h1 id="hero-headline">Scalează cabinetul fără să scalezi echipa.</h1>
           <p class="hero-description">
-            Automatizarea care îți dă timpul înapoi. eConta preia declarațiile, documentele și termenele. Tu te ocupi de clienți și consultanță. Control și predictibilitate.
+            Automatizare care economisește timp și standardizează procesele. eConta preia documentele, declarațiile, termenele, ANAF și facturarea clienților. Tu te ocupi de consultanță.
           </p>
           <div class="hero-cta">
             <a href="programeaza-demo.html" class="btn btn-primary btn-lg">Programează demo</a>
@@ -706,69 +681,48 @@
             <h2>Rezultate reale pentru cabinete contabile</h2>
             <p>Contabili din România folosesc deja eConta pentru a-și transforma cabinetele.</p>
           </div>
-          <div class="cases-grid">
-            <!-- TESTIMONIAL - NECESITĂ APROBARE CLIENT -->
-            <div class="case-card">
-              <div class="case-header">
-                <div class="case-avatar">L</div>
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img src="images/t-contezia.png" alt="Bianca Meze" class="testimonial-photo">
                 <div>
-                  <div class="case-name">Cabinet Lupescu</div>
-                  <div class="case-size">Cabinet mic · ~40 firme</div>
+                  <div class="testimonial-name">Bianca Meze</div>
+                  <div class="testimonial-company">Contezia SRL</div>
                 </div>
               </div>
-              <div class="case-metrics">
-                <div class="case-metric">
-                  <div class="case-metric-value green">+3,4h</div>
-                  <div class="case-metric-label">economisite lunar</div>
-                </div>
-                <div class="case-metric">
-                  <div class="case-metric-value blue">+20-25%</div>
-                  <div class="case-metric-label">capacitate</div>
-                </div>
+              <div class="testimonial-text">
+                <p>Pentru noi, eConta este următoarea mare optimizare. Clienții trimit actele cum le e mai ușor — platformă, e-mail, WhatsApp — iar documentele ajung organizate, nu împrăștiate în conversații.</p>
+                <p>Chatul pe document îți schimbă viața. Facturarea e alt nivel — plătești după volumul real. Iar conformarea te avertizează automat dacă apare ceva de depus (390, 301), pentru că e integrată cu ANAF și are documentele la zi.</p>
+                <p>Mă bucur că, în sfârșit, avem în România o platformă la nivelul acesta.</p>
               </div>
-              <p class="case-quote">"De când folosesc eConta, am preluat 10 firme noi fără să angajez. Declarațiile se depun la timp, iar eu am timp pentru consultanță."</p>
             </div>
-            <!-- TESTIMONIAL - NECESITĂ APROBARE CLIENT -->
-            <div class="case-card">
-              <div class="case-header">
-                <div class="case-avatar">B</div>
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img src="images/t-optim.png" alt="Petrisor Fifoiu" class="testimonial-photo">
                 <div>
-                  <div class="case-name">Cabinet Bianca</div>
-                  <div class="case-size">Cabinet mediu · ~100 firme</div>
+                  <div class="testimonial-name">Petrisor Fifoiu</div>
+                  <div class="testimonial-company">Optim Expert</div>
                 </div>
               </div>
-              <div class="case-metrics">
-                <div class="case-metric">
-                  <div class="case-metric-value green">~10h</div>
-                  <div class="case-metric-label">economisite lunar</div>
-                </div>
-                <div class="case-metric">
-                  <div class="case-metric-value blue">+30-40</div>
-                  <div class="case-metric-label">firme în plus</div>
-                </div>
+              <div class="testimonial-text">
+                <p>Pentru noi, eConta a însemnat o schimbare reală. Nu mai pierdem timp căutând documente prin e-mailuri sau foldere — totul ajunge centralizat, structurat pe client și perioadă.</p>
+                <p>Fiecare document sau factură are propriul thread de discuție: știm ce s-a clarificat, cu cine și când, fără confuzii. Clienții sunt mai organizați, noi suntem mai eficienți.</p>
+                <p>Pentru un cabinet care vrea să crească sănătos, eConta a devenit piesa centrală în fluxul nostru.</p>
               </div>
-              <p class="case-quote">"eConta mi-a dat controlul înapoi. Văd totul într-un singur loc și nu mai ratez nimic."</p>
             </div>
-            <!-- TESTIMONIAL - NECESITĂ APROBARE CLIENT -->
-            <div class="case-card">
-              <div class="case-header">
-                <div class="case-avatar">O</div>
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img src="images/t-lupescu.png" alt="Lupescu Alexandru" class="testimonial-photo">
                 <div>
-                  <div class="case-name">Optim Accounting</div>
-                  <div class="case-size">Cabinet mare · ~200 firme</div>
+                  <div class="testimonial-name">Lupescu Alexandru</div>
+                  <div class="testimonial-company">Cabinet Expert Contabil</div>
                 </div>
               </div>
-              <div class="case-metrics">
-                <div class="case-metric">
-                  <div class="case-metric-value green">+21h</div>
-                  <div class="case-metric-label">economisite lunar</div>
-                </div>
-                <div class="case-metric">
-                  <div class="case-metric-value blue">~1</div>
-                  <div class="case-metric-label">contabil "virtual"</div>
-                </div>
+              <div class="testimonial-text">
+                <p>Am deschis cabinetul recent și eConta a fost una dintre cele mai bune decizii de la început. M-a ajutat să pornesc organizat, fără haos, fără conversații împrăștiate.</p>
+                <p>Clienții trimit documentele cum le e mai ușor, iar eu le am structurate automat pe firmă și perioadă, ceea ce mă ajută enorm. Chatul pe document e extrem de util — clarific rapid orice și rămâne totul documentat.</p>
+                <p>Practic, mă pot concentra pe ce contează: relația cu clienții și calitatea serviciilor.</p>
               </div>
-              <p class="case-quote">"eConta înseamnă un contabil junior în plus, fără costurile aferente. Ne-a schimbat complet modul de lucru."</p>
             </div>
           </div>
         </div>
@@ -818,9 +772,9 @@
                 </div>
               </div>
               <div class="pricing-card-body">
-                <div class="pricing-feature">+ declarații procesate</div>
-                <div class="pricing-feature">+ documente analizate</div>
-                <div class="pricing-feature">+ notificări trimise</div>
+                <div class="pricing-feature">eFactura: <strong style="color: var(--success);">GRATUIT</strong></div>
+                <div class="pricing-feature">Documente: <strong>de la 0,05 €</strong></div>
+                <div class="pricing-feature">Declarații: <strong>de la 0,20 €</strong></div>
                 <p class="pricing-note">Transparent. Predictibil. Fair.</p>
               </div>
             </div>
