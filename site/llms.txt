@@ -1,0 +1,42 @@
+# eConta - Platformă pentru cabinete contabile
+
+## Navigație
+
+/ - Acasă
+/scaleaza-cabinetul.html - Scalează cabinetul
+/studii-de-caz.html - Studii de caz
+/automatizare-operationala.html - Automatizare operațională
+/documente-anaf.html - Documente & ANAF
+/venituri-facturare.html - Venituri & facturare
+/clientii-tai.html - Clienții tăi
+/cum-functioneaza.html - Cum funcționează eConta
+/aplicatie-desktop-integrari.html - Aplicație desktop & integrări
+/securitate-gdpr.html - Securitate & GDPR
+/clienti-noi.html - Clienți noi prin eConta
+/preturi.html - Prețuri platformă
+/vs-taxdome.html - eConta vs TaxDome
+/vs-keez.html - eConta vs Keez
+/vs-huddle.html - eConta vs Huddle
+/vs-econtaai.html - eConta vs eContaAI
+/despre-noi.html - Despre noi
+/contact.html - Contact
+/programeaza-demo.html - Programează demo
+
+## Descriere
+
+eConta este o platformă de automatizare operațională pentru cabinete contabile din România. Permite scalarea cabinetului fără angajări suplimentare prin automatizare integrată cu ANAF, gestiune clienți și facturare.
+
+## Topics principale
+
+- Automatizare contabilitate: Declarații automate, integrare eFactura și SPV ANAF, arhivare cloud
+- Scalare cabinet: Gestionare portofoliu clienți fără angajări, capacitate operațională crescută
+- Platform comunicare: CRM pentru contabili, portal client, notificări multi-canal
+- ANAF integration: eFactura nativă, SPV obligații, raportări automate
+- Pricing flexibil: Abonament 0,99€/firmă/lună SAU pay-per-document de la 0,99€/document
+
+## Companie
+
+Operator: AI DIGITALTRANSFORMATION S.R.L.
+CUI: 48990514
+Contact: office@econta.ro | +40 784242424
+Fondatori: Claudiu (CEO), Petrișor (Expert fiscal-contabil), Dragoș (Tech Lead)

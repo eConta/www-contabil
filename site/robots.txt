@@ -1,0 +1,20 @@
+# Crawlers principali
+User-agent: *
+Allow: /
+Disallow: /includes/
+
+# AI Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap
+Sitemap: https://econta.ro/sitemap.xml

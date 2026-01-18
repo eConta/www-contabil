@@ -3,8 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scalează cabinetul - eConta</title>
+  <title>Platformă cabinete contabile - Scalare fără angajări - eConta</title>
   <meta name="description" content="Crește portofoliul de clienți fără angajări suplimentare. Automatizare, standardizare și control operațional pentru cabinete contabile.">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://platforma.econta.ro/scaleaza-cabinetul.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://platforma.econta.ro/scaleaza-cabinetul.html">
+  <meta property="og:title" content="Platformă cabinete contabile - Scalare fără angajări - eConta">
+  <meta property="og:description" content="Crește portofoliul de clienți fără angajări suplimentare. Automatizare, standardizare și control operațional pentru cabinete contabile.">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:site_name" content="eConta">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://platforma.econta.ro/scaleaza-cabinetul.html">
+  <meta name="twitter:title" content="Platformă cabinete contabile - Scalare fără angajări - eConta">
+  <meta name="twitter:description" content="Crește portofoliul de clienți fără angajări suplimentare. Automatizare, standardizare și control operațional pentru cabinete contabile.">
+
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Hero - Problem-focused, above the fold */
@@ -830,6 +847,83 @@
       color: var(--accent-secondary);
     }
 
+    /* FAQ Section */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: rgba(26,31,45,.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-medium);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 20px 24px;
+      background: transparent;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: color 0.2s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--accent-secondary);
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      color: var(--accent-secondary);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+    }
+
+    .faq-answer p {
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .faq-answer a {
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .faq-answer a:hover {
+      opacity: 0.8;
+    }
+
       </style>
 </head>
 <body>
@@ -922,6 +1016,10 @@
       <!-- Section 1: Crește portofoliul fără să mărești echipa -->
       <section class="section" id="crestere-fara-angajari" style="background: rgba(26,31,45,.3);">
         <div class="container">
+          <!-- Answer Capsule for AI Search -->
+          <div class="answer-capsule" style="max-width: 800px; margin: 0 auto 24px; padding: 12px 16px; background: rgba(75,230,177,.03); border-left: 2px solid rgba(75,230,177,.2); border-radius: 6px; font-size: 13px; line-height: 1.6; color: var(--text-muted); font-weight: 400;">
+            eConta permite scalarea cabinetului contabil cu 20-40% mai mulți clienți fără angajări suplimentare prin automatizare completă a proceselor.
+          </div>
           <div class="section-header">
             <h2>Crește portofoliul fără să mărești echipa</h2>
             <p>Ce se schimbă concret când folosești eConta</p>
@@ -1221,7 +1319,7 @@
 
           <!-- Subsecțiune 1: Vedere clară -->
           <div class="subsection" style="margin-top: 48px;">
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 24px; color: var(--text-primary);">Vedere clară asupra a ceea ce contează</h3>
+            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 24px; color: var(--text-primary); text-align: center;">Vedere clară asupra a ceea ce contează</h3>
             <div class="dashboard-preview">
               <div class="dashboard-preview-header">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="color: var(--accent-secondary);"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/></svg>
@@ -1292,7 +1390,7 @@
 
           <!-- Subsecțiune 3: Timp câștigat -->
           <div class="subsection" style="margin-top: 48px;">
-            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 24px; color: var(--text-primary);">Timp câștigat, nu doar muncă mai rapidă</h3>
+            <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 24px; color: var(--text-primary); text-align: center;">Timp câștigat, nu doar muncă mai rapidă</h3>
             <div class="benefits-detailed" style="grid-template-columns: repeat(2, 1fr); max-width: 800px; margin: 0 auto;">
               <div class="benefit-detailed" style="padding: 24px;">
                 <h4 style="font-size: 16px; margin-bottom: 16px;">Automatizarea înseamnă:</h4>
@@ -1411,6 +1509,85 @@
         </div>
       </section>
 
+      <!-- FAQ Section -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Întrebări frecvente despre scalare</h2>
+            <p>Răspunsuri la cele mai comune întrebări despre creșterea cabinetului</p>
+          </div>
+
+          <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
+
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Cu câți clienți în plus pot gestiona fără angajări?</span>
+                <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>Depinde de dimensiunea cabinetului: cabinete mici (40 firme) pot gestiona +20-25% mai multe firme, cabinete medii (100 firme) pot adăuga +30-40% capacitate, iar cabinete mari (200+ firme) câștigă echivalentul unui contabil junior "virtual" fără costuri de angajare.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Cum ajută eConta dacă am clienți cu procese diferite (PFA, SRL, retail)?</span>
+                <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>eConta nu forțează același proces pentru toți clienții. În schimb, standardizează modul în care sunt urmărite, centralizate și controlate toate procesele. Identificarea automată de declarații funcționează pe baza profilului fiscal al fiecărei firme (PFA, micro, TVA, etc.), deci fiecare client primește automatizarea potrivită pentru situația lui.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Ce declarații identifică eConta automat?</span>
+                <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>AI-ul eConta identifică automat toate declarațiile obligatorii pe baza profilului fiscal: D112 (salarii), D394 (dividende), 100/101 (impozit venit/profit), 300 (TVA), 390 (reținere la sursă), plus declarații speciale pentru construcții, agricultură, microîntreprinderi. Sistemul detectează și evenimente speciale (depășire prag TVA/micro) și generează alertele corespunzătoare.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Cât timp economisesc lunar cu eConta?</span>
+                <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>Automatizarea reduce timpul per firmă cu până la 25%. Pentru un cabinet mic (40 firme) înseamnă ~3-4 ore/lună economisite, pentru unul mediu (100 firme) ~10 ore/lună, iar pentru cabinete mari (200+ firme) peste 20 ore/lună. Timpul salvat vine din: eliminarea preluării manuale documente, identificare automată declarații, generare automată obligații de plată și comunicare centralizată (nu mai cauți prin email/WhatsApp).</p>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Trebuie să schimb modul de lucru actual sau să angajez pe cineva pentru eConta?</span>
+                <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <p>Nu. eConta se integrează cu flow-ul existent (SAGA, WinMentor, email, WhatsApp). Documentele ajung în platformă indiferent de sursa lor, fără să forțezi clienții să schimbe obiceiurile. Nu ai nevoie de angajări noi - scopul e exact invers: aceeași echipă să gestioneze mai mult. Onboarding-ul durează 1-2 săptămâni și echipa noastră te ghidează pas cu pas.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <!-- Final CTA -->
       <section class="section">
         <div class="container">
@@ -1457,6 +1634,23 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeMobileMenu();
     });
+
+    // FAQ toggle function
+    function toggleFAQ(button) {
+      const faqItem = button.closest('.faq-item');
+      const isOpen = faqItem.classList.contains('open');
+
+      // Close all FAQ items
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('open');
+      });
+
+      // Open clicked item if it wasn't already open
+      if (!isOpen) {
+        faqItem.classList.add('open');
+      }
+    }
+
     // Close mega menu on link click (for anchor links that don't change page)
     document.querySelectorAll('.mega-menu a').forEach(function(link) {
       link.addEventListener('click', function() {
@@ -1474,6 +1668,54 @@
         }
       });
     });
+  </script>
+
+  <!-- Schema.org Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "eConta",
+    "legalName": "AI DIGITALTRANSFORMATION S.R.L.",
+    "url": "https://platforma.econta.ro",
+    "logo": "https://platforma.econta.ro/images/logo-econta.png",
+    "description": "Platformă de automatizare și management pentru cabinete contabile din România",
+    "email": "office@econta.ro",
+    "telephone": "+40784242424",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "RO",
+      "addressLocality": "București"
+    },
+    "taxID": "48990514",
+    "vatID": "RO48990514",
+    "founder": [
+      {"@type": "Person", "name": "Claudiu", "jobTitle": "CEO"},
+      {"@type": "Person", "name": "Petrișor", "jobTitle": "Expert fiscal-contabil"},
+      {"@type": "Person", "name": "Dragoș", "jobTitle": "Tech Lead"}
+    ],
+    "sameAs": []
+  }
+  </script>
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Acasă",
+      "item": "https://platforma.econta.ro/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Scalează cabinetul"
+    }
+  ]
+}
   </script>
 </body>
 </html>
