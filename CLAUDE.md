@@ -10,6 +10,17 @@ You create content that is convicing, high convertion, highlight aligned to the 
 
 This is the eConta website project focused on creating a new site variant targeting accountants who want to purchase the eConta platform for internal work organization. The project repositions eConta from B2B accounting services to B2B accounting software for independent accountants.
 
+## Deployment Domain
+
+**IMPORTANT**: This site is deployed on **`platforma.econta.ro`**, NOT on the root `econta.ro` domain.
+
+- **Platform site** (this project): `https://platforma.econta.ro/` - B2B software for accountants
+- **Services site**: `https://www.econta.ro/` - B2B accounting services for entrepreneurs
+
+All meta tags (canonical, og:url, twitter:url), sitemap.xml, robots.txt, and schema.org URLs must use `https://platforma.econta.ro/`.
+
+The segment banner in the header links to `https://www.econta.ro` to direct entrepreneurs to the services site.
+
 ## Project Structure
 
 ```

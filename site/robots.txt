@@ -17,4 +17,4 @@ User-agent: Google-Extended
 Allow: /
 
 # Sitemap
-Sitemap: https://econta.ro/sitemap.xml
+Sitemap: https://platforma.econta.ro/sitemap.xml
