@@ -929,21 +929,344 @@
 <body>
   <div class="page">
 
-    <!-- Header loaded from includes/header.html -->
-    <div id="site-header"></div>
-    <script>
-      fetch('includes/header.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('site-header').innerHTML = html;
-          // Execute scripts in loaded content
-          document.getElementById('site-header').querySelectorAll('script').forEach(script => {
-            const newScript = document.createElement('script');
-            newScript.textContent = script.textContent;
-            document.body.appendChild(newScript);
-          });
+    <!-- HEADER_START -->
+<!-- Segment Banner -->
+<div class="segment-banner" id="segmentBanner">
+  <div class="container">
+    <span class="segment-banner-text">Ești antreprenor?</span>
+    <a href="https://www.econta.ro" class="segment-banner-link">
+      Vezi serviciile de contabilitate
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+  <button class="segment-banner-close" onclick="closeSegmentBanner()" aria-label="Închide">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="brand"><img src="images/logo-econta-white.png" alt="eConta - Platformă pentru cabinete contabile" class="brand-logo"></a>
+      <ul class="nav-main">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Scalează <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="mega-menu">
+            <div class="mega-menu-inner mega-menu-solo">
+              <div class="mega-menu-layout">
+                <!-- Left: Title + 2 columns -->
+                <div class="mega-menu-main">
+                  <div class="mega-menu-header">Scalează cabinetul</div>
+                  <div class="mega-menu-columns">
+                    <div class="mega-menu-col">
+                      <a href="scaleaza-cabinetul.html" class="mega-menu-link">
+                        <span class="mega-menu-link-title">Scalează cabinetul</span>
+                        <span class="mega-menu-link-desc">Crește portofoliul fără angajări</span>
+                      </a>
+                      <a href="scaleaza-cabinetul.html#standardizare-control" class="mega-menu-link">
+                        <span class="mega-menu-link-title">Standardizare și control</span>
+                        <span class="mega-menu-link-desc">Lucrează organizat, fără improvizații</span>
+                      </a>
+                    </div>
+                    <div class="mega-menu-col">
+                      <a href="scaleaza-cabinetul.html#performanta-operationala" class="mega-menu-link">
+                        <span class="mega-menu-link-title">Performanță operațională</span>
+                        <span class="mega-menu-link-desc">Control zilnic, mai puțin stres</span>
+                      </a>
+                      <a href="studii-de-caz.html" class="mega-menu-link">
+                        <span class="mega-menu-link-title">Studii de caz</span>
+                        <span class="mega-menu-link-desc">Rezultate reale de la cabinete</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Right: Box with title + links -->
+                <div class="mega-menu-sidebar">
+                  <div class="mega-menu-sidebar-header">Studii de caz</div>
+                  <div class="mega-menu-sidebar-links">
+                    <a href="studii-de-caz.html#cabinet-mic">Cabinet mic</a>
+                    <a href="studii-de-caz.html#cabinet-mediu">Cabinet mediu</a>
+                    <a href="studii-de-caz.html#cabinet-mare">Cabinet mare</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Automatizare <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="mega-menu">
+            <div class="mega-menu-inner mega-menu-solo">
+              <div class="mega-menu-main" style="max-width: 100%;">
+                <div class="mega-menu-header">Automatizare</div>
+                <div class="mega-menu-columns" style="grid-template-columns: repeat(3, 1fr);">
+                  <div class="mega-menu-col">
+                    <a href="automatizare-operationala.html" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Automatizare operațională</span>
+                      <span class="mega-menu-link-desc">Zero declarații ratate, vreodată</span>
+                    </a>
+                    <a href="automatizare-operationala.html#ce-automatizeaza" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Ce automatizează</span>
+                      <span class="mega-menu-link-desc">De la document la plată, fără tine</span>
+                    </a>
+                    <a href="automatizare-operationala.html#rezultate" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Rezultate automatizare</span>
+                      <span class="mega-menu-link-desc">Ce câștigi concret din asta</span>
+                    </a>
+                  </div>
+                  <div class="mega-menu-col">
+                    <a href="documente-anaf.html" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Flux inteligent de documente</span>
+                      <span class="mega-menu-link-desc">Tot ce intră, organizat automat</span>
+                    </a>
+                    <a href="documente-anaf.html#efactura-spv" class="mega-menu-link">
+                      <span class="mega-menu-link-title">eFactura & SPV</span>
+                      <span class="mega-menu-link-desc">Import automat, fără SPV deschis</span>
+                    </a>
+                    <a href="documente-anaf.html#arhivare" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Arhivare completă</span>
+                      <span class="mega-menu-link-desc">Cloud + local, fără să faci nimic</span>
+                    </a>
+                  </div>
+                  <div class="mega-menu-col">
+                    <a href="venituri-facturare.html" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Monetizare eficientă servicii</span>
+                      <span class="mega-menu-link-desc">Venituri aliniate cu munca depusă</span>
+                    </a>
+                    <a href="venituri-facturare.html#politici-pret" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Politici de preț</span>
+                      <span class="mega-menu-link-desc">Onorarii care cresc cu clientul</span>
+                    </a>
+                    <a href="venituri-facturare.html#plati" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Plăți și încasări</span>
+                      <span class="mega-menu-link-desc">Încasezi fără să urmărești</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Clienții tăi <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="mega-menu">
+            <div class="mega-menu-inner mega-menu-solo">
+              <div class="mega-menu-main" style="max-width: 100%;">
+                <div class="mega-menu-header">Clienții tăi</div>
+                <div class="mega-menu-columns" style="grid-template-columns: repeat(3, 1fr);">
+                  <div class="mega-menu-col">
+                    <a href="clientii-tai.html" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Spațiu digital client</span>
+                      <span class="mega-menu-link-desc">Tot într-un singur loc</span>
+                    </a>
+                    <a href="clientii-tai.html#comunicare" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Comunicare multi-channel</span>
+                      <span class="mega-menu-link-desc">Clientul alege, tu primești organizat</span>
+                    </a>
+                  </div>
+                  <div class="mega-menu-col">
+                    <a href="clientii-tai.html#documente" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Documente din orice sursă</span>
+                      <span class="mega-menu-link-desc">Fără reguli, fără fricțiune</span>
+                    </a>
+                    <a href="clientii-tai.html#notificari" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Notificări proactive</span>
+                      <span class="mega-menu-link-desc">Fără „s-a depus?"</span>
+                    </a>
+                  </div>
+                  <div class="mega-menu-col">
+                    <a href="clientii-tai.html#interpretare" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Interpretare livrabile</span>
+                      <span class="mega-menu-link-desc">Înțelege fără să explici</span>
+                    </a>
+                    <a href="clientii-tai.html#arhivare" class="mega-menu-link">
+                      <span class="mega-menu-link-title">Arhivare cloud</span>
+                      <span class="mega-menu-link-desc">Mereu la îndemână</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Platformă <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <div class="mega-menu">
+            <div class="mega-menu-inner mega-menu-solo">
+              <div class="mega-menu-layout">
+                <div class="mega-menu-main">
+                  <div class="mega-menu-header">Platformă și ecosistem</div>
+                  <div class="mega-menu-columns">
+                    <div class="mega-menu-col">
+                      <a href="cum-functioneaza.html" class="mega-menu-link">
+                        <span class="mega-menu-link-title">Cum funcționează eConta</span>
+                        <span class="mega-menu-link-desc">Prezentare completă a platformei</span>
+                      </a>
+                      <a href="aplicatie-desktop-integrari.html" class="mega-menu-link">
+                        <span class="mega-menu-link-title">Aplicație desktop și integrări</span>
+                        <span class="mega-menu-link-desc">SAGA, WinMentor, arhivare</span>
+                      </a>
+                    </div>
+                    <div class="mega-menu-col">
+                      <a href="securitate-gdpr.html" class="mega-menu-link">
+                        <span class="mega-menu-link-title">Securitate și GDPR</span>
+                        <span class="mega-menu-link-desc">Protecția datelor și conformitate</span>
+                      </a>
+                      <a href="clienti-noi.html" class="mega-menu-link">
+                        <span class="mega-menu-link-title">Clienți noi prin eConta</span>
+                        <span class="mega-menu-link-desc">Opțional: primești clienți de la noi</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="mega-menu-sidebar">
+                  <div class="mega-menu-sidebar-header">Comparații</div>
+                  <div class="mega-menu-sidebar-links">
+                    <a href="vs-taxdome.html">vs TaxDome</a>
+                    <a href="vs-keez.html">vs Keez</a>
+                    <a href="vs-huddle.html">vs Huddle</a>
+                    <a href="vs-econtaai.html">vs eContaAI</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item"><a href="preturi.html" class="nav-link">Prețuri</a></li>
+      </ul>
+      <ul class="nav-utility">
+        <li><a href="programeaza-demo.html" class="btn btn-primary">Programează demo</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" onclick="openMobileMenu()" aria-label="Meniu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu - Simple Fullscreen -->
+<div id="mobileMenu" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#1A1F2D; z-index:9999; overflow-y:auto;">
+
+  <!-- Header -->
+  <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 20px; border-bottom:1px solid rgba(255,255,255,0.1);">
+    <img src="images/logo-econta-white.png" alt="eConta" style="height:32px;">
+    <button onclick="closeMobileMenu()" style="background:none; border:none; color:#fff; padding:8px; cursor:pointer;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <!-- Segment link -->
+  <a href="https://www.econta.ro" style="display:block; padding:12px 20px; background:#1A1025; color:rgba(255,255,255,0.7); text-decoration:none; font-size:13px; text-align:center;">
+    Ești antreprenor? <span style="color:#FF4FBF;">Vezi serviciile de contabilitate →</span>
+  </a>
+
+  <!-- Navigation -->
+  <nav style="padding:16px 20px;" onclick="if(event.target.tagName==='A')closeMobileMenu()">
+
+    <!-- Scalează cabinetul -->
+    <div style="border-bottom:1px solid rgba(255,255,255,0.1); padding:8px 0;">
+      <span style="display:block; padding:12px 0; color:#fff; font-weight:600; font-size:15px;">Scalează cabinetul</span>
+      <a href="scaleaza-cabinetul.html" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Scalează cabinetul</a>
+      <a href="scaleaza-cabinetul.html#standardizare-control" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Standardizare și control</a>
+      <a href="scaleaza-cabinetul.html#performanta-operationala" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Performanță operațională</a>
+      <a href="studii-de-caz.html" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Studii de caz</a>
+      <a href="studii-de-caz.html#cabinet-mic" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Cabinet mic</a>
+      <a href="studii-de-caz.html#cabinet-mediu" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Cabinet mediu</a>
+      <a href="studii-de-caz.html#cabinet-mare" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Cabinet mare</a>
+    </div>
+
+    <!-- Automatizare -->
+    <div style="border-bottom:1px solid rgba(255,255,255,0.1); padding:8px 0;">
+      <span style="display:block; padding:12px 0; color:#fff; font-weight:600; font-size:15px;">Automatizare</span>
+      <a href="automatizare-operationala.html" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Automatizare operațională</a>
+      <a href="automatizare-operationala.html#ce-automatizeaza" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Ce automatizează</a>
+      <a href="automatizare-operationala.html#rezultate" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Rezultate automatizare</a>
+      <a href="documente-anaf.html" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Flux inteligent de documente</a>
+      <a href="documente-anaf.html#efactura-spv" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">eFactura & SPV</a>
+      <a href="documente-anaf.html#arhivare" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Arhivare completă</a>
+      <a href="venituri-facturare.html" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Monetizare eficientă servicii</a>
+      <a href="venituri-facturare.html#politici-pret" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Politici de preț</a>
+      <a href="venituri-facturare.html#plati" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Plăți și încasări</a>
+    </div>
+
+    <!-- Clienții tăi -->
+    <div style="border-bottom:1px solid rgba(255,255,255,0.1); padding:8px 0;">
+      <span style="display:block; padding:12px 0; color:#fff; font-weight:600; font-size:15px;">Clienții tăi</span>
+      <a href="clientii-tai.html" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Spațiul digital al antreprenorului</a>
+      <a href="clientii-tai.html#comunicare" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Comunicare unificată multi-channel</a>
+      <a href="clientii-tai.html#documente" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Preluare documente din orice sursă</a>
+      <a href="clientii-tai.html#notificari" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Notificări și alerte importante</a>
+      <a href="clientii-tai.html#interpretare" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Interpretarea livrabilelor</a>
+      <a href="clientii-tai.html#arhivare" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Arhivare în cloud</a>
+    </div>
+
+    <!-- Platformă -->
+    <div style="border-bottom:1px solid rgba(255,255,255,0.1); padding:8px 0;">
+      <span style="display:block; padding:12px 0; color:#fff; font-weight:600; font-size:15px;">Platformă</span>
+      <a href="cum-functioneaza.html" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Cum funcționează eConta</a>
+      <a href="aplicatie-desktop-integrari.html" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Aplicație desktop și integrări</a>
+      <a href="securitate-gdpr.html" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Securitate și GDPR</a>
+      <a href="clienti-noi.html" style="display:block; padding:8px 0 8px 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Clienți noi prin eConta</a>
+      <span style="display:block; padding:12px 0 8px 16px; color:rgba(255,255,255,0.5); font-size:12px; text-transform:uppercase; letter-spacing:0.5px;">Comparații</span>
+      <a href="vs-taxdome.html" style="display:block; padding:8px 0 8px 24px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">vs TaxDome</a>
+      <a href="vs-keez.html" style="display:block; padding:8px 0 8px 24px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">vs Keez</a>
+      <a href="vs-huddle.html" style="display:block; padding:8px 0 8px 24px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">vs Huddle</a>
+      <a href="vs-econtaai.html" style="display:block; padding:8px 0 8px 24px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">vs eContaAI</a>
+    </div>
+
+    <!-- Prețuri -->
+    <a href="preturi.html" style="display:block; padding:16px 0; color:#fff; text-decoration:none; font-weight:600; font-size:15px; border-bottom:1px solid rgba(255,255,255,0.1);">Prețuri</a>
+
+    <!-- Utility -->
+    <a href="despre-noi.html" style="display:block; padding:16px 0 8px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Despre noi</a>
+    <a href="contact.html" style="display:block; padding:8px 0 16px; color:rgba(255,255,255,0.7); text-decoration:none; font-size:14px;">Contact</a>
+  </nav>
+
+  <!-- CTA -->
+  <div style="padding:16px 20px; border-top:1px solid rgba(255,255,255,0.1); text-align:center;">
+    <a href="programeaza-demo.html" style="display:inline-block; padding:14px 32px; background:#FF4FBF; color:#fff; text-decoration:none; text-align:center; border-radius:8px; font-weight:600;">Programează demo</a>
+  </div>
+
+</div>
+
+<script>
+function closeSegmentBanner() {
+  document.getElementById('segmentBanner').classList.add('hidden');
+  localStorage.setItem('segmentBannerClosed', 'true');
+}
+if (localStorage.getItem('segmentBannerClosed') === 'true') {
+  document.getElementById('segmentBanner').classList.add('hidden');
+}
+function openMobileMenu() {
+  document.getElementById('mobileMenu').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeMobileMenu();
+});
+// Close mega menu on link click (for anchor links that don't change page)
+document.querySelectorAll('.mega-menu a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    var megaMenu = this.closest('.mega-menu');
+    if (megaMenu) {
+      megaMenu.style.display = 'none';
+      var navItem = this.closest('.nav-item');
+      if (navItem) {
+        navItem.addEventListener('mouseleave', function handler() {
+          megaMenu.style.display = '';
+          navItem.removeEventListener('mouseleave', handler);
         });
-    </script>
+      }
+    }
+  });
+});
+</script>
+<!-- HEADER_END -->
 
     <main>
       <!-- Hero - Problem + Solution above the fold -->
@@ -1603,15 +1926,57 @@
       </section>
     </main>
 
-    <!-- Footer loaded from includes/footer.html -->
-    <div id="site-footer"></div>
-    <script>
-      fetch('includes/footer.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('site-footer').innerHTML = html;
-        });
-    </script>
+    <!-- FOOTER_START -->
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="index.html" class="brand"><img src="images/logo.jpeg" alt="eConta - Platformă pentru cabinete contabile" class="brand-logo"></a>
+        <p class="footer-tagline">Infrastructura digitală pentru cabinete contabile din România</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-section">
+          <h4>Platformă</h4>
+          <ul>
+            <li><a href="scaleaza-cabinetul.html">Scalează cabinetul</a></li>
+            <li><a href="automatizare-operationala.html">Automatizare operațională</a></li>
+            <li><a href="documente-anaf.html">Documente & ANAF</a></li>
+            <li><a href="venituri-facturare.html">Venituri și facturare</a></li>
+            <li><a href="clientii-tai.html">Clienții tăi</a></li>
+            <li><a href="cum-functioneaza.html">Cum funcționează</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Comparații</h4>
+          <ul>
+            <li><a href="vs-taxdome.html">TaxDome vs eConta</a></li>
+            <li><a href="vs-keez.html">Keez vs eConta</a></li>
+            <li><a href="vs-huddle.html">Huddle vs eConta</a></li>
+            <li><a href="vs-econtaai.html">eContaAI vs eConta</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Companie</h4>
+          <ul>
+            <li><a href="despre-noi.html">Despre noi</a></li>
+            <li><a href="preturi.html">Prețuri</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 AI DIGITALTRANSFORMATION S.R.L. Toate drepturile rezervate.</p>
+      <div class="footer-legal">
+        <a href="#">Termeni și condiții</a>
+        <a href="#">Politica de confidențialitate</a>
+        <a href="securitate-gdpr.html">GDPR</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER_END -->
 
   </div>
 
